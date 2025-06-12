@@ -1,0 +1,19 @@
+# node modules
+node_modules/
+
+# production build
+build/
+
+# logs
+*.log
+
+# environment
+.env
+.env.*
+
+# misc
+.DS_Store
+*.local
+*.cache/
+.eslintcache
+coverage/

@@ -1,0 +1,119 @@
+####################################
+# OS and Editor-Specific Ignorables
+####################################
+
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Linux
+*~
+
+# IDEs and Editors
+.vscode/
+.idea/
+*.sublime-workspace
+*.sublime-project
+
+########################
+# Dependency Directories
+########################
+
+node_modules/
+bower_components/
+
+####################
+# Build Artifacts
+####################
+
+dist/
+build/
+out/
+.next/
+.nyc_output/
+coverage/
+*.tsbuildinfo
+
+######################
+# Environment Variables
+######################
+
+.env
+.env.*
+!.env.example
+
+#################
+# Logs & Reports
+#################
+
+*.log
+logs/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+##################
+# Runtime Files
+##################
+
+pids/
+*.pid
+*.seed
+*.pid.lock
+
+########################
+# Temporary or Test Files
+########################
+
+*.tmp
+*.temp
+*.swp
+*.bak
+*.backup
+*.orig
+
+##########################
+# Uploaded or User Files
+##########################
+
+uploads/
+storage/
+public/assets/uploads/
+files/
+
+####################
+# Frontend Frameworks
+####################
+
+# React/Next
+.cache/
+.eslintcache
+*.local
+
+# Svelte/Vite
+.svelte-kit/
+.vite/
+
+################
+# TypeScript
+################
+
+*.tsbuildinfo
+
+###############
+# Firebase
+###############
+
+.firebase/
+.firebaserc
+
+################
+# Docker
+################
+
+docker-compose.override.ym
