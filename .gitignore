@@ -44,8 +44,9 @@ coverage/
 
 .env
 .env.*
-!.env.example
-
+config.env
+*.env
+**/config.env
 #################
 # Logs & Reports
 #################
