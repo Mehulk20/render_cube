@@ -1,3 +1,4 @@
 module.exports = {
-  User: require('./models/user.model'),
+  AppError: require('./middlewares/appError'),
+  catchAsync: require('./middlewares/catchAsyncError'),
 };

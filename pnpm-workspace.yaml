@@ -1,5 +1,9 @@
 packages:
-  - 'client'
-  - 'server/*'
-  - 'server/services/*'
-  - 'packages/*'
+  - client
+  - server/*
+  - server/services/*
+  - packages/*
+
+ignoredBuiltDependencies:
+  - '@tailwindcss/oxide'
+  - esbuild
