@@ -1,0 +1,49 @@
+version: '3.9'
+
+services:
+  mongodb:
+    image: mongo:7
+    container_name: mongodb
+    restart: unless-stopped
+
+    ports:
+      - '27017:27017'
+
+    volumes:
+      - mongo-data:/data/db
+
+  auth-service:
+    build:
+      context: .
+      dockerfile: ./server/services/authService/DockerFile
+
+    container_name: auth_service
+
+    ports:
+      - '5001:5001'
+    volumes:
+      - .:/app
+      - /app/node_modules
+      - /app/server/services/authService/node_modules
+
+    depends_on:
+      - mongodb
+  user-service:
+    build:
+      context: .
+      dockerfile: ./server/services/userService/DockerFile
+
+    container_name: user_service
+
+    ports:
+      - '5002:5002'
+    volumes:
+      - .:/app
+      - /app/node_modules
+      - /app/server/services/userService/node_modules
+
+    depends_on:
+      - mongodb
+
+volumes:
+  mongo-data:

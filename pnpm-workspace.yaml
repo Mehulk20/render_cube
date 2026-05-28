@@ -7,3 +7,7 @@ packages:
 ignoredBuiltDependencies:
   - '@tailwindcss/oxide'
   - esbuild
+
+onlyBuiltDependencies:
+  - bcrypt
+  - bson

@@ -1,6 +1,6 @@
-const Assets = require('./../models/assetModel');
-const catchAsync = require('./../middlewares/catchAsyncError');
-const AppError = require('./../middlewares/appError');
+const Assets = require('../models/assetModel');
+const catchAsync = require('../middlewares/catchAsyncError');
+const AppError = require('../middlewares/appError');
 
 exports.getAssetes = catchAsync(async (req, res, next) => {
   const assets = await Assets.find();

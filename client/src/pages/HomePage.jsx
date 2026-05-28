@@ -1,19 +1,29 @@
-import Header from '../components/Header';
 import HeroSection from '../components/HeroSection';
-import CategoryFilters from '../components/CategoryFilters';
-import AssetGrid from '../components/AssetGrid';
-import CreatorList from '../components/CreatorList';
+import SearchBar from '../components/SearchBar';
+import StatsBar from '../components/StatsBar';
+import CategoriesSection from '../components/CategoriesSection';
+import FeaturedAssets from '../components/FeaturedAssets';
+import CreatorSection from '../components/CreatorSection';
+import HowItWorks from '../components/HowItWorks';
+import CTASection from '../components/CTASection';
 
-function HomePage() {
+/**
+ * HomePage — main landing page.
+ * Composes all homepage sections in order.
+ */
+const HomePage = () => {
   return (
-    <div className="bg-black min-h-screen">
+    <div className="page-transition">
       <HeroSection />
-      <CategoryFilters />
-      <AssetGrid title="Trending Assets" />
-      <AssetGrid title="New Arrivals" />
-      <CreatorList />
+      <SearchBar />
+      <StatsBar />
+      <CategoriesSection />
+      <FeaturedAssets />
+      <CreatorSection />
+      <HowItWorks />
+      <CTASection />
     </div>
   );
-}
+};
 
 export default HomePage;

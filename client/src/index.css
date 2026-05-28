@@ -1,1 +1,177 @@
+/*
+  Tailwind v4 entry point.
+  The @import replaces the old @tailwind directives.
+  All theme customisation moves here under @theme — no JS config file needed.
+*/
+/* ── Google Fonts ───────────────────────────────────────────── */
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap');
+
 @import 'tailwindcss';
+
+/* ── Tailwind v4 theme tokens ───────────────────────────────── */
+@theme {
+  /* Colors */
+  --color-primary: #7c3aed;
+  --color-primary-dark: #6d28d9;
+  --color-primary-light: #8b5cf6;
+
+  /* Font families */
+  --font-sans: 'Plus Jakarta Sans', sans-serif;
+  --font-display: 'Syne', sans-serif;
+
+  /* Custom animations */
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-float-delayed: float 6s ease-in-out 2s infinite;
+  --animate-gradient-shift: gradientShift 8s ease infinite;
+  --animate-fade-up: fadeUp 0.6s ease forwards;
+  --animate-fade-in: fadeIn 0.4s ease forwards;
+  --animate-slide-in: slideIn 0.3s ease forwards;
+  --animate-pulse-glow: pulseGlow 2s ease-in-out infinite;
+
+  /* Keyframes */
+  --keyframes-float: {
+    0%,
+    100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-12px);
+    }
+  };
+  --keyframes-gradientShift: {
+    0%,
+    100% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+  };
+  --keyframes-fadeUp: {
+    from {
+      opacity: 0;
+      transform: translateY(24px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  };
+  --keyframes-fadeIn: {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  };
+  --keyframes-slideIn: {
+    from {
+      opacity: 0;
+      transform: translateX(-16px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  };
+  --keyframes-pulseGlow: {
+    0%,
+    100% {
+      box-shadow: 0 0 20px rgba(124, 58, 237, 0.4);
+    }
+    50% {
+      box-shadow: 0 0 40px rgba(124, 58, 237, 0.8);
+    }
+  };
+}
+
+/* ── Dark-mode variant (class-based) ───────────────────────── */
+@variant dark (&:where(.dark, .dark *));
+
+/* ── Base resets ────────────────────────────────────────────── */
+@layer base {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    background-color: #ffffff;
+    color: #111827;
+    -webkit-font-smoothing: antialiased;
+    transition:
+      background-color 0.3s ease,
+      color 0.3s ease;
+  }
+
+  .dark body {
+    background-color: #0a0a0f;
+    color: #f1f5f9;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5 {
+    font-family: var(--font-display);
+  }
+}
+
+/* ── Utility classes ────────────────────────────────────────── */
+@layer utilities {
+  .text-gradient {
+    background: linear-gradient(135deg, #7c3aed, #ec4899);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .bg-grid {
+    background-image:
+      linear-gradient(rgba(124, 58, 237, 0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(124, 58, 237, 0.04) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+  .dark .bg-grid {
+    background-image:
+      linear-gradient(rgba(124, 58, 237, 0.08) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(124, 58, 237, 0.08) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+
+  .card-hover {
+    transition:
+      transform 0.3s ease,
+      box-shadow 0.3s ease;
+  }
+  .card-hover:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 60px rgba(124, 58, 237, 0.15);
+  }
+
+  .glow-purple {
+    box-shadow: 0 0 40px rgba(124, 58, 237, 0.3);
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .page-transition {
+    animation: fadeIn 0.4s ease forwards;
+  }
+}
