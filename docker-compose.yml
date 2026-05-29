@@ -11,6 +11,7 @@ services:
 
     volumes:
       - mongo-data:/data/db
+      - mongo-configdb:/data/configdb
 
   auth-service:
     build:
@@ -23,8 +24,8 @@ services:
       - '5001:5001'
     volumes:
       - .:/app
-      - /app/node_modules
-      - /app/server/services/authService/node_modules
+      - root-node-modules:/app/node_modules
+      - auth-node-modules:/app/server/services/authService/node_modules
 
     depends_on:
       - mongodb
@@ -39,11 +40,15 @@ services:
       - '5002:5002'
     volumes:
       - .:/app
-      - /app/node_modules
-      - /app/server/services/userService/node_modules
+      - root-node-modules:/app/node_modules
+      - user-node-modules:/app/server/services/userService/node_modules
 
     depends_on:
       - mongodb
 
 volumes:
   mongo-data:
+  mongo-configdb:
+  root-node-modules:
+  auth-node-modules:
+  user-node-modules:
