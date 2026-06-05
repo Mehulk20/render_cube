@@ -13,11 +13,11 @@ app.get('/health', (req, res) => {
   res.send('User service running');
 });
 
-app.use('/', userRouter);
-
 app.use((req, res, next) => {
   console.log(req.headers);
   next();
 });
+
+app.use('/', userRouter);
 
 module.exports = app;

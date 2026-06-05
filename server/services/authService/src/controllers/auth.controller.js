@@ -91,6 +91,17 @@ exports.suspendCredential = catchAsyncError(async (req, res, next) => {
   });
 });
 
+//validate user
+
+exports.validateUser = catchAsyncError(async (req, res, next) => {
+  const result = await authService.validateUser(req.params.id);
+
+  res.status(200).json({
+    status: 'success',
+    data: { active: result.active, role: result.role, tokenVersion: result.tokenVersion },
+  });
+});
+
 //admin controller
 
 exports.restoreCredential = catchAsyncError(async (req, res, next) => {

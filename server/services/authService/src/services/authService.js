@@ -144,6 +144,18 @@ exports.suspendCredential = async userId => {
   return user;
 };
 
+//validate user
+
+exports.validateUser = async userId => {
+  const user = await credentialRepo.findAuthUserById(userId);
+
+  if (!user) {
+    throw new AppError('User not found', 404);
+  }
+
+  return user;
+};
+
 //admin services
 
 exports.restoreCredential = async userId => {

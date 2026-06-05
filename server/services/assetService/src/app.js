@@ -11,6 +11,6 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use('/assets', assetRouter);
+app.use('/', assetRouter);
 
 module.exports = app;

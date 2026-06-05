@@ -9,17 +9,19 @@ const restrictRoute = require('../middleware/restrictRoute');
 
 router.get('/users', userController.getUsers);
 
-router.post('/createUser', userController.createUser);
+// internal
+router.post('/internal/users', userController.createUser);
 
-router.get('/profile', authMiddleware.protect, userController.getProfile);
+// authenticated user
+router.get('/me', authMiddleware.protect, userController.getProfile);
 
-router.patch('/deleteAccount', authMiddleware.protect, userController.deleteAccount);
+router.patch('/me', authMiddleware.protect, userController.updateAuthUser);
 
-//admin routes
-// router.delete('/deleteUser', restrictRoute.restrictRoute('admin').userController.deleteUser);
+router.delete('/me', authMiddleware.protect, userController.deleteAccount);
 
+// admin
 router.patch(
-  '/admin/restore/:id',
+  '/admin/users/:id/restore',
   authMiddleware.protect,
   restrictRoute.restrictRoute('admin'),
   userController.restoreAccount

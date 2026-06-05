@@ -139,12 +139,18 @@ importers:
 
   server/services/assetService:
     dependencies:
+      axios:
+        specifier: ^1.13.6
+        version: 1.13.6
       dotenv:
         specifier: ^16.5.0
         version: 16.5.0
       express:
         specifier: ^5.1.0
         version: 5.1.0
+      jsonwebtoken:
+        specifier: ^9.0.2
+        version: 9.0.2
       mongoose:
         specifier: ^8.15.1
         version: 8.15.1

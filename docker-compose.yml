@@ -46,9 +46,27 @@ services:
     depends_on:
       - mongodb
 
+  asset-service:
+    build:
+      context: .
+      dockerfile: ./server/services/assetService/DockerFile
+
+    container_name: asset_service
+
+    ports:
+      - '5003:5003'
+    volumes:
+      - .:/app
+      - root-node-modules:/app/node_modules
+      - asset-node-modules:/app/server/services/assetService/node_modules
+
+    depends_on:
+      - mongodb
+
 volumes:
   mongo-data:
   mongo-configdb:
   root-node-modules:
   auth-node-modules:
   user-node-modules:
+  asset-node-modules:

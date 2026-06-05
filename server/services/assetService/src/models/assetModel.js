@@ -3,10 +3,15 @@ const slugify = require('slugify');
 
 const assetSchema = new mongoose.Schema(
   {
+    creatorId: {
+      type: mongoose.Schema.Types.ObjectId,
+      required: true,
+      index: true,
+    },
+
     title: {
       type: String,
       required: [true, 'asset must have a title'],
-      unique: true,
       trim: true,
     },
     slug: {
@@ -19,6 +24,7 @@ const assetSchema = new mongoose.Schema(
       maxlength: 1000,
     },
     fileUrl: {
+      fileSize: Number,
       type: String,
       required: true,
     },
@@ -36,11 +42,6 @@ const assetSchema = new mongoose.Schema(
       required: true,
       min: 0,
     },
-    creator: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'User',
-      required: false,
-    },
     likes: {
       type: Number,
       default: 0,
@@ -49,11 +50,42 @@ const assetSchema = new mongoose.Schema(
       type: Number,
       default: 0,
     },
+    status: {
+      type: String,
+      enum: ['draft', 'published', 'pending-review', 'suspended', 'rejected'],
+      default: 'draft',
+    },
+
+    visibility: {
+      type: String,
+      enum: ['public', 'private'],
+      default: 'public',
+    },
+    version: {
+      type: String,
+      default: '1.0.0',
+    },
   },
   {
     timestamps: true,
   }
 );
+
+//indexes
+
+assetSchema.index({
+  title: 'text',
+  description: 'text',
+  tags: 'text',
+});
+
+assetSchema.index({ creatorId: 1 });
+
+assetSchema.index({ category: 1 });
+
+assetSchema.index({ status: 1 });
+
+assetSchema.index({ slug: 1 }, { unique: true });
 
 assetSchema.pre('save', function (next) {
   if (this.isModified('title')) return next();

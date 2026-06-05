@@ -13,6 +13,15 @@ exports.getUsers = catchAsyncError(async (req, res, next) => {
   });
 });
 
+exports.createUser = catchAsyncError(async (req, res, next) => {
+  const newUser = await userService.createUser(req.body);
+  if (!newUser) return next(new AppError('requested data not found', 400));
+  res.status(201).json({
+    status: 'success',
+    data: newUser,
+  });
+});
+
 exports.getProfile = catchAsyncError(async (req, res, next) => {
   const user = await userService.getUserById(req.user.id);
 
@@ -26,12 +35,14 @@ exports.getProfile = catchAsyncError(async (req, res, next) => {
   });
 });
 
-exports.createUser = catchAsyncError(async (req, res, next) => {
-  const newUser = await userService.createUser(req.body);
-  if (!newUser) return next(new AppError('requested data not found', 400));
-  res.status(201).json({
+exports.updateAuthUser = catchAsyncError(async (req, res, next) => {
+  const result = await userService.updateUserProfile(req.user.id, req.body);
+
+  if (!result) return next(new AppError('No profile found update', 404));
+
+  res.status(200).json({
     status: 'success',
-    data: newUser,
+    data: result,
   });
 });
 

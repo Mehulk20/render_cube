@@ -12,7 +12,8 @@ exports.createNewUser = async data => {
   return Profiles.create(data);
 };
 
-exports.updateAuthUser = async ({ id, updates }) => {
+exports.updateAuthUser = async (id, updates) => {
+  console.log(id, updates);
   return Profiles.findByIdAndUpdate(
     id,
 

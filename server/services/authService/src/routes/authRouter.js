@@ -16,6 +16,9 @@ router.post('/logout', authProtectMiddleware.validateTokenVersion, authControlle
 
 router.patch('/suspend/:id', authController.suspendCredential);
 
+//validate auth User
+router.get('/validate/:id', authController.validateUser);
+
 //admin routes
 
 router.patch('/restore/:id', authController.restoreCredential);

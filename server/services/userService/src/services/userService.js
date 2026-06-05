@@ -9,14 +9,21 @@ exports.getUsers = async () => {
   return users;
 };
 
+exports.createUser = async data => {
+  const user = await userRepo.createNewUser(data);
+
+  return user;
+};
+
 exports.getUserById = async userId => {
   const user = await userRepo.authUserProfile(userId);
 
   return user;
 };
 
-exports.createUser = async data => {
-  const user = await userRepo.createNewUser(data);
+exports.updateUserProfile = async (userId, data) => {
+  console.log(userId, data);
+  const user = await userRepo.updateAuthUser(userId, data);
 
   return user;
 };
