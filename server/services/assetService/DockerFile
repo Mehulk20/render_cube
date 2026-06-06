@@ -1,8 +1,0 @@
-FROM node:24
-WORKDIR /app
-RUN npm install -g pnpm
-COPY . .
-RUN pnpm install
-WORKDIR /app/server/services/assetService
-EXPOSE 5003
-CMD [ "pnpm", "run", "dev" ]

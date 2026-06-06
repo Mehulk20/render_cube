@@ -16,32 +16,32 @@ services:
   auth-service:
     build:
       context: .
-      dockerfile: ./server/services/authService/DockerFile
+      dockerfile: ./server/services/auth-service/DockerFile
 
-    container_name: auth_service
+    container_name: auth-service
 
     ports:
       - '5001:5001'
     volumes:
       - .:/app
       - root-node-modules:/app/node_modules
-      - auth-node-modules:/app/server/services/authService/node_modules
+      - auth-node-modules:/app/server/services/auth-service/node_modules
 
     depends_on:
       - mongodb
   user-service:
     build:
       context: .
-      dockerfile: ./server/services/userService/DockerFile
+      dockerfile: ./server/services/user-service/DockerFile
 
-    container_name: user_service
+    container_name: user-service
 
     ports:
       - '5002:5002'
     volumes:
       - .:/app
       - root-node-modules:/app/node_modules
-      - user-node-modules:/app/server/services/userService/node_modules
+      - user-node-modules:/app/server/services/user-service/node_modules
 
     depends_on:
       - mongodb
@@ -49,16 +49,16 @@ services:
   asset-service:
     build:
       context: .
-      dockerfile: ./server/services/assetService/DockerFile
+      dockerfile: ./server/services/asset-service/DockerFile
 
-    container_name: asset_service
+    container_name: asset-service
 
     ports:
       - '5003:5003'
     volumes:
       - .:/app
       - root-node-modules:/app/node_modules
-      - asset-node-modules:/app/server/services/assetService/node_modules
+      - asset-node-modules:/app/server/services/asset-service/node_modules
 
     depends_on:
       - mongodb

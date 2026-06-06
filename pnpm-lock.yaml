@@ -137,7 +137,7 @@ importers:
         specifier: ^3.1.10
         version: 3.1.10
 
-  server/services/assetService:
+  server/services/asset-service:
     dependencies:
       axios:
         specifier: ^1.13.6
@@ -162,7 +162,7 @@ importers:
         specifier: ^3.1.10
         version: 3.1.10
 
-  server/services/asset_service:
+  server/services/asset-service:
     dependencies:
       dotenv:
         specifier: ^16.5.0
@@ -181,7 +181,7 @@ importers:
         specifier: ^3.1.10
         version: 3.1.10
 
-  server/services/authService:
+  server/services/auth-service:
     dependencies:
       axios:
         specifier: ^1.13.6
@@ -218,7 +218,7 @@ importers:
         specifier: ^3.1.10
         version: 3.1.10
 
-  server/services/auth_service:
+  server/services/auth-service:
     dependencies:
       axios:
         specifier: ^1.13.6
@@ -252,7 +252,7 @@ importers:
         specifier: ^3.1.10
         version: 3.1.10
 
-  server/services/userService:
+  server/services/user-service:
     dependencies:
       dotenv:
         specifier: ^16.5.0
@@ -271,7 +271,7 @@ importers:
         specifier: ^3.1.10
         version: 3.1.10
 
-  server/services/user_service:
+  server/services/user-service:
     dependencies:
       dotenv:
         specifier: ^16.5.0
