@@ -6,36 +6,51 @@ const authMiddleware = require('../middlewares/auth-protect-middleware.');
 const restrictionMiddleware = require('../middlewares/restriction-middleware');
 
 router
-  .route('/assets')
+  .route('/')
   .get(assetController.getAssetes)
   .post(
     authMiddleware.protect,
-    restrictionMiddleware.restrictTo('owner', 'admin'),
+    restrictionMiddleware.restrictTo('creator', 'admin'),
     assetController.createAssete
   );
 
 router
-  .route('/assets/:id')
-  .get(assetController.getAsset)
+  .route('/:id')
+  .get(assetController.getAssetById)
   .patch(
     authMiddleware.protect,
-    restrictionMiddleware.restrictTo('owner', 'admin'),
+    restrictionMiddleware.restrictTo('creator', 'admin'),
     restrictionMiddleware.checkAssetOwnership,
-    assetController.updateAsset
+    assetController.updateAssetById
   )
   .delete(
     authMiddleware.protect,
-    restrictionMiddleware.restrictTo('owner', 'admin'),
+    restrictionMiddleware.restrictTo('creator', 'admin'),
     restrictionMiddleware.checkAssetOwnership,
     assetController.deleteAssete
   );
 
 router.patch(
-  '/assets/:id/status',
+  '/:id/status',
   authMiddleware.protect,
-  restrictionMiddleware.restrictTo('owner', 'admin'),
+  restrictionMiddleware.restrictTo('creator', 'admin'),
   restrictionMiddleware.checkAssetOwnership,
-  assetController.updateAssetState
+  assetController.updateAssetStatus
 );
+
+router
+  .route('/internal/assets')
+  .post(
+    authMiddleware.protect,
+    restrictionMiddleware.restrictTo('admin'),
+    restrictionMiddleware.checkAssetOwnership,
+    assetController.importAssetData
+  )
+  .delete(
+    authMiddleware.protect,
+    restrictionMiddleware.restrictTo('admin'),
+    restrictionMiddleware.checkAssetOwnership,
+    assetController.deleteAssetData
+  );
 
 module.exports = router;

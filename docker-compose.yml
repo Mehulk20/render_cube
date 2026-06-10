@@ -1,17 +1,15 @@
-version: '3.9'
-
 services:
-  mongodb:
-    image: mongo:7
-    container_name: mongodb
-    restart: unless-stopped
+  # mongodb:
+  #   image: mongo:7
+  #   container_name: mongodb
+  #   restart: unless-stopped
 
-    ports:
-      - '27017:27017'
+  #   ports:
+  #     - '27017:27017'
 
-    volumes:
-      - mongo-data:/data/db
-      - mongo-configdb:/data/configdb
+  #   volumes:
+  #     - mongo-data:/data/db
+  #     - mongo-configdb:/data/configdb
 
   auth-service:
     build:
@@ -27,8 +25,11 @@ services:
       - root-node-modules:/app/node_modules
       - auth-node-modules:/app/server/services/auth-service/node_modules
 
-    depends_on:
-      - mongodb
+    env_file:
+      - ./server/services/auth-service/config.env
+
+    # depends_on:
+    #   - mongodb
   user-service:
     build:
       context: .
@@ -43,8 +44,11 @@ services:
       - root-node-modules:/app/node_modules
       - user-node-modules:/app/server/services/user-service/node_modules
 
-    depends_on:
-      - mongodb
+    env_file:
+      - ./server/services/user-service/config.env
+
+    # depends_on:
+    #   - mongodb
 
   asset-service:
     build:
@@ -60,12 +64,15 @@ services:
       - root-node-modules:/app/node_modules
       - asset-node-modules:/app/server/services/asset-service/node_modules
 
-    depends_on:
-      - mongodb
+    env_file:
+      - ./server/services/asset-service/config.env
+
+    # depends_on:
+    #   - mongodb
 
 volumes:
-  mongo-data:
-  mongo-configdb:
+  # mongo-data:
+  # mongo-configdb:
   root-node-modules:
   auth-node-modules:
   user-node-modules:

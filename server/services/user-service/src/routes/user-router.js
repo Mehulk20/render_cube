@@ -7,15 +7,14 @@ const authMiddleware = require('../middleware/auth-protect-middleware');
 
 const restrictRoute = require('../middleware/restrict-route');
 
-router.get('/users', userController.getUsers);
-
-// internal
-router.post('/internal/users', userController.createUser);
+router.get('/', userController.getUsers);
 
 // authenticated user
 router.get('/me', authMiddleware.protect, userController.getProfile);
 
 router.patch('/me', authMiddleware.protect, userController.updateAuthUser);
+
+router.patch('/suspendAccount', authMiddleware.protect, userController.suspendUserAccount);
 
 router.delete('/me', authMiddleware.protect, userController.deleteAccount);
 
@@ -27,9 +26,16 @@ router.patch(
   userController.restoreAccount
 );
 
+// internal
+router.post('/internal/userService', userController.createUser);
+
+router.delete('/internal/:id', userController.deleteAccount);
+
 //development use only
 
-router.post('/internal/import', userController.importAllData);
-router.delete('/internal/delete', userController.deleteAllData);
+router
+  .route('/internal/assets')
+  .post(userController.importAllData)
+  .delete(userController.deleteAllData);
 
 module.exports = router;

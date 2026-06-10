@@ -4,8 +4,8 @@ const AppError = require('../middlewares/app-error');
 
 exports.getAssetes = catchAsync(async (req, res, next) => {
   const assets = await assetService.getAllAssets();
-
-  if (!assets) return next(new AppError('requested data not found', 400));
+  console.log(assets.length);
+  if (!assets.length) return next(new AppError('requested data not found', 400));
 
   res.status(200).json({
     status: 'success',
@@ -13,10 +13,10 @@ exports.getAssetes = catchAsync(async (req, res, next) => {
   });
 });
 
-exports.getAsset = catchAsync(async (req, res, next) => {
+exports.getAssetById = catchAsync(async (req, res, next) => {
   const asset = await assetService.getAssetById(req.params.id);
 
-  if (!assets) return next(new AppError('requested data not found', 400));
+  if (!asset) return next(new AppError('requested data not found', 400));
 
   res.status(200).json({
     status: 'success',
@@ -35,7 +35,8 @@ exports.createAssete = catchAsync(async (req, res, next) => {
   });
 });
 
-exports.updateAsset = catchAsync(async (req, res, next) => {
+exports.updateAssetById = catchAsync(async (req, res, next) => {
+  console.log(`this is my Id: ${req.user.id}`);
   const newAssets = await assetService.updateAssetById(req.params.id, req.body);
 
   if (!newAssets) return next(new AppError('requested data not found', 400));
@@ -46,8 +47,8 @@ exports.updateAsset = catchAsync(async (req, res, next) => {
   });
 });
 
-exports.updateAssetState = catchAsync(async (req, res, next) => {
-  const newAssets = await assetService.changeAssetState(req.params.id, req.body);
+exports.updateAssetStatus = catchAsync(async (req, res, next) => {
+  const newAssets = await assetService.updateAssetStatus(req.params.id, req.body);
 
   if (!newAssets) return next(new AppError('requested data not found', 400));
 
@@ -64,5 +65,29 @@ exports.deleteAssete = catchAsync(async (req, res, next) => {
 
   res.status(201).json({
     status: 'success',
+    message: 'Item deleted successfully',
+  });
+});
+
+//for develoment use.
+exports.importAssetData = catchAsync(async (req, res, next) => {
+  const result = await assetService.createAsset({ ...req.body });
+
+  if (!newAssets) return next(new AppError('requested data not found', 400));
+
+  res.status(201).json({
+    status: 'success',
+    message: 'all assets imported',
+  });
+});
+
+exports.deleteAssetData = catchAsync(async (req, res, next) => {
+  const result = await assetService.deleteAllAssets();
+
+  if (!result) return next(new AppError('process intrupted-please retry', 400));
+
+  res.status(201).json({
+    status: 'success',
+    message: 'all assets removed',
   });
 });

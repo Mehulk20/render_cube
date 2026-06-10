@@ -4,7 +4,13 @@ const app = require('./app');
 const port = process.env.PORT || 5002;
 const DB = process.env.DATA_BASE_URI;
 
-mongoose.connect(DB).then(() => {
+//online db for development
+const ONLINE_DB = process.env.ONLINE_DB_STRING.replace(
+  '<db_password>',
+  process.env.ONLINE_DB_PASSWORD
+);
+
+mongoose.connect(ONLINE_DB).then(() => {
   console.log('asset data-base connection sucessfull');
 });
 

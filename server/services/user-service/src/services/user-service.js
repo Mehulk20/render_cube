@@ -22,7 +22,6 @@ exports.getUserById = async userId => {
 };
 
 exports.updateUserProfile = async (userId, data) => {
-  console.log(userId, data);
   const user = await userRepo.updateAuthUser(userId, data);
 
   return user;
@@ -39,6 +38,16 @@ exports.deleteAccount = async userId => {
 };
 
 //admin services
+
+exports.suspendUser = async userId => {
+  // suspend profile
+  await userRepo.deleteAuthUser(userId);
+
+  // suspend auth credential
+  await authService.suspendAuthUserCredential(userId);
+
+  return true;
+};
 
 exports.restoreAccount = async userId => {
   //restore profile

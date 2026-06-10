@@ -39,6 +39,18 @@ exports.deleteAuthUser = async id => {
   );
 };
 
+exports.suspendUser = async id => {
+  return Profiles.findByIdAndUpdate(
+    id,
+    { status: 'suspended' },
+    {
+      new: true,
+
+      runValidators: true,
+    }
+  );
+};
+
 //admin repos
 exports.restoreUser = async id => {
   return Profiles.findByIdAndUpdate(

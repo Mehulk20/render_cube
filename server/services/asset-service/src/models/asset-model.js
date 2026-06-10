@@ -6,7 +6,6 @@ const assetSchema = new mongoose.Schema(
     creatorId: {
       type: mongoose.Schema.Types.ObjectId,
       required: true,
-      index: true,
     },
 
     title: {
@@ -16,6 +15,7 @@ const assetSchema = new mongoose.Schema(
     },
     slug: {
       type: String,
+      required: true,
       unique: true,
       lowercase: true,
     },
@@ -25,8 +25,7 @@ const assetSchema = new mongoose.Schema(
     },
     fileUrl: {
       fileSize: Number,
-      type: String,
-      required: true,
+      url: { type: String, required: true },
     },
     previewImageUrl: {
       type: String,
@@ -85,14 +84,15 @@ assetSchema.index({ category: 1 });
 
 assetSchema.index({ status: 1 });
 
-assetSchema.index({ slug: 1 }, { unique: true });
-
-assetSchema.pre('save', function (next) {
-  if (this.isModified('title')) return next();
-
-  this.slug = slugify(this.title, { lower: true, strict: true });
+assetSchema.pre('validate', function (next) {
+  if (this.isModified('title')) {
+    this.slug = slugify(this.title, {
+      lower: true,
+      strict: true,
+    });
+  }
 
   next();
 });
 
-module.exports = mongoose.model('Assets', assetSchema);
+module.exports = mongoose.model('Inventory', assetSchema);

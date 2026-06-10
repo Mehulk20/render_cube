@@ -22,11 +22,11 @@ exports.protect = catchAsyncError(async (req, res, next) => {
 
   const authReponse = await authService.validateAuthUser(decoded.id);
 
-  const authData = authReponse.data.data;
+  const { result } = authReponse.data;
 
-  if (!authData.active) return next(new AppError('User not found', 403));
+  if (!result.active) return next(new AppError('User not found', 403));
 
-  if (authData.tokenVersion !== decoded.tokenVersion)
+  if (result.tokenVersion !== decoded.tokenVersion)
     return next(new AppError('Token invalidated, try re-login', 401));
 
   req.user = decoded;

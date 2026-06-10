@@ -15,24 +15,25 @@ exports.protect = catchAsync(async (req, res, next) => {
 
   if (!token) return next(new AppError('unauthrized access', 401));
 
-  const decoded = await promisify(jwt.verify)(token, process.env.JWT_SECRET);
+  const { id, ...decoded } = await promisify(jwt.verify)(token, process.env.JWT_SECRET);
 
-  if (!decoded.id) return next(new AppError('user does not exist, please re-try login', 401));
+  if (!id) return next(new AppError('user does not exist, please re-try login', 401));
 
-  const authResponse = await authService.validateAuthUser(decoded.id);
+  const authResponse = await authService.validateAuthUser(id);
 
-  const authData = authResponse.data.data;
+  const { result } = { ...authResponse.data };
 
-  if (!authData.active) return next(new AppError('user not found', 403));
+  if (!result.active) return next(new AppError('user not found', 403));
 
-  if (authData.tokenVersion !== decoded.tokenVersion)
+  if (result.tokenVersion !== decoded.tokenVersion)
     return next(new AppError('invalidated token', 401));
 
   req.user = {
     ...decoded,
-    id: authData.id,
-    role: authData.role,
-    tokenVersion: authData.tokenVersion,
+    id: result._id,
+    role: result.role,
+    tokenVersion: result.tokenVersion,
+    active: result.active,
   };
 
   next();
