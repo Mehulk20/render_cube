@@ -15,7 +15,7 @@ exports.getUsers = catchAsyncError(async (req, res, next) => {
 
 exports.createUser = catchAsyncError(async (req, res, next) => {
   const newUser = await userService.createUser(req.body);
-
+  console.log(newUser);
   if (!newUser) return next(new AppError('requested data not found', 400));
   res.status(201).json({
     status: 'success',
@@ -23,8 +23,8 @@ exports.createUser = catchAsyncError(async (req, res, next) => {
   });
 });
 
-exports.getProfile = catchAsyncError(async (req, res, next) => {
-  const user = await userService.getUserById(req.user.id);
+exports.getMe = catchAsyncError(async (req, res, next) => {
+  const user = await userService.getUserById(req.user.userId);
 
   if (!user) return next(new AppError('No profile found', 404));
 
@@ -36,8 +36,8 @@ exports.getProfile = catchAsyncError(async (req, res, next) => {
   });
 });
 
-exports.updateAuthUser = catchAsyncError(async (req, res, next) => {
-  const result = await userService.updateUserProfile(req.user.id, req.body);
+exports.updateMe = catchAsyncError(async (req, res, next) => {
+  const result = await userService.updateUserProfile(req.user.userId, req.body);
 
   if (!result) return next(new AppError('No profile found update', 404));
 
@@ -47,8 +47,8 @@ exports.updateAuthUser = catchAsyncError(async (req, res, next) => {
   });
 });
 
-exports.suspendUserAccount = catchAsyncError(async (req, res, next) => {
-  const result = await userService.suspendUser(req.user.id);
+exports.suspendMe = catchAsyncError(async (req, res, next) => {
+  const result = await userService.suspendUser(req.user.userId);
 
   if (!result) return next(new AppError('user suspenstion failed, retry', 400));
 
@@ -58,8 +58,9 @@ exports.suspendUserAccount = catchAsyncError(async (req, res, next) => {
   });
 });
 
-exports.deleteAccount = catchAsyncError(async (req, res, next) => {
-  await userService.deleteAccount(req.user.id);
+exports.deleteMe = catchAsyncError(async (req, res, next) => {
+  console.log(req.body);
+  await userService.deleteAccount(req.body.email);
 
   res.status(200).json({
     status: 'success',
@@ -71,7 +72,7 @@ exports.deleteAccount = catchAsyncError(async (req, res, next) => {
 //admin controller
 
 exports.restoreAccount = catchAsyncError(async (req, res, next) => {
-  await userService.restoreAccount(req.params.id);
+  await userService.restoreAccount(req.params.userId);
 
   res.status(200).json({
     status: 'success',

@@ -32,7 +32,7 @@ exports.deleteAccount = async userId => {
   await userRepo.deleteAuthUser(userId);
 
   // suspend auth credential
-  await authService.suspendAuthUserCredential(userId);
+  // await authService.suspendAuthUserCredential(userId);
 
   return true;
 };

@@ -1,10 +1,7 @@
-const dns = require('dns');
-dns.setServers(['8.8.8.8', '8.8.4.4']);
-
 const mongoose = require('mongoose');
 const app = require('./app');
 
-const port = process.env.PORT || 5003;
+const port = process.env.PORT || 5005;
 const DB = process.env.DATA_BASE_URI;
 //online db for development
 const ONLINE_DB = process.env.ONLINE_DB_STRING.replace(
@@ -12,8 +9,12 @@ const ONLINE_DB = process.env.ONLINE_DB_STRING.replace(
   process.env.ONLINE_DB_PASSWORD
 );
 
+console.log('ONLINE_DB_STRING:', process.env.ONLINE_DB_STRING);
+console.log('ONLINE_DB_PASSWORD:', process.env.ONLINE_DB_PASSWORD ? 'Loaded' : 'Missing');
+console.log('ONLINE_DB:', ONLINE_DB);
+
 mongoose.connect(ONLINE_DB).then(() => {
-  console.log('users data-base service is connected sucessfully');
+  console.log('auth data-base service is connected sucessfully');
 });
 
 app.listen(port, () => {

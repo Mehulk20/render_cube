@@ -25,13 +25,13 @@ exports.updateAssetById = async (id, updates) => {
 };
 
 exports.updateAssetStatus = async (id, status) => {
-  const asset = await assetRepo.updateAssetStatus(id, status);
+  const asset = await assetRepo.fineOneAndUpdateStatus(id, status);
 
   return asset;
 };
 
 exports.deleteAsset = async id => {
-  await assetRepo.deleteAsset(id);
+  await assetRepo.findByAssetIdAndDelete(id);
 
   return true;
 };

@@ -5,7 +5,7 @@ exports.getAllUsers = async () => {
 };
 
 exports.authUserProfile = async id => {
-  return Profiles.findById(id);
+  return Profiles.findOne({ userId: id });
 };
 
 exports.createNewUser = async data => {
@@ -14,8 +14,8 @@ exports.createNewUser = async data => {
 
 exports.updateAuthUser = async (id, updates) => {
   console.log(id, updates);
-  return Profiles.findByIdAndUpdate(
-    id,
+  return Profiles.findOneAndUpdate(
+    { userId: id },
 
     updates,
 
@@ -28,20 +28,24 @@ exports.updateAuthUser = async (id, updates) => {
 };
 
 exports.deleteAuthUser = async id => {
-  return Profiles.findByIdAndUpdate(
-    id,
-    { status: 'suspended' },
-    {
-      new: true,
-
-      runValidators: true,
-    }
-  );
+  return Profiles.findOneAndDelete({ userId: id });
 };
 
+// exports.deleteAuthUser = async id => {
+//   return Profiles.findByIdAndUpdate(
+//     id,
+//     { status: 'suspended' },
+//     {
+//       new: true,
+
+//       runValidators: true,
+//     }
+//   );
+// };
+
 exports.suspendUser = async id => {
-  return Profiles.findByIdAndUpdate(
-    id,
+  return Profiles.findOneAndUpdate(
+    { userId: id },
     { status: 'suspended' },
     {
       new: true,

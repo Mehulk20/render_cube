@@ -25,7 +25,7 @@ exports.getAssetById = catchAsync(async (req, res, next) => {
 });
 
 exports.createAssete = catchAsync(async (req, res, next) => {
-  const newAssets = await assetService.createAsset({ ...req.body, creatorId: req.user.id });
+  const newAssets = await assetService.createAsset({ ...req.body, creatorId: req.user.userId });
 
   if (!newAssets) return next(new AppError('requested data not found', 400));
 
@@ -36,8 +36,7 @@ exports.createAssete = catchAsync(async (req, res, next) => {
 });
 
 exports.updateAssetById = catchAsync(async (req, res, next) => {
-  console.log(`this is my Id: ${req.user.id}`);
-  const newAssets = await assetService.updateAssetById(req.params.id, req.body);
+  const newAssets = await assetService.updateAssetStatus(req.params.id, req.body);
 
   if (!newAssets) return next(new AppError('requested data not found', 400));
 
