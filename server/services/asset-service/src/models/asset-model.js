@@ -1,10 +1,12 @@
 const mongoose = require('mongoose');
 const slugify = require('slugify');
+const crypto = require('crypto');
 
 const assetSchema = new mongoose.Schema(
   {
+    assetId: { type: String, default: () => `ast_${crypto.randomUUID()}`, unique: true },
     creatorId: {
-      type: mongoose.Schema.Types.ObjectId,
+      type: String,
       required: true,
     },
 

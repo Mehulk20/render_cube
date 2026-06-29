@@ -2,7 +2,8 @@ require('./config/user.config');
 
 const express = require('express');
 const morgan = require('morgan');
-const userRouter = require('./routes/user-router');
+const userRouter = require('./user-module/routes/user-router');
+const internalRouter = require('./user-module/routes/internal-router');
 
 const app = express();
 
@@ -19,5 +20,6 @@ app.use((req, res, next) => {
 });
 
 app.use('/api/v1/users', userRouter);
+app.use('/api/v1/internal/users', internalRouter);
 
 module.exports = app;

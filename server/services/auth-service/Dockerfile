@@ -1,0 +1,15 @@
+FROM node:24
+
+WORKDIR /app
+
+RUN npm install -g pnpm
+
+COPY . .
+
+RUN pnpm install
+
+WORKDIR /app/server/services/auth-service
+
+EXPOSE 5001
+
+CMD [ "pnpm", "run", "dev" ]

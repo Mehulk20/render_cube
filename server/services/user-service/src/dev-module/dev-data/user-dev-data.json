@@ -1,0 +1,1002 @@
+[
+  {
+    "email": "alex.morgan@example.com",
+    "password": "Password123!",
+    "confirmPassword": "Password123!",
+    "role": "creator",
+    "username": "alexmorgan",
+    "avatar": "https://i.pravatar.cc/300?img=1",
+    "bio": "3D artist creating game-ready environment assets.",
+    "status": "active"
+  },
+  {
+    "email": "emma.wilson@example.com",
+    "password": "Password123!",
+    "confirmPassword": "Password123!",
+    "role": "user",
+    "username": "emmawilson",
+    "avatar": "https://i.pravatar.cc/300?img=2",
+    "bio": "Indie game developer exploring marketplace resources.",
+    "status": "active"
+  },
+  {
+    "email": "liam.carter@example.com",
+    "password": "Password123!",
+    "confirmPassword": "Password123!",
+    "role": "creator",
+    "username": "liamcarter",
+    "avatar": "https://i.pravatar.cc/300?img=3",
+    "bio": "Specialized in Blender models and PBR materials.",
+    "status": "active"
+  },
+  {
+    "email": "olivia.bennett@example.com",
+    "password": "Password123!",
+    "confirmPassword": "Password123!",
+    "role": "user",
+    "username": "oliviabennett",
+    "avatar": "https://i.pravatar.cc/300?img=4",
+    "bio": "UI designer looking for premium creative assets.",
+    "status": "active"
+  },
+  {
+    "email": "noah.reed@example.com",
+    "password": "Password123!",
+    "confirmPassword": "Password123!",
+    "role": "creator",
+    "username": "noahreed",
+    "avatar": "https://i.pravatar.cc/300?img=5",
+    "bio": "Motion graphics artist creating After Effects templates.",
+    "status": "pending"
+  },
+  {
+    "email": "ava.parker@example.com",
+    "password": "Password123!",
+    "confirmPassword": "Password123!",
+    "role": "user",
+    "username": "avaparker",
+    "avatar": "https://i.pravatar.cc/300?img=6",
+    "bio": "Content creator and digital entrepreneur.",
+    "status": "active"
+  },
+  {
+    "email": "ethan.hughes@example.com",
+    "password": "Password123!",
+    "confirmPassword": "Password123!",
+    "role": "creator",
+    "username": "ethanhughes",
+    "avatar": "https://i.pravatar.cc/300?img=7",
+    "bio": "Creating stylized low-poly asset packs.",
+    "status": "active"
+  },
+  {
+    "email": "mia.cook@example.com",
+    "password": "Password123!",
+    "confirmPassword": "Password123!",
+    "role": "user",
+    "username": "miacook",
+    "avatar": "https://i.pravatar.cc/300?img=8",
+    "bio": "Learning Unity and collecting useful resources.",
+    "status": "inactive"
+  },
+  {
+    "email": "james.foster@example.com",
+    "password": "Password123!",
+    "confirmPassword": "Password123!",
+    "role": "creator",
+    "username": "jamesfoster",
+    "avatar": "https://i.pravatar.cc/300?img=9",
+    "bio": "Environment artist with a focus on realism.",
+    "status": "active"
+  },
+  {
+    "email": "sophia.gray@example.com",
+    "password": "Password123!",
+    "confirmPassword": "Password123!",
+    "role": "user",
+    "username": "sophiagray",
+    "avatar": "https://i.pravatar.cc/300?img=10",
+    "bio": "Building web applications with creative visuals.",
+    "status": "active"
+  },
+  {
+    "email": "logan.price@example.com",
+    "password": "Password123!",
+    "confirmPassword": "Password123!",
+    "role": "creator",
+    "username": "loganprice",
+    "avatar": "https://i.pravatar.cc/300?img=11",
+    "bio": "3D prop designer for games and VR experiences.",
+    "status": "pending"
+  },
+  {
+    "email": "isabella.ward@example.com",
+    "password": "Password123!",
+    "confirmPassword": "Password123!",
+    "role": "user",
+    "username": "isabellaward",
+    "avatar": "https://i.pravatar.cc/300?img=12",
+    "bio": "Creative professional working on mobile games.",
+    "status": "active"
+  },
+  {
+    "email": "lucas.mitchell@example.com",
+    "password": "Password123!",
+    "confirmPassword": "Password123!",
+    "role": "creator",
+    "username": "lucasmitchell",
+    "avatar": "https://i.pravatar.cc/300?img=13",
+    "bio": "Expert in Unreal Engine asset production.",
+    "status": "active"
+  },
+  {
+    "email": "charlotte.adams@example.com",
+    "password": "Password123!",
+    "confirmPassword": "Password123!",
+    "role": "user",
+    "username": "charlotteadams",
+    "avatar": "https://i.pravatar.cc/300?img=14",
+    "bio": "Digital marketer interested in design assets.",
+    "status": "active"
+  },
+  {
+    "email": "henry.turner@example.com",
+    "password": "Password123!",
+    "confirmPassword": "Password123!",
+    "role": "creator",
+    "username": "henryturner",
+    "avatar": "https://i.pravatar.cc/300?img=15",
+    "bio": "Creating VFX packs and cinematic effects.",
+    "status": "inactive"
+  },
+  {
+    "email": "amelia.collins@example.com",
+    "password": "Password123!",
+    "confirmPassword": "Password123!",
+    "role": "user",
+    "username": "ameliacollins",
+    "avatar": "https://i.pravatar.cc/300?img=16",
+    "bio": "Designer collecting resources for freelance work.",
+    "status": "active"
+  },
+  {
+    "email": "daniel.brooks@example.com",
+    "password": "Password123!",
+    "confirmPassword": "Password123!",
+    "role": "creator",
+    "username": "danielbrooks",
+    "avatar": "https://i.pravatar.cc/300?img=17",
+    "bio": "Character artist focused on fantasy models.",
+    "status": "active"
+  },
+  {
+    "email": "harper.bailey@example.com",
+    "password": "Password123!",
+    "confirmPassword": "Password123!",
+    "role": "user",
+    "username": "harperbailey",
+    "avatar": "https://i.pravatar.cc/300?img=18",
+    "bio": "Exploring asset marketplaces for inspiration.",
+    "status": "pending"
+  },
+  {
+    "email": "michael.rivera@example.com",
+    "password": "Password123!",
+    "confirmPassword": "Password123!",
+    "role": "creator",
+    "username": "michaelrivera",
+    "avatar": "https://i.pravatar.cc/300?img=19",
+    "bio": "Building modular architecture asset kits.",
+    "status": "active"
+  },
+  {
+    "email": "evelyn.kelly@example.com",
+    "password": "Password123!",
+    "confirmPassword": "Password123!",
+    "role": "user",
+    "username": "evelynkelly",
+    "avatar": "https://i.pravatar.cc/300?img=20",
+    "bio": "Game enthusiast creating side projects.",
+    "status": "active"
+  },
+  {
+    "email": "jackson.evans@example.com",
+    "password": "Password123!",
+    "confirmPassword": "Password123!",
+    "role": "creator",
+    "username": "jacksonevans",
+    "avatar": "https://i.pravatar.cc/300?img=21",
+    "bio": "Creating AAA-quality environment assets for game studios.",
+    "status": "active"
+  },
+  {
+    "email": "abigail.morris@example.com",
+    "password": "Password123!",
+    "confirmPassword": "Password123!",
+    "role": "user",
+    "username": "abigailmorris",
+    "avatar": "https://i.pravatar.cc/300?img=22",
+    "bio": "Learning 3D design and exploring creative marketplaces.",
+    "status": "active"
+  },
+  {
+    "email": "sebastian.ramos@example.com",
+    "password": "Password123!",
+    "confirmPassword": "Password123!",
+    "role": "creator",
+    "username": "sebastianramos",
+    "avatar": "https://i.pravatar.cc/300?img=23",
+    "bio": "Professional character sculptor using ZBrush.",
+    "status": "pending"
+  },
+  {
+    "email": "ella.howard@example.com",
+    "password": "Password123!",
+    "confirmPassword": "Password123!",
+    "role": "user",
+    "username": "ellahoward",
+    "avatar": "https://i.pravatar.cc/300?img=24",
+    "bio": "Building mobile games and searching for quality assets.",
+    "status": "active"
+  },
+  {
+    "email": "aiden.peterson@example.com",
+    "password": "Password123!",
+    "confirmPassword": "Password123!",
+    "role": "creator",
+    "username": "aidenpeterson",
+    "avatar": "https://i.pravatar.cc/300?img=25",
+    "bio": "Developing realistic vehicle models and props.",
+    "status": "active"
+  },
+  {
+    "email": "scarlett.cooper@example.com",
+    "password": "Password123!",
+    "confirmPassword": "Password123!",
+    "role": "user",
+    "username": "scarlettcooper",
+    "avatar": "https://i.pravatar.cc/300?img=26",
+    "bio": "Freelance UI designer and creative entrepreneur.",
+    "status": "inactive"
+  },
+  {
+    "email": "matthew.richardson@example.com",
+    "password": "Password123!",
+    "confirmPassword": "Password123!",
+    "role": "creator",
+    "username": "matthewrichardson",
+    "avatar": "https://i.pravatar.cc/300?img=27",
+    "bio": "Producing modular sci-fi asset packs.",
+    "status": "active"
+  },
+  {
+    "email": "victoria.cox@example.com",
+    "password": "Password123!",
+    "confirmPassword": "Password123!",
+    "role": "user",
+    "username": "victoriacox",
+    "avatar": "https://i.pravatar.cc/300?img=28",
+    "bio": "Exploring game development as a hobby.",
+    "status": "active"
+  },
+  {
+    "email": "david.diaz@example.com",
+    "password": "Password123!",
+    "confirmPassword": "Password123!",
+    "role": "creator",
+    "username": "daviddiaz",
+    "avatar": "https://i.pravatar.cc/300?img=29",
+    "bio": "Specializing in fantasy weapon and armor designs.",
+    "status": "active"
+  },
+  {
+    "email": "grace.watson@example.com",
+    "password": "Password123!",
+    "confirmPassword": "Password123!",
+    "role": "user",
+    "username": "gracewatson",
+    "avatar": "https://i.pravatar.cc/300?img=30",
+    "bio": "Content creator looking for motion graphics templates.",
+    "status": "pending"
+  },
+  {
+    "email": "joseph.wood@example.com",
+    "password": "Password123!",
+    "confirmPassword": "Password123!",
+    "role": "creator",
+    "username": "josephwood",
+    "avatar": "https://i.pravatar.cc/300?img=31",
+    "bio": "Creating realistic vegetation and nature packs.",
+    "status": "active"
+  },
+  {
+    "email": "hannah.james@example.com",
+    "password": "Password123!",
+    "confirmPassword": "Password123!",
+    "role": "user",
+    "username": "hannahjames",
+    "avatar": "https://i.pravatar.cc/300?img=32",
+    "bio": "Designer building websites and creative portfolios.",
+    "status": "active"
+  },
+  {
+    "email": "owen.bennett@example.com",
+    "password": "Password123!",
+    "confirmPassword": "Password123!",
+    "role": "creator",
+    "username": "owenbennett",
+    "avatar": "https://i.pravatar.cc/300?img=33",
+    "bio": "Unreal Engine creator focused on marketplace content.",
+    "status": "active"
+  },
+  {
+    "email": "zoey.long@example.com",
+    "password": "Password123!",
+    "confirmPassword": "Password123!",
+    "role": "user",
+    "username": "zoeylong",
+    "avatar": "https://i.pravatar.cc/300?img=34",
+    "bio": "Student learning game art and 3D workflows.",
+    "status": "inactive"
+  },
+  {
+    "email": "gabriel.patterson@example.com",
+    "password": "Password123!",
+    "confirmPassword": "Password123!",
+    "role": "creator",
+    "username": "gabrielpatterson",
+    "avatar": "https://i.pravatar.cc/300?img=35",
+    "bio": "Producing animation-ready character rigs.",
+    "status": "active"
+  },
+  {
+    "email": "lily.hughes@example.com",
+    "password": "Password123!",
+    "confirmPassword": "Password123!",
+    "role": "user",
+    "username": "lilyhughes",
+    "avatar": "https://i.pravatar.cc/300?img=36",
+    "bio": "Passionate about indie game creation.",
+    "status": "active"
+  },
+  {
+    "email": "samuel.flores@example.com",
+    "password": "Password123!",
+    "confirmPassword": "Password123!",
+    "role": "creator",
+    "username": "samuelflores",
+    "avatar": "https://i.pravatar.cc/300?img=37",
+    "bio": "Building photorealistic architectural assets.",
+    "status": "pending"
+  },
+  {
+    "email": "natalie.butler@example.com",
+    "password": "Password123!",
+    "confirmPassword": "Password123!",
+    "role": "user",
+    "username": "nataliebutler",
+    "avatar": "https://i.pravatar.cc/300?img=38",
+    "bio": "Creative freelancer looking for inspiration.",
+    "status": "active"
+  },
+  {
+    "email": "christopher.simmons@example.com",
+    "password": "Password123!",
+    "confirmPassword": "Password123!",
+    "role": "creator",
+    "username": "christophersimmons",
+    "avatar": "https://i.pravatar.cc/300?img=39",
+    "bio": "Expert in cinematic visual effects assets.",
+    "status": "active"
+  },
+  {
+    "email": "leah.foster@example.com",
+    "password": "Password123!",
+    "confirmPassword": "Password123!",
+    "role": "user",
+    "username": "leahfoster",
+    "avatar": "https://i.pravatar.cc/300?img=40",
+    "bio": "Exploring digital products for online businesses.",
+    "status": "active"
+  },
+  {
+    "email": "andrew.bryant@example.com",
+    "password": "Password123!",
+    "confirmPassword": "Password123!",
+    "role": "creator",
+    "username": "andrewbryant",
+    "avatar": "https://i.pravatar.cc/300?img=41",
+    "bio": "Creating optimized assets for mobile games.",
+    "status": "inactive"
+  },
+  {
+    "email": "audrey.alexander@example.com",
+    "password": "Password123!",
+    "confirmPassword": "Password123!",
+    "role": "user",
+    "username": "audreyalexander",
+    "avatar": "https://i.pravatar.cc/300?img=42",
+    "bio": "Marketing specialist exploring visual content.",
+    "status": "active"
+  },
+  {
+    "email": "john.russell@example.com",
+    "password": "Password123!",
+    "confirmPassword": "Password123!",
+    "role": "creator",
+    "username": "johnrussell",
+    "avatar": "https://i.pravatar.cc/300?img=43",
+    "bio": "Creating procedural textures and materials.",
+    "status": "active"
+  },
+  {
+    "email": "savannah.griffin@example.com",
+    "password": "Password123!",
+    "confirmPassword": "Password123!",
+    "role": "user",
+    "username": "savannahgriffin",
+    "avatar": "https://i.pravatar.cc/300?img=44",
+    "bio": "Web designer looking for creative resources.",
+    "status": "pending"
+  },
+  {
+    "email": "wyatt.hayes@example.com",
+    "password": "Password123!",
+    "confirmPassword": "Password123!",
+    "role": "creator",
+    "username": "wyatthayes",
+    "avatar": "https://i.pravatar.cc/300?img=45",
+    "bio": "Marketplace seller specializing in VFX packs.",
+    "status": "active"
+  },
+  {
+    "email": "brooklyn.myers@example.com",
+    "password": "Password123!",
+    "confirmPassword": "Password123!",
+    "role": "user",
+    "username": "brooklynmyers",
+    "avatar": "https://i.pravatar.cc/300?img=46",
+    "bio": "Developing educational games and simulations.",
+    "status": "active"
+  },
+  {
+    "email": "isaac.hamilton@example.com",
+    "password": "Password123!",
+    "confirmPassword": "Password123!",
+    "role": "creator",
+    "username": "isaachamilton",
+    "avatar": "https://i.pravatar.cc/300?img=47",
+    "bio": "Designing realistic military and tactical props.",
+    "status": "active"
+  },
+  {
+    "email": "claire.graham@example.com",
+    "password": "Password123!",
+    "confirmPassword": "Password123!",
+    "role": "user",
+    "username": "clairegraham",
+    "avatar": "https://i.pravatar.cc/300?img=48",
+    "bio": "Creative enthusiast learning digital art.",
+    "status": "inactive"
+  },
+  {
+    "email": "julian.sullivan@example.com",
+    "password": "Password123!",
+    "confirmPassword": "Password123!",
+    "role": "creator",
+    "username": "juliansullivan",
+    "avatar": "https://i.pravatar.cc/300?img=49",
+    "bio": "Producing stylized fantasy world assets.",
+    "status": "active"
+  },
+  {
+    "email": "peyton.wallace@example.com",
+    "password": "Password123!",
+    "confirmPassword": "Password123!",
+    "role": "user",
+    "username": "peytonwallace",
+    "avatar": "https://i.pravatar.cc/300?img=50",
+    "bio": "Building personal projects with Unity.",
+    "status": "active"
+  },
+  {
+    "email": "nathan.stewart@example.com",
+    "password": "Password123!",
+    "confirmPassword": "Password123!",
+    "role": "creator",
+    "username": "nathanstewart",
+    "avatar": "https://i.pravatar.cc/300?img=51",
+    "bio": "Creating premium sci-fi environments and modular kits.",
+    "status": "active"
+  },
+  {
+    "email": "madison.ross@example.com",
+    "password": "Password123!",
+    "confirmPassword": "Password123!",
+    "role": "user",
+    "username": "madisonross",
+    "avatar": "https://i.pravatar.cc/300?img=52",
+    "bio": "Indie developer building mobile games.",
+    "status": "active"
+  },
+  {
+    "email": "aaron.henderson@example.com",
+    "password": "Password123!",
+    "confirmPassword": "Password123!",
+    "role": "creator",
+    "username": "aaronhenderson",
+    "avatar": "https://i.pravatar.cc/300?img=53",
+    "bio": "Specializing in realistic weapon and prop design.",
+    "status": "pending"
+  },
+  {
+    "email": "stella.coleman@example.com",
+    "password": "Password123!",
+    "confirmPassword": "Password123!",
+    "role": "user",
+    "username": "stellacoleman",
+    "avatar": "https://i.pravatar.cc/300?img=54",
+    "bio": "UI designer and creative content enthusiast.",
+    "status": "active"
+  },
+  {
+    "email": "caleb.jenkins@example.com",
+    "password": "Password123!",
+    "confirmPassword": "Password123!",
+    "role": "creator",
+    "username": "calebjenkins",
+    "avatar": "https://i.pravatar.cc/300?img=55",
+    "bio": "Building optimized low-poly asset collections.",
+    "status": "active"
+  },
+  {
+    "email": "lucy.perry@example.com",
+    "password": "Password123!",
+    "confirmPassword": "Password123!",
+    "role": "user",
+    "username": "lucyperry",
+    "avatar": "https://i.pravatar.cc/300?img=56",
+    "bio": "Exploring game art and 3D workflows.",
+    "status": "inactive"
+  },
+  {
+    "email": "adrian.powell@example.com",
+    "password": "Password123!",
+    "confirmPassword": "Password123!",
+    "role": "creator",
+    "username": "adrianpowell",
+    "avatar": "https://i.pravatar.cc/300?img=57",
+    "bio": "Producing fantasy creatures and character assets.",
+    "status": "active"
+  },
+  {
+    "email": "zoe.patterson@example.com",
+    "password": "Password123!",
+    "confirmPassword": "Password123!",
+    "role": "user",
+    "username": "zoepatterson",
+    "avatar": "https://i.pravatar.cc/300?img=58",
+    "bio": "Student learning Unreal Engine development.",
+    "status": "active"
+  },
+  {
+    "email": "connor.fisher@example.com",
+    "password": "Password123!",
+    "confirmPassword": "Password123!",
+    "role": "creator",
+    "username": "connorfisher",
+    "avatar": "https://i.pravatar.cc/300?img=59",
+    "bio": "Creating architecture visualization assets.",
+    "status": "active"
+  },
+  {
+    "email": "violet.hamilton@example.com",
+    "password": "Password123!",
+    "confirmPassword": "Password123!",
+    "role": "user",
+    "username": "violethamilton",
+    "avatar": "https://i.pravatar.cc/300?img=60",
+    "bio": "Freelancer searching for premium design resources.",
+    "status": "pending"
+  },
+  {
+    "email": "isaiah.graham@example.com",
+    "password": "Password123!",
+    "confirmPassword": "Password123!",
+    "role": "creator",
+    "username": "isaiahgraham",
+    "avatar": "https://i.pravatar.cc/300?img=61",
+    "bio": "Marketplace creator focused on PBR materials.",
+    "status": "active"
+  },
+  {
+    "email": "hazel.ford@example.com",
+    "password": "Password123!",
+    "confirmPassword": "Password123!",
+    "role": "user",
+    "username": "hazelford",
+    "avatar": "https://i.pravatar.cc/300?img=62",
+    "bio": "Building portfolio projects using marketplace assets.",
+    "status": "active"
+  },
+  {
+    "email": "hunter.warren@example.com",
+    "password": "Password123!",
+    "confirmPassword": "Password123!",
+    "role": "creator",
+    "username": "hunterwarren",
+    "avatar": "https://i.pravatar.cc/300?img=63",
+    "bio": "Creating detailed medieval environment packs.",
+    "status": "inactive"
+  },
+  {
+    "email": "bella.mcdonald@example.com",
+    "password": "Password123!",
+    "confirmPassword": "Password123!",
+    "role": "user",
+    "username": "bellamcdonald",
+    "avatar": "https://i.pravatar.cc/300?img=64",
+    "bio": "Creative hobbyist and aspiring game artist.",
+    "status": "active"
+  },
+  {
+    "email": "carter.gibson@example.com",
+    "password": "Password123!",
+    "confirmPassword": "Password123!",
+    "role": "creator",
+    "username": "cartergibson",
+    "avatar": "https://i.pravatar.cc/300?img=65",
+    "bio": "Designing realistic urban environment assets.",
+    "status": "active"
+  },
+  {
+    "email": "aria.ellis@example.com",
+    "password": "Password123!",
+    "confirmPassword": "Password123!",
+    "role": "user",
+    "username": "ariaellis",
+    "avatar": "https://i.pravatar.cc/300?img=66",
+    "bio": "Digital entrepreneur creating online products.",
+    "status": "active"
+  },
+  {
+    "email": "jeremiah.harrison@example.com",
+    "password": "Password123!",
+    "confirmPassword": "Password123!",
+    "role": "creator",
+    "username": "jeremiahharrison",
+    "avatar": "https://i.pravatar.cc/300?img=67",
+    "bio": "Expert in cinematic VFX and motion graphics.",
+    "status": "pending"
+  },
+  {
+    "email": "ruby.reynolds@example.com",
+    "password": "Password123!",
+    "confirmPassword": "Password123!",
+    "role": "user",
+    "username": "rubyreynolds",
+    "avatar": "https://i.pravatar.cc/300?img=68",
+    "bio": "Exploring digital marketplaces for inspiration.",
+    "status": "active"
+  },
+  {
+    "email": "easton.webb@example.com",
+    "password": "Password123!",
+    "confirmPassword": "Password123!",
+    "role": "creator",
+    "username": "eastonwebb",
+    "avatar": "https://i.pravatar.cc/300?img=69",
+    "bio": "Building nature and vegetation asset libraries.",
+    "status": "active"
+  },
+  {
+    "email": "nova.simpson@example.com",
+    "password": "Password123!",
+    "confirmPassword": "Password123!",
+    "role": "user",
+    "username": "novasimpson",
+    "avatar": "https://i.pravatar.cc/300?img=70",
+    "bio": "Designer focused on branding and visual identity.",
+    "status": "inactive"
+  },
+  {
+    "email": "landon.porter@example.com",
+    "password": "Password123!",
+    "confirmPassword": "Password123!",
+    "role": "creator",
+    "username": "landonporter",
+    "avatar": "https://i.pravatar.cc/300?img=71",
+    "bio": "Creating realistic vehicles and transportation assets.",
+    "status": "active"
+  },
+  {
+    "email": "sadie.hunter@example.com",
+    "password": "Password123!",
+    "confirmPassword": "Password123!",
+    "role": "user",
+    "username": "sadiehunter",
+    "avatar": "https://i.pravatar.cc/300?img=72",
+    "bio": "Creative professional exploring asset marketplaces.",
+    "status": "active"
+  },
+  {
+    "email": "colton.hicks@example.com",
+    "password": "Password123!",
+    "confirmPassword": "Password123!",
+    "role": "creator",
+    "username": "coltonhicks",
+    "avatar": "https://i.pravatar.cc/300?img=73",
+    "bio": "Producing high-quality game-ready props.",
+    "status": "active"
+  },
+  {
+    "email": "willow.crawford@example.com",
+    "password": "Password123!",
+    "confirmPassword": "Password123!",
+    "role": "user",
+    "username": "willowcrawford",
+    "avatar": "https://i.pravatar.cc/300?img=74",
+    "bio": "Web developer building interactive experiences.",
+    "status": "pending"
+  },
+  {
+    "email": "roman.boyd@example.com",
+    "password": "Password123!",
+    "confirmPassword": "Password123!",
+    "role": "creator",
+    "username": "romanboyd",
+    "avatar": "https://i.pravatar.cc/300?img=75",
+    "bio": "Marketplace seller focused on animation assets.",
+    "status": "active"
+  },
+  {
+    "email": "naomi.mason@example.com",
+    "password": "Password123!",
+    "confirmPassword": "Password123!",
+    "role": "user",
+    "username": "naomimason",
+    "avatar": "https://i.pravatar.cc/300?img=76",
+    "bio": "Student learning Blender and 3D art.",
+    "status": "active"
+  },
+  {
+    "email": "evan.morales@example.com",
+    "password": "Password123!",
+    "confirmPassword": "Password123!",
+    "role": "creator",
+    "username": "evanmorales",
+    "avatar": "https://i.pravatar.cc/300?img=77",
+    "bio": "Creating premium character customization assets.",
+    "status": "active"
+  },
+  {
+    "email": "elena.kennedy@example.com",
+    "password": "Password123!",
+    "confirmPassword": "Password123!",
+    "role": "user",
+    "username": "elenakennedy",
+    "avatar": "https://i.pravatar.cc/300?img=78",
+    "bio": "Looking for creative resources for side projects.",
+    "status": "inactive"
+  },
+  {
+    "email": "ryan.stone@example.com",
+    "password": "Password123!",
+    "confirmPassword": "Password123!",
+    "role": "creator",
+    "username": "ryanstone",
+    "avatar": "https://i.pravatar.cc/300?img=79",
+    "bio": "Developing modular building systems for games.",
+    "status": "active"
+  },
+  {
+    "email": "maya.wells@example.com",
+    "password": "Password123!",
+    "confirmPassword": "Password123!",
+    "role": "user",
+    "username": "mayawells",
+    "avatar": "https://i.pravatar.cc/300?img=80",
+    "bio": "Graphic designer exploring marketplace content.",
+    "status": "active"
+  },
+  {
+    "email": "xavier.barnes@example.com",
+    "password": "Password123!",
+    "confirmPassword": "Password123!",
+    "role": "creator",
+    "username": "xavierbarnes",
+    "avatar": "https://i.pravatar.cc/300?img=81",
+    "bio": "Specializing in realistic texture creation.",
+    "status": "pending"
+  },
+  {
+    "email": "faith.spencer@example.com",
+    "password": "Password123!",
+    "confirmPassword": "Password123!",
+    "role": "user",
+    "username": "faithspencer",
+    "avatar": "https://i.pravatar.cc/300?img=82",
+    "bio": "Passionate about game design and storytelling.",
+    "status": "active"
+  },
+  {
+    "email": "adam.gardner@example.com",
+    "password": "Password123!",
+    "confirmPassword": "Password123!",
+    "role": "creator",
+    "username": "adamgardner",
+    "avatar": "https://i.pravatar.cc/300?img=83",
+    "bio": "Creating optimized assets for VR experiences.",
+    "status": "active"
+  },
+  {
+    "email": "paige.stevens@example.com",
+    "password": "Password123!",
+    "confirmPassword": "Password123!",
+    "role": "user",
+    "username": "paigestevens",
+    "avatar": "https://i.pravatar.cc/300?img=84",
+    "bio": "Freelance creator seeking inspiration.",
+    "status": "active"
+  },
+  {
+    "email": "jace.payne@example.com",
+    "password": "Password123!",
+    "confirmPassword": "Password123!",
+    "role": "creator",
+    "username": "jacepayne",
+    "avatar": "https://i.pravatar.cc/300?img=85",
+    "bio": "Building realistic military environment assets.",
+    "status": "inactive"
+  },
+  {
+    "email": "ivy.matthews@example.com",
+    "password": "Password123!",
+    "confirmPassword": "Password123!",
+    "role": "user",
+    "username": "ivymatthews",
+    "avatar": "https://i.pravatar.cc/300?img=86",
+    "bio": "Learning motion graphics and animation.",
+    "status": "active"
+  },
+  {
+    "email": "declan.wheeler@example.com",
+    "password": "Password123!",
+    "confirmPassword": "Password123!",
+    "role": "creator",
+    "username": "declanwheeler",
+    "avatar": "https://i.pravatar.cc/300?img=87",
+    "bio": "Producing fantasy asset packs for RPG games.",
+    "status": "active"
+  },
+  {
+    "email": "jade.chapman@example.com",
+    "password": "Password123!",
+    "confirmPassword": "Password123!",
+    "role": "user",
+    "username": "jadechapman",
+    "avatar": "https://i.pravatar.cc/300?img=88",
+    "bio": "Creative hobbyist interested in 3D content.",
+    "status": "pending"
+  },
+  {
+    "email": "elliot.carroll@example.com",
+    "password": "Password123!",
+    "confirmPassword": "Password123!",
+    "role": "creator",
+    "username": "elliotcarroll",
+    "avatar": "https://i.pravatar.cc/300?img=89",
+    "bio": "Creating premium city and urban asset packs.",
+    "status": "active"
+  },
+  {
+    "email": "summer.owens@example.com",
+    "password": "Password123!",
+    "confirmPassword": "Password123!",
+    "role": "user",
+    "username": "summerowens",
+    "avatar": "https://i.pravatar.cc/300?img=90",
+    "bio": "Building creative web and mobile projects.",
+    "status": "active"
+  },
+  {
+    "email": "brooks.cunningham@example.com",
+    "password": "Password123!",
+    "confirmPassword": "Password123!",
+    "role": "creator",
+    "username": "brookscunningham",
+    "avatar": "https://i.pravatar.cc/300?img=91",
+    "bio": "Marketplace creator focused on environment design.",
+    "status": "active"
+  },
+  {
+    "email": "autumn.hart@example.com",
+    "password": "Password123!",
+    "confirmPassword": "Password123!",
+    "role": "user",
+    "username": "autumnhart",
+    "avatar": "https://i.pravatar.cc/300?img=92",
+    "bio": "Exploring assets for indie game projects.",
+    "status": "inactive"
+  },
+  {
+    "email": "wesley.bishop@example.com",
+    "password": "Password123!",
+    "confirmPassword": "Password123!",
+    "role": "creator",
+    "username": "wesleybishop",
+    "avatar": "https://i.pravatar.cc/300?img=93",
+    "bio": "Producing realistic industrial asset collections.",
+    "status": "active"
+  },
+  {
+    "email": "serenity.hansen@example.com",
+    "password": "Password123!",
+    "confirmPassword": "Password123!",
+    "role": "user",
+    "username": "serenityhansen",
+    "avatar": "https://i.pravatar.cc/300?img=94",
+    "bio": "Game artist building a professional portfolio.",
+    "status": "active"
+  },
+  {
+    "email": "brayden.larson@example.com",
+    "password": "Password123!",
+    "confirmPassword": "Password123!",
+    "role": "creator",
+    "username": "braydenlarson",
+    "avatar": "https://i.pravatar.cc/300?img=95",
+    "bio": "Creating procedural landscapes and terrain assets.",
+    "status": "pending"
+  },
+  {
+    "email": "melanie.garrett@example.com",
+    "password": "Password123!",
+    "confirmPassword": "Password123!",
+    "role": "user",
+    "username": "melaniegarrett",
+    "avatar": "https://i.pravatar.cc/300?img=96",
+    "bio": "Freelancer exploring premium marketplace resources.",
+    "status": "active"
+  },
+  {
+    "email": "micah.hoffman@example.com",
+    "password": "Password123!",
+    "confirmPassword": "Password123!",
+    "role": "creator",
+    "username": "micahhoffman",
+    "avatar": "https://i.pravatar.cc/300?img=97",
+    "bio": "Building game-ready asset libraries for studios.",
+    "status": "active"
+  },
+  {
+    "email": "valerie.silva@example.com",
+    "password": "Password123!",
+    "confirmPassword": "Password123!",
+    "role": "user",
+    "username": "valeriesilva",
+    "avatar": "https://i.pravatar.cc/300?img=98",
+    "bio": "Digital creator searching for unique resources.",
+    "status": "pending"
+  },
+  {
+    "email": "asher.fuller@example.com",
+    "password": "Password123!",
+    "confirmPassword": "Password123!",
+    "role": "creator",
+    "username": "asherfuller",
+    "avatar": "https://i.pravatar.cc/300?img=99",
+    "bio": "Creating stylized fantasy assets and props.",
+    "status": "active"
+  },
+  {
+    "email": "adeline.black@example.com",
+    "password": "Password123!",
+    "confirmPassword": "Password123!",
+    "role": "user",
+    "username": "adelineblack",
+    "avatar": "https://i.pravatar.cc/300?img=100",
+    "bio": "Learning game development and digital design.",
+    "status": "active"
+  }
+]

@@ -1,3 +1,4 @@
+version: '3.9'
 services:
   # mongodb:
   #   image: mongo:7
@@ -10,13 +11,36 @@ services:
   #   volumes:
   #     - mongo-data:/data/db
   #     - mongo-configdb:/data/configdb
+  gateway:
+    build:
+      context: .
+      dockerfile: ./server/gateway/Dockerfile
+
+    container_name: render_cube_gateway
+
+    ports:
+      - '5000:5000'
+    volumes:
+      - .:/app
+      - root-node-modules:/app/node_modules
+      - gateway-node-modules:/app/server/gateway/node_modules
+
+    env_file:
+      - ./server/gateway/config.env
+
+    depends_on:
+      - auth-service
+      - user-service
+      - asset-service
+    networks:
+      - render_cube_network
 
   auth-service:
     build:
       context: .
-      dockerfile: ./server/services/auth-service/DockerFile
+      dockerfile: ./server/services/auth-service/Dockerfile
 
-    container_name: auth-service
+    container_name: render_cube_auth
 
     ports:
       - '5001:5001'
@@ -28,14 +52,17 @@ services:
     env_file:
       - ./server/services/auth-service/config.env
 
+    networks:
+      - render_cube_network
+
     # depends_on:
     #   - mongodb
   user-service:
     build:
       context: .
-      dockerfile: ./server/services/user-service/DockerFile
+      dockerfile: ./server/services/user-service/Dockerfile
 
-    container_name: user-service
+    container_name: render_cube_user
 
     ports:
       - '5002:5002'
@@ -47,15 +74,18 @@ services:
     env_file:
       - ./server/services/user-service/config.env
 
+    networks:
+      - render_cube_network
+
     # depends_on:
     #   - mongodb
 
   asset-service:
     build:
       context: .
-      dockerfile: ./server/services/asset-service/DockerFile
+      dockerfile: ./server/services/asset-service/Dockerfile
 
-    container_name: asset-service
+    container_name: render_cube_asset
 
     ports:
       - '5003:5003'
@@ -67,6 +97,9 @@ services:
     env_file:
       - ./server/services/asset-service/config.env
 
+    networks:
+      - render_cube_network
+
     # depends_on:
     #   - mongodb
 
@@ -74,6 +107,11 @@ volumes:
   # mongo-data:
   # mongo-configdb:
   root-node-modules:
+  gateway-node-modules:
   auth-node-modules:
   user-node-modules:
   asset-node-modules:
+
+networks:
+  render_cube_network:
+    driver: bridge

@@ -2,41 +2,48 @@ const mongoose = require('mongoose');
 
 const userSchema = new mongoose.Schema(
   {
+    userId: { type: String, required: true, unique: true },
     email: {
       type: String,
       required: true,
       unique: true,
       lowercase: true,
-      trim: true,
+      trim: true
     },
 
     username: {
       type: String,
-      required: true,
+      required: [true, 'Username is required'],
       unique: true,
-      lowercase: true,
       trim: true,
+      lowercase: true,
+      minlength: [3, 'Username must be at least 3 characters'],
+      maxlength: [30, 'Username cannot exceed 30 characters'],
+      match: [
+        /^[a-z0-9_]+$/,
+        'Username can only contain lowercase letters, numbers, and underscores'
+      ]
     },
 
     avatar: {
       type: String,
-      default: null,
+      default: null
     },
 
     bio: {
       type: String,
       maxlength: 200,
-      default: '',
+      default: ''
     },
 
     status: {
       type: String,
       enum: ['active', 'suspended'],
-      default: 'active',
-    },
+      default: 'active'
+    }
   },
   {
-    timestamps: true,
+    timestamps: true
   }
 );
 

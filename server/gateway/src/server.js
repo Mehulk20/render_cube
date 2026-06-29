@@ -1,5 +1,19 @@
 const app = require('./app');
 
-const port = process.env.DB_PORT || 5000;
+const PORT = process.env.PORT || 5050;
 
-app.listen(port, () => console.log(`API gateway running on port ${port}`));
+const server = app.listen(PORT, () => console.log(`API gateway running on port ${PORT}`));
+
+process.on('SIGTERM', () => {
+  console.log('SIGTERM received. Shutting down...');
+  server.close(() => {
+    process.exit(0);
+  });
+});
+
+process.on('SIGINT', () => {
+  console.log('SIGINT received. Shutting down...');
+  server.close(() => {
+    process.exit(0);
+  });
+});

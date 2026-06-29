@@ -12,7 +12,7 @@ exports.restrictTo =
   };
 
 exports.checkAssetOwnership = catchAsyncError(async (req, res, next) => {
-  const asset = await assetRepo.getAssetById(req.params.id);
+  const asset = await assetRepo.findAssetByAssetId(req.params.id);
 
   if (!asset) return next(new AppError('Asset not found', 404));
 

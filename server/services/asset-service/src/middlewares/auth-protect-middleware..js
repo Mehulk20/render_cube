@@ -1,40 +1,40 @@
-const jwt = require('jsonwebtoken');
+// const jwt = require('jsonwebtoken');
 
-const { promisify } = require('util');
+// const { promisify } = require('util');
 
-const authService = require('../services/auth-service');
-const catchAsync = require('./catch-async-error');
-const AppError = require('./app-error');
+// const authService = require('../services/auth-service');
+// const catchAsync = require('./catch-async-error');
+// const AppError = require('./app-error');
 
-exports.protect = catchAsync(async (req, res, next) => {
-  let token;
+// exports.protect = catchAsync(async (req, res, next) => {
+//   let token;
 
-  if (req.headers.authorization && req.headers.authorization.startsWith('Bearer')) {
-    token = req.headers.authorization.split(' ')[1];
-  }
+//   if (req.headers.authorization && req.headers.authorization.startsWith('Bearer')) {
+//     token = req.headers.authorization.split(' ')[1];
+//   }
 
-  if (!token) return next(new AppError('unauthrized access', 401));
+//   if (!token) return next(new AppError('unauthrized access', 401));
 
-  const { id, ...decoded } = await promisify(jwt.verify)(token, process.env.JWT_SECRET);
+//   const { userId, ...decoded } = await promisify(jwt.verify)(token, process.env.JWT_SECRET);
 
-  if (!id) return next(new AppError('user does not exist, please re-try login', 401));
+//   if (!userId) return next(new AppError('user does not exist, please re-try login', 401));
 
-  const authResponse = await authService.validateAuthUser(id);
+//   const authResponse = await authService.validateAuthUser(userId);
 
-  const { result } = { ...authResponse.data };
+//   const result = authResponse.data;
 
-  if (!result.active) return next(new AppError('user not found', 403));
+//   if (!result.active) return next(new AppError('user not found', 403));
 
-  if (result.tokenVersion !== decoded.tokenVersion)
-    return next(new AppError('invalidated token', 401));
+//   if (result.tokenVersion !== decoded.tokenVersion)
+//     return next(new AppError('invalidated token', 401));
+  
+//   req.user = {
+//     ...decoded,
+//     userId: result.userId,
+//     role: result.role,
+//     tokenVersion: result.tokenVersion,
+//     active: result.active,
+//   };
 
-  req.user = {
-    ...decoded,
-    id: result._id,
-    role: result.role,
-    tokenVersion: result.tokenVersion,
-    active: result.active,
-  };
-
-  next();
-});
+//   next();
+// });

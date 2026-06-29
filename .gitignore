@@ -29,7 +29,8 @@ bower_components/
 ####################
 # Build Artifacts
 ####################
-
+.pnpm-store/
+.turbo/
 dist/
 build/
 out/
