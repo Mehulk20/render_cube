@@ -6,7 +6,7 @@ exports.getAllCredentials = catchAsyncError(async (req, res, next) => {
 
   res.status(200).json({
     status: 'success',
-    result
+    result,
   });
 });
 
@@ -16,7 +16,7 @@ exports.getAllExisting = catchAsyncError(async (req, res, next) => {
 
   res.status(200).json({
     status: 'success',
-    result
+    result,
   });
 });
 
@@ -27,7 +27,7 @@ exports.createDevCredentials = catchAsyncError(async (req, res, next) => {
 
   res.status(200).json({
     status: 'success',
-    result
+    result,
   });
 });
 
@@ -36,7 +36,7 @@ exports.deleteAllCredentials = async (req, res, next) => {
 
   res.status(200).json({
     status: 'success',
-    message: 'all credentials removed'
+    message: 'all credentials removed',
   });
 };
 
@@ -49,6 +49,6 @@ exports.deleteCredentialsByUserIds = catchAsyncError(async (req, res, next) => {
 
   res.status(200).json({
     status: 'success',
-    deletedCount: result.deletedCount
+    deletedCount: result.deletedCount,
   });
 });

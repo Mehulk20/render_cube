@@ -8,6 +8,7 @@ const compression = require('compression');
 const cookieParser = require('cookie-parser');
 
 const setupProxy = require('./proxies/setup-proxy');
+const { globalErrorHandler } = require('@rendered/shared');
 
 const app = express();
 
@@ -49,13 +50,6 @@ app.use((req, res) => {
   });
 });
 
-app.use((err, req, res, next) => {
-  console.error(err);
-
-  res.status(err.status || 500).json({
-    success: false,
-    message: err.message || 'Internal Server Error'
-  });
-});
+app.use(globalErrorHandler);
 
 module.exports = app;

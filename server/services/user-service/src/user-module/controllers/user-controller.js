@@ -8,17 +8,17 @@ exports.getUsers = catchAsyncError(async (req, res, next) => {
 
   res.status(200).json({
     status: 'success',
-    data: users
+    data: users,
   });
 });
 
 exports.createUser = catchAsyncError(async (req, res, next) => {
   const newUser = await userService.createUser(req.body);
-  console.log(newUser);
+
   if (!newUser) return next(new AppError('requested data not found', 400));
   res.status(201).json({
     status: 'success',
-    data: newUser
+    data: newUser,
   });
 });
 
@@ -31,7 +31,7 @@ exports.getMe = catchAsyncError(async (req, res, next) => {
 
   res.status(200).json({
     status: 'success',
-    data: user
+    data: user,
   });
 });
 
@@ -42,7 +42,7 @@ exports.updateMe = catchAsyncError(async (req, res, next) => {
 
   res.status(200).json({
     status: 'success',
-    data: result
+    data: result,
   });
 });
 
@@ -53,18 +53,17 @@ exports.suspendMe = catchAsyncError(async (req, res, next) => {
 
   res.status(200).json({
     status: 'success',
-    message: 'Account suspended'
+    message: 'Account suspended',
   });
 });
 
-exports.deleteMe = catchAsyncError(async (req, res, next) => {
-  console.log(req.body);
+exports.deleteMe = catchAsyncError(async (req, res) => {
   await userService.deleteAccount(req.body.email);
 
   res.status(200).json({
     status: 'success',
 
-    message: 'Account suspended successfully'
+    message: 'Account suspended successfully',
   });
 });
 
@@ -75,7 +74,7 @@ exports.restoreAccount = catchAsyncError(async (req, res, next) => {
 
   res.status(200).json({
     status: 'success',
-    message: 'account restored'
+    message: 'account restored',
   });
 });
 
@@ -88,7 +87,7 @@ exports.importAllData = catchAsyncError(async (req, res, next) => {
   res.status(201).json({
     status: 'success',
     message: 'All users imported successfully',
-    count: users.length
+    count: users.length,
   });
 });
 
@@ -96,6 +95,6 @@ exports.deleteAllData = async (req, res, next) => {
   if (!(await userService.deleteAllData())) return next(new AppError('user deletion failed', 400));
 
   res.status(200).json({
-    message: 'All users has been removed from the database, thank you!'
+    message: 'All users has been removed from the database, thank you!',
   });
 };

@@ -1,4 +1,7 @@
 node_modules
 dist
+coverage
+.turbo
+.next
 build
-turbo
+pnpm-lock.yaml

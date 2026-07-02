@@ -1,23 +1,21 @@
-const jwt = require('jsonwebtoken');
-
-const { promisify } = require('util');
-
-const AppError = require('../utils/app-error');
-const catchAsyncError = require('../utils/catch-async-error');
-const authClient = require('../services/auth-client');
+const { AppError } = require('../errors');
+const catchAsyncError = require('./catch-async-error');
+const { extractBearerToken } = require('../helpers');
+const { validateToken } = require('../clients');
+const { HTTP_STATUS } = require('../config');
 
 exports.protect = catchAsyncError(async (req, res, next) => {
-  let token;
-  if (req.headers.authorization && req.headers.authorization.startsWith('Bearer')) {
-    token = req.headers.authorization.split(' ')[1];
-  }
+  const token = extractBearerToken(req);
 
   if (!token) {
-    return next(new AppError('You are not logged in. Please log in to get access.', 401));
+    return next(
+      new AppError('You are not logged in. Please log in to continue.', HTTP_STATUS.UNAUTHORIZED)
+    );
   }
- 
-  const currentUser = await authClient.validateToken(token);
 
-  req.user = currentUser;
+  const authUser = await validateToken(token);
+
+  req.user = authUser;
+
   next();
 });

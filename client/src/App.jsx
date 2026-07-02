@@ -1,15 +1,21 @@
-import Routers from './routes/routers';
-//react context api
+import { Provider } from 'react-redux';
+import { RouterProvider } from 'react-router-dom';
+
+import { store } from './app/store';
+import { router } from './routes';
+
 import { ThemeProvider } from './context/ThemeContext';
 import { CartProvider } from './context/CartContext';
 
 function App() {
   return (
-    <ThemeProvider>
-      <CartProvider>
-        <Routers />
-      </CartProvider>
-    </ThemeProvider>
+    <Provider store={store}>
+      <ThemeProvider>
+        <CartProvider>
+          <RouterProvider router={router} />
+        </CartProvider>
+      </ThemeProvider>
+    </Provider>
   );
 }
 

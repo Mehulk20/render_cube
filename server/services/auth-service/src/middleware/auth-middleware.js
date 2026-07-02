@@ -2,8 +2,8 @@ const jwt = require('jsonwebtoken');
 
 const { promisify } = require('util');
 
-const AppError = require('./app-error');
-const catchAsyncError = require('./catch-async-error');
+const { AppError, catchAsyncError, HTTP_STATUS } = require('@rendercube/shared');
+
 const authService = require('../services/auth-service');
 
 exports.protect = catchAsyncError(async (req, res, next) => {
@@ -13,7 +13,9 @@ exports.protect = catchAsyncError(async (req, res, next) => {
   }
 
   if (!token) {
-    return next(new AppError('You are not logged in. Please log in to get access.', 401));
+    return next(
+      new AppError('You are not logged in. Please log in to get access.', HTTP_STATUS.UNAUTHORIZED)
+    );
   }
 
   const decoded = await promisify(jwt.verify)(token, process.env.JWT_SECRET);
@@ -23,19 +25,21 @@ exports.protect = catchAsyncError(async (req, res, next) => {
   const currentUser = await authService.validateAuthUser(decoded.userId);
 
   if (!currentUser) {
-    return next(new AppError('User no longer exists.', 401));
+    return next(new AppError('User no longer exists.', HTTP_STATUS.UNAUTHORIZED));
   }
 
   if (!currentUser.active) {
-    return next(new AppError('Account is deactivated.', 401));
+    return next(new AppError('Account is deactivated.', HTTP_STATUS.UNAUTHORIZED));
   }
 
   if (currentUser.passwordChangedAt?.getTime() > tokenIssuedAt) {
-    throw new AppError('Password recently changed. Please login again.', 401);
+    throw new AppError('Password recently changed. Please login again.', HTTP_STATUS.UNAUTHORIZED);
   }
 
   if (decoded.tokenVersion !== currentUser.tokenVersion) {
-    return next(new AppError('Token has been invalidated, please log in again.', 401));
+    return next(
+      new AppError('Token has been invalidated, please log in again.', HTTP_STATUS.UNAUTHORIZED)
+    );
   }
 
   req.user = currentUser;

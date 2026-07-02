@@ -1,7 +1,7 @@
 const { AppError, catchAsyncError } = require('@rendercube/shared');
 
 const internalService = require('../services/internal-service');
-const helper = require('../../../utils/helper');
+const helper = require('../../utils/helper');
 
 exports.createUserProfile = catchAsyncError(async (req, res, next) => {
   const result = await internalService.createUserProfile(req.body);
@@ -10,7 +10,7 @@ exports.createUserProfile = catchAsyncError(async (req, res, next) => {
 
   res.status(200).json({
     status: 'success',
-    result
+    result,
   });
 });
 
@@ -21,7 +21,7 @@ exports.updateUserProfile = catchAsyncError(async (req, res) => {
 
   res.status(200).json({
     status: 'success',
-    message: 'user profile updated'
+    message: 'user profile updated',
   });
 });
 
@@ -30,6 +30,6 @@ exports.deleteUserProfile = catchAsyncError(async (req, res) => {
 
   res.status(200).json({
     status: 'success',
-    message: 'account deleted successfully.'
+    message: 'account deleted successfully.',
   });
 });

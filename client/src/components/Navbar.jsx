@@ -53,6 +53,16 @@ const Navbar = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const handleNavigate = (path) => {
+    if (document.startViewTransition) {
+      document.startViewTransition(() => {
+        navigate(path);
+      });
+    } else {
+      navigate(path);
+    }
+  };
+
   const navLinkClass = ({ isActive }) =>
     `text-sm font-medium transition-colors ${
       isActive
@@ -63,7 +73,7 @@ const Navbar = () => {
   const navItems = [
     { label: 'Marketplace', to: '/marketplace' },
     { label: 'Creators', to: '/creators' },
-    { label: 'Pricing', to: '/pricing' },
+    { label: 'Pricing', to: '/pricing' }
   ];
 
   return (
@@ -120,7 +130,7 @@ const Navbar = () => {
 
             {/* Cart */}
             <button
-              onClick={() => navigate('/cart')}
+              onClick={() => handleNavigate('/cart')}
               aria-label="Shopping cart"
               className="relative w-9 h-9 rounded-full flex items-center justify-center text-gray-500 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
             >

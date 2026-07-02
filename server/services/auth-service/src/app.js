@@ -2,6 +2,9 @@ require('./config/auth.config');
 
 const express = require('express');
 const morgan = require('morgan');
+
+const { globalErrorHandler } = require('@rendercube/shared');
+
 const authRouter = require('./routes/auth-router');
 const internalRouter = require('./routes/internal-routes');
 
@@ -27,5 +30,7 @@ app.use((req, res, next) => {
 });
 
 app.use('/api/v1/auth/internal', internalRouter);
+
+app.use(globalErrorHandler);
 
 module.exports = app;

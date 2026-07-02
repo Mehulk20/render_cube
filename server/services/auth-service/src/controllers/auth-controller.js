@@ -1,37 +1,33 @@
-const { AppError, catchAsyncError } = require('@rendercube/shared');
+const { AppError, catchAsyncError, successResponse, HTTP_STATUS } = require('@rendercube/shared');
 
 const authService = require('../services/auth-service');
-// const catchAsyncError = require('../middleware/catch-async-error');
-// const AppError = require('../middleware/app-error');
 
 exports.getAllCredentials = catchAsyncError(async (req, res, next) => {
   const result = await authService.getUsers();
 
-  if (result.length == 0) return next(new AppError('No data found', 400));
+  if (result.length == 0) return next(new AppError('No data found', HTTP_STATUS.BAD_REQUEST));
 
   res.status(200).json({
     status: 'success',
-    data: result
+    data: result,
   });
 });
 
-exports.register = catchAsyncError(async (req, res, next) => {
+exports.register = catchAsyncError(async (req, res) => {
   const result = await authService.registerUser(req.body);
 
-  if (!result) return next(new AppError('requested data not found', 400));
-
-  res.cookie('jwt', result.token, {
+  res.cookie('jwt', result.accessToken, {
     httpOnly: true,
     secure: false,
-    expires: new Date(Date.now() + Number(process.env.JWT_COOKIE_EXPIRES_IN) * 60 * 60 * 1000) // 7 days
+    expires: new Date(Date.now() + Number(process.env.JWT_COOKIE_EXPIRES_IN) * 60 * 60 * 1000), // 7 days
   });
 
   const { ...response } = result.data;
 
-  res.status(201).json({
-    status: 'success',
-    response,
-    token: result.token
+  return successResponse({
+    res,
+    message: 'welcome to rendercube',
+    data: { accessToken: result.token, user: response },
   });
 });
 
@@ -43,62 +39,56 @@ exports.login = catchAsyncError(async (req, res, next) => {
   const result = await authService.loginUser(email, password);
   const { passwordHash, emailVerified, ...data } = result.user;
 
-  res.status(200).json({
-    status: 'success',
-    data: data,
-    token: result.token
+  return successResponse({
+    res,
+    message: '',
+    data: { accessToken: result.token, user: data },
   });
 });
 
-exports.validateUser = catchAsyncError(async (req, res, next) => {
+exports.validateUser = catchAsyncError(async (req, res) => {
   const result = await authService.validateAuthUser(req.params.id);
 
-  if (!result) return next(new AppError('User not found', 404));
-
-  res.status(200).json({
-    status: 'success',
-    data: result
+  return successResponse({
+    res,
+    statusCode: HTTP_STATUS.OK,
+    message: 'User validated successfully',
+    data: result,
   });
 });
 
-exports.logout = catchAsyncError(async (req, res, next) => {
-  const result = await authService.revokeUserToken(req.user.userId);
-
-  if (!result) return next(new AppError('Logout failed, retry', 400));
+exports.logout = catchAsyncError(async (req, res) => {
+  await authService.revokeUserToken(req.user.userId);
 
   res.clearCookie('jwt', {
     httpOnly: true,
-    secure: false
+    secure: false,
   });
 
-  res.status(200).json({
-    status: 'success',
-    message: 'Logout successful'
-  });
-});
-
-exports.forgotPassword = catchAsyncError(async (req, res, next) => {
-  const result = await authService.forgotPassword(req.body.email);
-
-  if (!result)
-    return next(new AppError('Something went wrong, please re-try forgot passoword', 404));
-
-  res.status(200).json({
-    status: 'success',
-    message: 'Password reset email sent successfully, please check your inbox'
+  return successResponse({
+    res,
+    statusCode: HTTP_STATUS.OK,
+    message: 'Logout successful',
   });
 });
 
-exports.resetPassword = catchAsyncError(async (req, res, next) => {
-  const result = await authService.resetPassword(req.params.token, req.body);
+exports.forgotPassword = catchAsyncError(async (req, res) => {
+  await authService.forgotPassword(req.body.email);
 
-  if (!result) {
-    return next(new AppError('Something went wrong, please re-try', 400));
-  }
+  return successResponse({
+    res,
+    statusCode: HTTP_STATUS.OK,
+    message: 'Password reset link sent to your email',
+  });
+});
 
-  res.status(200).json({
-    status: 'success',
-    message: 'Password reset successful. Please login again.'
+exports.resetPassword = catchAsyncError(async (req, res) => {
+  await authService.resetPassword(req.params.token, req.body);
+
+  return successResponse({
+    res,
+    statusCode: HTTP_STATUS.OK,
+    message: 'Password reset successful',
   });
 });
 
@@ -107,28 +97,30 @@ exports.updateUserEmail = catchAsyncError(async (req, res) => {
 
   await authService.updateEmail(req.user.userId, { email, password });
 
-  res.status(200).json({
-    status: 'success',
-    message: 'email updated successfully'
+  return successResponse({
+    res,
+    statusCode: HTTP_STATUS.OK,
+    message: 'Email updated successfully',
   });
 });
 
-exports.updateUserPassword = catchAsyncError(async (req, res, next) => {
+exports.updateUserPassword = catchAsyncError(async (req, res) => {
   const { password, newPassword, newConfirmPassword } = req.body;
 
   const result = await authService.updateUserPassword(req.user.userId, {
     password,
     newPassword,
-    newConfirmPassword
+    newConfirmPassword,
   });
 
-  if (!result.token) return next(new AppError('password change request fail, please re-try', 400));
-
-  res.status(200).json({
-    status: 'success',
-    message: 'password update successful',
-    user: result.user,
-    token: result.token
+  return successResponse({
+    res,
+    statusCode: HTTP_STATUS.OK,
+    message: 'Password updated successfully',
+    data: {
+      user: result.user,
+      accessToken: result.token,
+    },
   });
 });
 // //admin controller

@@ -1,44 +1,36 @@
-import { createContext, useContext, useEffect, useState } from 'react';
+import { createContext, useCallback, useContext, useEffect, useState } from 'react';
 
-// Create the theme context
-const ThemeContext = createContext();
+const ThemeContext = createContext(null);
 
-/**
- * ThemeProvider — wraps the app and provides dark/light mode state.
- * Persists preference to localStorage and applies 'dark' class to <html>.
- */
-export const ThemeProvider = ({ children }) => {
-  const [isDark, setIsDark] = useState(() => {
-    // Check localStorage first, then system preference
-    const saved = localStorage.getItem('assethub-theme');
-    if (saved) return saved === 'dark';
-    return window.matchMedia('(prefers-color-scheme: dark)').matches;
-  });
+function getInitialTheme() {
+  if (typeof window === 'undefined') return 'light';
+  const stored = window.localStorage.getItem('rc-theme');
+  if (stored === 'light' || stored === 'dark') return stored;
+  return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+}
+
+export function ThemeProvider({ children }) {
+  const [theme, setTheme] = useState(getInitialTheme);
 
   useEffect(() => {
-    // Apply or remove 'dark' class on the html element
     const root = document.documentElement;
-    if (isDark) {
-      root.classList.add('dark');
-      localStorage.setItem('assethub-theme', 'dark');
-    } else {
-      root.classList.remove('dark');
-      localStorage.setItem('assethub-theme', 'light');
-    }
-  }, [isDark]);
+    root.classList.toggle('dark', theme === 'dark');
+    window.localStorage.setItem('rc-theme', theme);
+  }, [theme]);
 
-  const toggleTheme = () => setIsDark((prev) => !prev);
+  const toggleTheme = useCallback(() => {
+    setTheme((prev) => (prev === 'dark' ? 'light' : 'dark'));
+  }, []);
 
   return (
-    <ThemeContext.Provider value={{ isDark, toggleTheme }}>
+    <ThemeContext.Provider value={{ theme, setTheme, toggleTheme }}>
       {children}
     </ThemeContext.Provider>
   );
-};
+}
 
-// Custom hook for consuming theme context
-export const useTheme = () => {
+export function useTheme() {
   const ctx = useContext(ThemeContext);
-  if (!ctx) throw new Error('useTheme must be used inside ThemeProvider');
+  if (!ctx) throw new Error('useTheme must be used within a ThemeProvider');
   return ctx;
-};
+}

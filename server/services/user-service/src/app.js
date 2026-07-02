@@ -2,6 +2,9 @@ require('./config/user.config');
 
 const express = require('express');
 const morgan = require('morgan');
+
+const { globalErrorHandler } = require('@rendercube/shared');
+
 const userRouter = require('./user-module/routes/user-router');
 const internalRouter = require('./user-module/routes/internal-router');
 
@@ -21,5 +24,7 @@ app.use((req, res, next) => {
 
 app.use('/api/v1/users', userRouter);
 app.use('/api/v1/internal/users', internalRouter);
+
+app.use(globalErrorHandler);
 
 module.exports = app;

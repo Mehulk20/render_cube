@@ -1,12 +1,12 @@
 const crypto = require('crypto');
 
+const { AppError, HTTP_STATUS } = require('@rendercube/shared');
+
 const authRepo = require('../repository/auth-repo');
 const userClient = require('../client/user-client');
 const passwordManager = require('../utils/password-manager');
 const tokenManager = require('../utils/token-manager');
 const emailer = require('../utils/emailer');
-
-const AppError = require('../middleware/app-error');
 
 exports.getUsers = async () => {
   const users = await authRepo.getAllUsers();
@@ -19,7 +19,7 @@ exports.registerUser = async (data) => {
   const existingUser = await authRepo.getCredentialByEmail(email);
 
   if (existingUser) {
-    throw new AppError('Email already exists', 400);
+    throw new AppError('Email already exists', HTTP_STATUS.BAD_REQUEST);
   }
 
   passwordManager.checkCorrectPassword(password, confirmPassword);
@@ -36,18 +36,21 @@ exports.registerUser = async (data) => {
       email,
       username,
       passwordHash: hashedPassword,
-      role
+      role,
     });
 
     user = await userClient.createUserProfile({
       userId: userID,
       email: email,
       username,
-      ...userData
+      ...userData,
     });
 
     if (!authUser || !user) {
-      throw new AppError(`${(user, authUser)} Failed to create user`, 500);
+      throw new AppError(
+        `${(user, authUser)} Failed to create user`,
+        HTTP_STATUS.INTERNAL_SERVER_ERROR
+      );
     }
   } catch (err) {
     console.error('REGISTER ERROR:', err);
@@ -56,10 +59,14 @@ exports.registerUser = async (data) => {
 
     user = null;
 
-    throw new AppError('Error while adding user', 500);
+    throw new AppError('Error while adding user', HTTP_STATUS.INTERNAL_SERVER_ERROR);
   }
 
   const token = tokenManager.createAndSendToken(user);
+
+  if (!token) {
+    throw new AppError('Failed to generate token', HTTP_STATUS.INTERNAL_SERVER_ERROR);
+  }
 
   return { data: user.data, token };
 };
@@ -68,14 +75,21 @@ exports.loginUser = async (email, password) => {
   const user = await authRepo.getCredentialByEmail(email);
   console.log(user);
   if (!user || !user.active) {
-    throw new AppError('Incorrect email or password or Account suspended', 403);
+    throw new AppError(
+      'Incorrect email or password or Account suspended',
+      HTTP_STATUS.UNAUTHORIZED
+    );
   }
   console.log(user.passwordHash, password, user.tokenVersion, user.active);
   if (!(await passwordManager.comparePassword(password, user.passwordHash))) {
-    throw new AppError('Invalid email or password', 401);
+    throw new AppError('Invalid email or password', HTTP_STATUS.UNAUTHORIZED);
   }
 
   const token = tokenManager.createAndSendToken(user);
+
+  if (!token) {
+    throw new AppError('Failed to generate token', HTTP_STATUS.INTERNAL_SERVER_ERROR);
+  }
 
   return { token, user };
 };
@@ -84,14 +98,14 @@ exports.forgotPassword = async (email) => {
   const user = await authRepo.findOneByEmail(email);
 
   if (!user) {
-    throw new AppError('No user found', 400);
+    throw new AppError('No user found', HTTP_STATUS.BAD_REQUEST);
   }
 
   const { restToken, hashedToken, expiresAt } = tokenManager.generatePasswordResetToken();
 
   await authRepo.findOneAndUpdate(user.userId, {
     passwordResetToken: hashedToken,
-    passwordResetTimeout: expiresAt
+    passwordResetTimeout: expiresAt,
   });
 
   const resetUrl = `${process.env.CLIENT_URL}/rest-password/${restToken}`;
@@ -109,11 +123,11 @@ exports.resetPassword = async (token, content) => {
   const user = await authRepo.findOneByResetToken(hashedToken);
 
   if (!user) {
-    throw new AppError('Invalid token', 400);
+    throw new AppError('Invalid token', HTTP_STATUS.BAD_REQUEST);
   }
 
   if (user.passwordResetTimeout < Date.now()) {
-    throw new AppError('Reset password time out, re-try forgot password', 400);
+    throw new AppError('Reset password time out, re-try forgot password', HTTP_STATUS.BAD_REQUEST);
   }
 
   await passwordManager.checkCorrectPassword(password, confirmPassword);
@@ -140,25 +154,31 @@ exports.updateEmail = async (userId, payload) => {
 
   const [existing, user] = await Promise.all([
     authRepo.findOneByEmail(email),
-    authRepo.getCredentialByUserId(userId)
+    authRepo.getCredentialByUserId(userId),
   ]);
 
   if (existing && existing.userId.toString() !== userId.toString()) {
-    throw new AppError('Email already exist, please use a different email', 409);
+    throw new AppError('Email already exist, please use a different email', HTTP_STATUS.CONFLICT);
   }
 
   if (user.email === email) {
-    throw new AppError('New email must be different from the current email.', 400);
+    throw new AppError(
+      'New email must be different from the current email.',
+      HTTP_STATUS.BAD_REQUEST
+    );
   }
 
   if (!user && !user.active) {
-    throw new AppError('user does not exist or has been suspended', 404);
+    throw new AppError('user does not exist or has been suspended', HTTP_STATUS.NOT_FOUND);
   }
 
   const isCorrect = await passwordManager.comparePassword(password, user.passwordHash);
 
   if (!isCorrect) {
-    throw new AppError('Password does not match, please try with correct password', 401);
+    throw new AppError(
+      'Password does not match, please try with correct password',
+      HTTP_STATUS.UNAUTHORIZED
+    );
   }
 
   await authRepo.findOneAndUpdate(userId, { email });
@@ -166,7 +186,7 @@ exports.updateEmail = async (userId, payload) => {
   try {
     await userClient.updateUserProfile(userId, { email });
   } catch (err) {
-    throw new AppError(`failed updated user ${err}`, 400);
+    throw new AppError(`failed updated user ${err}`, HTTP_STATUS.BAD_REQUEST);
   }
 
   return true;
@@ -178,24 +198,29 @@ exports.updateUserPassword = async (userId, payload) => {
   const user = await authRepo.getCredentialByUserId(userId);
 
   if (!user || !user.active)
-    throw new AppError('User not found or has been suspended, re-try login', 400);
+    throw new AppError('User not found or has been suspended, re-try login', HTTP_STATUS.NOT_FOUND);
 
   passwordManager.checkCorrectPassword(newPassword, newConfirmPassword);
 
   const isCorrect = await passwordManager.comparePassword(password, user.passwordHash);
 
   if (!isCorrect)
-    throw new AppError('Password does not match, please try with correct password', 401);
+    throw new AppError(
+      'Password does not match, please try with correct password',
+      HTTP_STATUS.UNAUTHORIZED
+    );
 
   const isSamePassword = await passwordManager.comparePassword(newPassword, user.passwordHash);
 
-  if (isSamePassword) throw new AppError('Password already in use, type in new password', 400);
+  if (isSamePassword)
+    throw new AppError('Password already in use, type in new password', HTTP_STATUS.CONFLICT);
 
   const hashedPassword = await passwordManager.hashPassword(newPassword);
 
   const updatedUser = await authRepo.findOneAndUpdatePassword(userId, hashedPassword);
 
-  if (!updatedUser) throw new AppError('Failed to update password', 500);
+  if (!updatedUser)
+    throw new AppError('Failed to update password', HTTP_STATUS.INTERNAL_SERVER_ERROR);
 
   const token = tokenManager.createAndSendToken(updatedUser);
 
@@ -205,8 +230,8 @@ exports.updateUserPassword = async (userId, payload) => {
       userId: updatedUser.userId,
       username: updatedUser.username,
       email: updatedUser.email,
-      role: updatedUser.role
-    }
+      role: updatedUser.role,
+    },
   };
 };
 
