@@ -9,6 +9,8 @@ import {
   SocialButton,
   Divider,
   SecurityNote,
+  AuthCard,
+  AuthFooter,
 } from '../../components/auth';
 
 import { AuthLayout } from '../../layouts';
@@ -39,7 +41,7 @@ export default function LoginPage() {
   };
 
   return (
-    <AuthLayout
+    <AuthCard
       title="Welcome back"
       subtitle="Login to your account to continue"
       cardFoot={
@@ -47,7 +49,7 @@ export default function LoginPage() {
           Don't have an account?{' '}
           <Link
             to="/signup"
-            className="font-semibold text-brand-600 transition-colors hover:text-brand-700 dark:text-brand-400"
+            className="font-semibold text-brand-600 hover:text-brand-700 dark:text-brand-400"
           >
             Sign up
           </Link>
@@ -105,6 +107,6 @@ export default function LoginPage() {
 
         <SecurityNote text="Your data is protected with industry-standard encryption and security." />
       </form>
-    </AuthLayout>
+    </AuthCard>
   );
 }

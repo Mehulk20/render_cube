@@ -1,0 +1,68 @@
+/* ==========================================================
+   Transitions
+   ========================================================== */
+
+/* ---------- Global Theme Transition ---------- */
+
+html,
+body {
+  transition:
+    background-color 250ms ease,
+    color 250ms ease;
+}
+
+body,
+main,
+section,
+article,
+aside,
+header,
+footer,
+nav,
+div,
+button,
+input,
+textarea,
+select {
+  transition:
+    background-color 250ms ease,
+    border-color 250ms ease,
+    color 250ms ease,
+    box-shadow 250ms ease;
+}
+
+/* ---------- View Transitions API ---------- */
+
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 350ms;
+}
+
+::view-transition-old(root) {
+  animation: fadeOut 200ms ease;
+}
+
+::view-transition-new(root) {
+  animation: fadeIn 250ms ease;
+}
+
+/* ---------- Page Transition ---------- */
+
+.page-transition {
+  animation: fadeIn .35s ease;
+}
+
+/* ---------- Reduced Motion ---------- */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+
+    transition-duration: .01ms !important;
+
+    scroll-behavior: auto !important;
+  }
+}

@@ -2,8 +2,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
 import { ArrowLeft, Mail, SendHorizonal } from 'lucide-react';
-import { InputField, PrimaryButton, EmailSentAnimation } from '../../components/auth';
-import { AuthLayout } from '../../layouts';
+import { InputField, PrimaryButton, EmailSentAnimation, AuthCard } from '../../components/auth';
 import { isValidEmail } from '../../utils/validators';
 
 export default function ForgotPasswordPage() {
@@ -52,7 +51,7 @@ export default function ForgotPasswordPage() {
   };
 
   return (
-    <AuthLayout
+    <AuthCard
       title={sent ? '' : 'Forgot password?'}
       subtitle={sent ? '' : "No worries, we'll send you reset instructions"}
       cardFoot={
@@ -117,6 +116,6 @@ export default function ForgotPasswordPage() {
           </motion.div>
         )}
       </AnimatePresence>
-    </AuthLayout>
+    </AuthCard>
   );
 }

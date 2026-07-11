@@ -1,21 +1,24 @@
 import { createBrowserRouter } from 'react-router-dom';
 
-import { MainLayout, AuthLayout } from '../layouts';
+import { MainLayout, AuthLayout, DashboardLayout } from '../layouts';
 
 import { ProtectedRoute, PublicRoute } from '.';
 
-import HomePage from '../pages/HomePage';
-import MarketplacePage from '../pages/MarketplacePage';
-import AssetDetailPage from '../pages/AssetDetailPage';
-import CreatorsPage from '../pages/CreatorsPage';
-import PricingPage from '../pages/PricingPage';
-import CartPage from '../pages/CartPage';
-import NotFoundPage from '../pages/NotFoundPage';
-
-import { LoginPage, SignupPage } from '../pages/auth';
+import {
+  HomePage,
+  MarketplacePage,
+  AssetDetailPage,
+  CreatorsPage,
+  PricingPage,
+  CartPage,
+  NotFoundPage,
+} from '../pages/public';
+import { UserDashboard, UserProfile } from '../pages/account';
+import { CreatorProfile, CreatorDashboard } from '../pages/creator';
+import { LoginPage, SignupPage, ForgotPasswordPage, ResetPasswordPage } from '../pages/auth';
 
 export const router = createBrowserRouter([
-  // Public Website
+  // Public pages
   {
     element: <MainLayout />,
     children: [
@@ -61,6 +64,14 @@ export const router = createBrowserRouter([
             path: 'signup',
             element: <SignupPage />,
           },
+          {
+            path: 'forgot-password',
+            element: <ForgotPasswordPage />,
+          },
+          {
+            path: 'reset-password',
+            element: <ResetPasswordPage />,
+          },
         ],
       },
     ],
@@ -70,11 +81,40 @@ export const router = createBrowserRouter([
   {
     element: <ProtectedRoute />,
     children: [
-      // Example
-      // {
-      //   path: 'dashboard',
-      //   element: <DashboardPage />,
-      // },
+      {
+        path: 'account',
+        element: <DashboardLayout mode="account" title="Dashboard" />,
+        children: [
+          {
+            index: true,
+            element: <UserDashboard />,
+          },
+          {
+            path: 'profile',
+            element: <UserProfile />,
+          },
+        ],
+      },
+    ],
+  },
+
+  {
+    element: <ProtectedRoute />,
+    children: [
+      {
+        path: 'creator',
+        element: <DashboardLayout mode="creator" title="creator-studio" />,
+        children: [
+          {
+            index: true,
+            element: <CreatorDashboard />,
+          },
+          {
+            path: 'profile',
+            element: <CreatorProfile />,
+          },
+        ],
+      },
     ],
   },
 

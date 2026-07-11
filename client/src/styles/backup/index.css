@@ -1,0 +1,296 @@
+/*
+  Tailwind v4 entry point.
+  The @import replaces the old @tailwind directives.
+  All theme customisation moves here under @theme — no JS config file needed.
+*/
+/* ── Google Fonts ───────────────────────────────────────────── */
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap');
+
+@import 'tailwindcss';
+
+/* ── Tailwind v4 theme tokens ───────────────────────────────── */
+
+@import "./theme.css";
+@import "./dark.css";
+@import "./base.css";
+
+@keyframes floaty {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes spin-slow {
+  from {
+    transform: rotate(0);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+/*___Aurora Background */
+
+@keyframes float {
+  0% {
+    transform: translateY(0px) scale(1);
+  }
+
+  50% {
+    transform: translateY(-35px) scale(1.08);
+  }
+
+  100% {
+    transform: translateY(0px) scale(1);
+  }
+}
+
+.animate-float {
+  animation: float 18s ease-in-out infinite;
+}
+
+.animate-float-delayed {
+  animation: float 22s ease-in-out infinite;
+  animation-delay: 4s;
+}
+
+.animate-float-slow {
+  animation: float 28s ease-in-out infinite;
+}
+
+/* ── Dark-mode variant (class-based) ───────────────────────── */
+@variant dark (&:where(.dark, .dark *));
+
+/* ── Base resets ────────────────────────────────────────────── */
+@layer base {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  html {
+    color-scheme: light;
+    scroll-behavior: smooth;
+  }
+
+  html.dark {
+    color-scheme: dark;
+  }
+
+  html,
+  body {
+    transition:
+      background-color 350ms ease-in-out,
+      color 350ms ease-in-out;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    background: var(--color-background);
+    color: #111827;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  ::selection {
+    background-color: color-mix(in oklab, var(--color-brand-300) 60%, transparent);
+    color: var(--color-ink-900);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-brand-500);
+    outline-offset: 2px;
+    border-radius: 6px;
+  }
+  html.dark body {
+    background-color: var(--color-ink-950);
+    color: var(--color-ink-100);
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5 {
+    font-family: var(--font-display);
+  }
+
+  body,
+  main,
+  section,
+  article,
+  header,
+  footer,
+  nav,
+  aside,
+  div {
+    transition:
+      background-color 350ms ease-in-out,
+      color 350ms ease-in-out,
+      border-color 350ms ease-in-out,
+      box-shadow 350ms ease-in-out;
+  }
+}
+
+/* ── Utility classes ────────────────────────────────────────── */
+@layer utilities {
+  .bg-shimmer {
+    background: linear-gradient(
+      100deg,
+      transparent 30%,
+      rgba(255, 255, 255, 0.55) 50%,
+      transparent 70%
+    );
+    background-size: 200% 100%;
+  }
+
+  .dark {
+    --color-background: var(--color-ink-950);
+
+    --color-surface: var(--color-ink-900);
+
+    --color-surface-raised: var(--color-ink-800);
+
+    --color-surface-hover: #31384a;
+
+    --color-border: #31384a;
+
+    --color-border-soft: #262a37;
+  }
+
+  .text-gradient {
+    background: linear-gradient(135deg, #7c3aed, #ec4899);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .bg-grid {
+    background-image:
+      linear-gradient(rgba(124, 58, 237, 0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(124, 58, 237, 0.04) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+  .dark .bg-grid {
+    background-image:
+      linear-gradient(rgba(124, 58, 237, 0.08) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(124, 58, 237, 0.08) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+  .card {
+    background: #ffffff;
+
+    border: #e5e7eb;
+
+    box-shadow:
+      0 1px 2px rgba(20, 22, 29, 0.04),
+      0 12px 28px rgba(115, 69, 236, 0.06);
+  }
+
+  .card-hover {
+    transition:
+      transform 0.3s ease,
+      box-shadow 0.3s ease;
+  }
+  .card-hover:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 60px rgba(124, 58, 237, 0.15);
+  }
+
+  .glow-purple {
+    box-shadow: 0 0 40px rgba(124, 58, 237, 0.3);
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .page-transition {
+    animation: fadeIn 0.4s ease forwards;
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 600ms;
+}
+
+::view-transition-old(root) {
+  animation: fadeOut 250ms ease;
+}
+
+::view-transition-new(root) {
+  animation: fadeIn 250ms ease;
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+.aurora-cover {
+  background:
+    radial-gradient(circle at 20% 30%, rgba(124, 92, 252, 0.55), transparent 45%),
+    radial-gradient(circle at 75% 65%, rgba(211, 79, 224, 0.5), transparent 50%),
+    radial-gradient(circle at 50% 100%, rgba(79, 209, 224, 0.25), transparent 45%), #0f0f16;
+}
+
+.focus-ring {
+  outline: none;
+}
+.focus-ring:focus-visible {
+  outline: 2px solid var(--color-violet);
+  outline-offset: 2px;
+}

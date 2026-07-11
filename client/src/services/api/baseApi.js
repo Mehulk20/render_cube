@@ -5,6 +5,7 @@ export const baseApi = createApi({
 
   baseQuery: fetchBaseQuery({
     baseUrl: `${import.meta.env.VITE_API_URL}/api/v1`,
+    credentials: 'include',
 
     prepareHeaders: (headers) => {
       const token = localStorage.getItem('accessToken');
@@ -14,10 +15,10 @@ export const baseApi = createApi({
       }
 
       return headers;
-    }
+    },
   }),
 
   tagTypes: ['CurrentUser', 'Asset'],
 
-  endpoints: () => ({})
+  endpoints: () => ({}),
 });

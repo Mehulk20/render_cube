@@ -1,0 +1,157 @@
+/* ==========================================================
+   Utilities
+   ========================================================== */
+
+@layer utilities {
+  /* ---------- Scrollbar ---------- */
+
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* ---------- Text ---------- */
+
+  .text-gradient {
+    background: linear-gradient(
+      135deg,
+      var(--color-brand-500),
+      var(--color-fuchsia)
+    );
+
+    -webkit-background-clip: text;
+    background-clip: text;
+
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+  }
+
+  /* ---------- Background ---------- */
+
+  .bg-grid {
+    background-image:
+      linear-gradient(
+        rgba(124, 92, 252, 0.04) 1px,
+        transparent 1px
+      ),
+      linear-gradient(
+        90deg,
+        rgba(124, 92, 252, 0.04) 1px,
+        transparent 1px
+      );
+
+    background-size: 40px 40px;
+  }
+
+  .dark .bg-grid {
+    background-image:
+      linear-gradient(
+        rgba(124, 92, 252, 0.08) 1px,
+        transparent 1px
+      ),
+      linear-gradient(
+        90deg,
+        rgba(124, 92, 252, 0.08) 1px,
+        transparent 1px
+      );
+
+    background-size: 40px 40px;
+  }
+
+  .bg-shimmer {
+    background: linear-gradient(
+      100deg,
+      transparent 30%,
+      rgba(255, 255, 255, 0.55) 50%,
+      transparent 70%
+    );
+
+    background-size: 200% 100%;
+  }
+
+  /* ---------- Aurora ---------- */
+
+  .aurora-cover {
+    background:
+      radial-gradient(
+        circle at 20% 30%,
+        rgba(124, 92, 252, .55),
+        transparent 45%
+      ),
+      radial-gradient(
+        circle at 75% 65%,
+        rgba(211, 79, 224, .45),
+        transparent 50%
+      ),
+      radial-gradient(
+        circle at 50% 100%,
+        rgba(79, 209, 224, .25),
+        transparent 45%
+      ),
+      var(--color-background);
+  }
+
+  /* ---------- Shadows ---------- */
+
+  .shadow-card {
+    box-shadow: var(--shadow-card);
+  }
+
+  .shadow-card-hover:hover {
+    box-shadow: var(--shadow-card-hover);
+  }
+
+  .shadow-glow {
+    box-shadow: var(--shadow-glow);
+  }
+
+  /* ---------- Focus ---------- */
+
+  .focus-ring {
+    outline: none;
+  }
+
+  .focus-ring:focus-visible {
+    outline: 2px solid var(--color-primary);
+
+    outline-offset: 2px;
+  }
+
+  /* ---------- Selection ---------- */
+
+  .user-select-none {
+    user-select: none;
+  }
+
+  .user-select-all {
+    user-select: all;
+  }
+
+  /* ---------- Overflow ---------- */
+
+  .overflow-overlay {
+    overflow: overlay;
+  }
+
+  /* ---------- Glass ---------- */
+
+  .glass {
+    backdrop-filter: blur(18px);
+
+    background: color-mix(
+      in srgb,
+      var(--color-surface) 85%,
+      transparent
+    );
+
+    border: 1px solid color-mix(
+      in srgb,
+      var(--color-border) 60%,
+      transparent
+    );
+  }
+}

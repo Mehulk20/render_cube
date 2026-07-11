@@ -1,0 +1,40 @@
+/* ==========================================================
+   Dark Theme
+   macOS-inspired
+   ========================================================== */
+
+@variant dark (&:where(.dark, .dark *));
+
+.dark {
+  /* Backgrounds */
+  --color-background: var(--color-ink-950);
+  --color-surface: var(--color-ink-900);
+  --color-surface-raised: var(--color-ink-800);
+  --color-surface-hover: #31384a;
+
+  /* Borders */
+  --color-border: #31384a;
+  --color-border-soft: #262a37;
+
+  /* Text */
+  --color-foreground: var(--color-ink-50);
+  --color-foreground-muted: var(--color-ink-300);
+  --color-foreground-soft: var(--color-ink-400);
+  --color-foreground-faint: var(--color-ink-500);
+
+  /* Brand (same brand, slightly brighter on dark) */
+  --color-primary: #8b5cf6;
+  --color-primary-hover: #a78bfa;
+
+  /* Shadows */
+  --shadow-card:
+    0 1px 2px rgba(0, 0, 0, 0.35),
+    0 12px 32px rgba(0, 0, 0, 0.45);
+
+  --shadow-card-hover:
+    0 18px 42px rgba(0, 0, 0, 0.55);
+
+  --shadow-glow:
+    0 0 0 1px rgba(124, 92, 252, 0.18),
+    0 10px 32px rgba(124, 92, 252, 0.28);
+}

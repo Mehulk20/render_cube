@@ -1,0 +1,181 @@
+/* ==========================================================
+   Animations
+   ========================================================== */
+
+/* ---------- Keyframes ---------- */
+
+@keyframes bell {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  20% {
+    transform: rotate(16deg);
+  }
+
+  40% {
+    transform: rotate(-16deg);
+  }
+
+  60% {
+    transform: rotate(10deg);
+  }
+
+  80% {
+    transform: rotate(-10deg);
+  }
+
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0) scale(1);
+  }
+
+  50% {
+    transform: translateY(-16px) scale(1.04);
+  }
+
+  100% {
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-18px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes gradientShift {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes pulseGlow {
+  0%,
+  100% {
+    box-shadow: 0 0 12px rgba(115, 69, 236, .25);
+  }
+
+  50% {
+    box-shadow: 0 0 28px rgba(115, 69, 236, .45);
+  }
+}
+
+@keyframes spinSlow {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ---------- Animation Classes ---------- */
+
+.animate-bell {
+  animation: bell .8s ease;
+}
+
+.animate-float {
+  animation: float 18s ease-in-out infinite;
+}
+
+.animate-float-delayed {
+  animation: float 22s ease-in-out infinite;
+  animation-delay: 4s;
+}
+
+.animate-float-slow {
+  animation: float 28s ease-in-out infinite;
+}
+
+.animate-spin-slow {
+  animation: spinSlow 14s linear infinite;
+}
+
+.animate-shimmer {
+  animation: shimmer 2.5s linear infinite;
+}
+
+.animate-fade-in {
+  animation: fadeIn .3s ease forwards;
+}
+
+.animate-fade-up {
+  animation: fadeUp .45s ease forwards;
+}
+
+.animate-slide-in {
+  animation: slideIn .3s ease forwards;
+}
+
+.animate-pulse-glow {
+  animation: pulseGlow 2s ease-in-out infinite;
+}
+
+.animate-gradient {
+  background-size: 300% 300%;
+  animation: gradientShift 8s ease infinite;
+}

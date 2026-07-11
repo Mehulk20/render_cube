@@ -9,11 +9,10 @@ import {
   SocialButton,
   Divider,
   SecurityNote,
+  AuthCard,
 } from '../../components/auth';
 
-import { AuthLayout } from '../../layouts';
 import { isNotEmpty, isValidEmail } from '../../utils/validators';
-
 export default function SignupPage() {
   const navigate = useNavigate();
   const [form, setForm] = useState({ name: '', email: '', password: '', confirm: '' });
@@ -42,7 +41,7 @@ export default function SignupPage() {
   };
 
   return (
-    <AuthLayout
+    <AuthCard
       title="Create your account"
       subtitle="Join the marketplace and start creating today"
       cardFoot={
@@ -144,6 +143,6 @@ export default function SignupPage() {
 
         <SecurityNote text="Your data is protected with industry-standard encryption and security." />
       </form>
-    </AuthLayout>
+    </AuthCard>
   );
 }

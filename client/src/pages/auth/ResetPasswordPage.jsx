@@ -2,8 +2,7 @@ import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
 import { KeyRound } from 'lucide-react';
-import { PasswordInput, PrimaryButton, SuccessCheck } from '../../components/auth';
-import { AuthLayout } from '../../layouts';
+import { AuthCard, PasswordInput, PrimaryButton, SuccessCheck } from '../../components/auth';
 
 export default function ResetPasswordPage() {
   const navigate = useNavigate();
@@ -30,7 +29,7 @@ export default function ResetPasswordPage() {
   };
 
   return (
-    <AuthLayout
+    <AuthCard
       title={done ? '' : 'Reset password'}
       subtitle={done ? '' : 'Create a new password for your account'}
       cardFoot={
@@ -99,6 +98,6 @@ export default function ResetPasswordPage() {
           </motion.div>
         )}
       </AnimatePresence>
-    </AuthLayout>
+    </AuthCard>
   );
 }

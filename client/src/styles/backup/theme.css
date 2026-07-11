@@ -1,0 +1,199 @@
+@theme {
+  /* complete light theme */
+
+  --color-background: #fcfcfd;
+
+  --color-surface: #ffffff;
+
+  --color-surface-raised: #f8fafc;
+
+  --color-surface-hover: #f1f5f9;
+
+  --color-border: #e5e7eb;
+
+  --color-border-soft: #eef2f7;
+
+  /* ink colors */
+
+  --color-foreground: var(--color-ink-900);
+  --color-foreground-muted: var(--color-ink-600);
+  --color-foreground-soft: var(--color-ink-500);
+  --color-foreground-faint: var(--color-ink-400);
+
+  /* Dashboard color */
+  /* --color-background: #F7F7F8;
+  --color-void: #0a0a0f;
+  --color-surface: #131318;
+  --color-surface-raised: #1a1a22;
+  --color-surface-hover: #21212b;
+  --color-border: #26262f;
+  --color-border-soft: #1d1d24; */
+
+  --color-violet: #7c5cfc;
+  --color-violet-dim: #5b41d6;
+  --color-fuchsia: #d34fe0;
+  --color-cyan: #4fd1e0;
+  --color-mint: #22c55e;
+  --color-amber: #f5a623;
+  --color-rose: #f5537a;
+
+  --color-ink: #f5f5f7;
+  --color-ink-soft: #b8b8c4;
+  --color-ink-faint: #75758a;
+
+  --font-display: 'Syne', sans-serif;
+  --font-sans: 'Plus Jakarta Sans', sans-serif;
+
+  --animate-shimmer: shimmer 2.4s linear infinite;
+  --animate-float: float 6s ease-in-out infinite;
+  /* Colors */
+  --color-primary: #7345ec;
+
+  --color-primary-hover: #6430db;
+
+  --color-primary-light: #f2efff;
+
+  --color-primary-dark: #6d28d9;
+
+  /* Custom animations */
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-float-delayed: float 6s ease-in-out 2s infinite;
+  --animate-gradient-shift: gradientShift 8s ease infinite;
+  --animate-fade-up: fadeUp 0.6s ease forwards;
+  --animate-fade-in: fadeIn 0.4s ease forwards;
+  --animate-slide-in: slideIn 0.3s ease forwards;
+  --animate-pulse-glow: pulseGlow 2s ease-in-out infinite;
+
+  /* Brand colors */
+  --color-brand-50: #f2effe;
+  --color-brand-100: #e6e0fd;
+  --color-brand-200: #c9bcfb;
+  --color-brand-300: #a68cf7;
+  --color-brand-400: #8a63f2;
+  --color-brand-500: #7345ec;
+  --color-brand-600: #6430db;
+  --color-brand-700: #5424b8;
+  --color-brand-800: #451f95;
+  --color-brand-900: #3a1d78;
+
+  /* Ink colors */
+  --color-ink-50: #f6f7f9;
+  --color-ink-100: #eceef2;
+  --color-ink-200: #d7dbe3;
+  --color-ink-300: #b3bac8;
+  --color-ink-400: #8a93a6;
+  --color-ink-500: #69728a;
+  --color-ink-600: #525a70;
+  --color-ink-700: #3f4557;
+  --color-ink-800: #262a37;
+  --color-ink-900: #1a1d26;
+  --color-ink-950: #0b0c11;
+
+  /* rounded borders */
+
+  --radius-nav-elm: 0.7rem;
+  --radius-card: 1.5rem;
+  --radius-button: 0.75rem;
+
+  /* Fonts */
+  --font-display: 'Syne', sans-serif;
+  --font-sans: 'Plus Jakarta Sans', sans-serif;
+
+  /* Shadows */
+  --shadow-card: 0 1px 2px rgba(20, 22, 29, 0.04), 0 16px 40px -12px rgba(76, 48, 219, 0.18);
+
+  --shadow-card-dark: 0 1px 2px rgba(0, 0, 0, 0.3), 0 16px 40px -12px rgba(0, 0, 0, 0.55);
+
+  --shadow-glow: 0 0 0 1px rgba(115, 69, 236, 0.08), 0 8px 24px -4px rgba(115, 69, 236, 0.35);
+
+  /* Animations */
+  --animate-floaty: floaty 6s ease-in-out infinite;
+  --animate-spin-slow: spin-slow 14s linear infinite;
+  --animate-shimmer: shimmer 2.5s linear infinite;
+
+  /* Keyframes */
+  --keyframes-float: {
+    0%,
+    100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-12px);
+    }
+  };
+  --keyframes-gradientShift: {
+    0%,
+    100% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+  };
+  --keyframes-fadeUp: {
+    from {
+      opacity: 0;
+      transform: translateY(24px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  };
+  --keyframes-fadeIn: {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  };
+  --keyframes-slideIn: {
+    from {
+      opacity: 0;
+      transform: translateX(-16px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  };
+  --keyframes-pulseGlow: {
+    0%,
+    100% {
+      box-shadow: 0 0 20px rgba(124, 58, 237, 0.4);
+    }
+    50% {
+      box-shadow: 0 0 40px rgba(124, 58, 237, 0.8);
+    }
+  };
+
+  /* notification */
+  --animate-bell: bell 0.8s ease;
+
+  @keyframes bell {
+    0% {
+      transform: rotate(0deg);
+    }
+
+    20% {
+      transform: rotate(16deg);
+    }
+
+    40% {
+      transform: rotate(-16deg);
+    }
+
+    60% {
+      transform: rotate(10deg);
+    }
+
+    80% {
+      transform: rotate(-10deg);
+    }
+
+    100% {
+      transform: rotate(0deg);
+    }
+  }
+}
