@@ -3,7 +3,9 @@
    ========================================================== */
 
 @layer base {
-  /* ---------- Reset ---------- */
+  /* ==========================================================
+     Reset
+     ========================================================== */
 
   *,
   *::before,
@@ -13,7 +15,35 @@
     padding: 0;
   }
 
-  /* ---------- HTML ---------- */
+  * {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  /* ==========================================================
+     Global Theme-Switch Transition
+     Ensures every element fades between light/dark values,
+     not just html/body. Low specificity so any element with
+     its own more specific transition (e.g. .hover-lift) simply
+     uses its own list instead - see transitions.css/utilities.css
+     where those lists were extended to include color properties
+     too, so they don't accidentally drop this on theme switch.
+     ========================================================== */
+
+  *,
+  *::before,
+  *::after {
+    transition:
+      background-color var(--motion-normal) var(--ease-standard),
+      border-color var(--motion-normal) var(--ease-standard),
+      color var(--motion-fast) var(--ease-standard),
+      box-shadow var(--motion-normal) var(--ease-standard),
+      fill var(--motion-normal) var(--ease-standard),
+      stroke var(--motion-normal) var(--ease-standard);
+  }
+
+  /* ==========================================================
+     HTML
+     ========================================================== */
 
   html {
     color-scheme: light;
@@ -25,6 +55,10 @@
     color-scheme: dark;
   }
 
+  /* ==========================================================
+     Body
+     ========================================================== */
+
   body {
     min-height: 100vh;
 
@@ -34,20 +68,22 @@
 
     color: var(--color-foreground);
 
-    line-height: 1.5;
+    line-height: var(--leading-normal);
 
     text-rendering: optimizeLegibility;
+
+    font-synthesis: none;
 
     -webkit-font-smoothing: antialiased;
 
     -moz-osx-font-smoothing: grayscale;
 
-    transition:
-      background-color 250ms ease,
-      color 250ms ease;
+    accent-color: var(--color-primary);
   }
 
-  /* ---------- Typography ---------- */
+  /* ==========================================================
+     Typography
+     ========================================================== */
 
   h1,
   h2,
@@ -59,26 +95,46 @@
 
     color: var(--color-foreground);
 
-    font-weight: 600;
+    font-weight: var(--font-bold);
 
-    line-height: 1.2;
+    line-height: var(--leading-tight);
+
+    text-wrap: balance;
   }
 
   p,
+  li,
   span,
   small {
     color: inherit;
   }
 
-  /* ---------- Links ---------- */
+  /* ==========================================================
+     Links
+     ========================================================== */
 
   a {
     color: inherit;
 
     text-decoration: none;
+
+    transition:
+      color var(--duration-fast) var(--ease-standard),
+      opacity var(--duration-fast) var(--ease-standard),
+      transform var(--duration-fast) var(--ease-snappy);
   }
 
-  /* ---------- Buttons ---------- */
+  a:hover {
+    opacity: var(--opacity-muted);
+  }
+
+  a:active {
+    opacity: 0.55;
+  }
+
+  /* ==========================================================
+     Buttons
+     ========================================================== */
 
   button {
     font: inherit;
@@ -90,83 +146,125 @@
     border: none;
 
     cursor: pointer;
+
+    transition:
+      background-color var(--duration-fast) var(--ease-standard),
+      color var(--duration-fast) var(--ease-standard),
+      transform var(--duration-fast) var(--ease-snappy),
+      box-shadow var(--duration-fast) var(--ease-standard);
   }
 
   button:disabled {
     cursor: not-allowed;
   }
 
-  /* ---------- Inputs ---------- */
+  button:not(:disabled):active {
+    transform: scale(0.97);
+  }
+
+  /* ==========================================================
+     Form Controls
+     ========================================================== */
+
+  input,
+  textarea,
+  select,
+  button {
+    font: inherit;
+  }
 
   input,
   textarea,
   select {
-    font: inherit;
-
     color: inherit;
+
+    background: transparent;
   }
 
-  /* ---------- Images ---------- */
+  textarea {
+    resize: vertical;
+  }
+
+  /* ==========================================================
+     Media
+     ========================================================== */
 
   img,
-  svg,
+  picture,
   video,
-  canvas {
+  canvas,
+  svg {
     display: block;
 
     max-width: 100%;
   }
 
-  /* ---------- Lists ---------- */
+  /* ==========================================================
+     Lists
+     ========================================================== */
 
   ul,
   ol {
     list-style: none;
   }
 
-  /* ---------- Tables ---------- */
+  /* ==========================================================
+     Tables
+     ========================================================== */
 
   table {
+    width: 100%;
+
     border-collapse: collapse;
   }
 
-  /* ---------- Selection ---------- */
+  /* ==========================================================
+     Selection
+     ========================================================== */
 
   ::selection {
-    background: color-mix(
-      in srgb,
-      var(--color-primary) 22%,
-      transparent
-    );
+    background: var(--color-selection);
 
     color: var(--color-foreground);
   }
 
-  /* ---------- Focus ---------- */
+  /* ==========================================================
+     Focus
+     ========================================================== */
 
   :focus-visible {
-    outline: 2px solid var(--color-primary);
+    outline: none;
 
-    outline-offset: 2px;
+    box-shadow: var(--shadow-focus);
 
-    border-radius: 8px;
+    border-radius: var(--radius-sm);
+
+    transition: box-shadow var(--duration-fast) var(--ease-standard);
   }
 
-  /* ---------- Smooth Theme Transition ---------- */
+  /* ==========================================================
+     Theme Transition
+     ========================================================== */
 
-  body,
-  main,
-  section,
-  article,
-  aside,
-  header,
-  footer,
-  nav,
-  div {
-    transition:
-      background-color 250ms ease,
-      border-color 250ms ease,
-      color 250ms ease,
-      box-shadow 250ms ease;
+  /* ==========================================================
+     Reduced Motion
+     ========================================================== */
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+
+      animation-iteration-count: 1 !important;
+
+      transition-duration: 0.01ms !important;
+
+      scroll-behavior: auto !important;
+    }
   }
 }

@@ -1,0 +1,50 @@
+/* ==========================================================
+   Skeleton Loading
+   Estadious Design System
+   ========================================================== */
+
+@layer utilities {
+  /* ==========================================================
+     Skeleton primitive
+     Base fill + a shimmer sweep on ::after. Colors come from
+     --color-skeleton-base / --color-skeleton-shine (theme.css,
+     overridden per-theme in dark.css) so it re-points
+     automatically on light/dark, same as every other surface
+     token in the system.
+     ========================================================== */
+
+  .skeleton {
+    position: relative;
+    overflow: hidden;
+    background-color: var(--color-skeleton-base);
+    isolation: isolate;
+  }
+
+  .skeleton::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    transform: translateX(-100%);
+    background-image: linear-gradient(
+      90deg,
+      transparent 0%,
+      var(--color-skeleton-shine) 50%,
+      transparent 100%
+    );
+    animation: skeleton-sweep var(--motion-skeleton) ease-in-out infinite;
+  }
+
+  /* ==========================================================
+     Skeleton surface
+     A .card look-alike for skeleton panels — same radius/shadow
+     language as .card, without the hover-lift interaction
+     (loading states shouldn't invite hover).
+     ========================================================== */
+
+  .skeleton-panel {
+    background: var(--color-card);
+    border: 1px solid var(--color-card-border);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-card);
+  }
+}

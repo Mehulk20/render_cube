@@ -6,7 +6,7 @@ const generateToken = (payload) => {
     { userId: payload.userId, role: payload.role, tokenVersion: payload.tokenVersion },
     process.env.JWT_SECRET,
     {
-      expiresIn: process.env.JWT_EXPIRES_IN
+      expiresIn: process.env.JWT_EXPIRES_IN,
     }
   );
 };
@@ -29,6 +29,6 @@ exports.generatePasswordResetToken = () => {
   return {
     resetToken,
     hashedToken,
-    expiresAt
+    expiresAt,
   };
 };

@@ -1,5 +1,5 @@
 import { Outlet } from 'react-router-dom';
-import { Navbar, Footer } from '../components/public';
+import { Navbar, Footer } from '../features/public/components';
 import { ScrollToTop } from '../UI';
 
 /**
@@ -8,7 +8,7 @@ import { ScrollToTop } from '../UI';
  */
 const MainLayout = () => {
   return (
-    <div className="min-h-screen bg-white dark:bg-gray-950 transition-colors duration-300 flex flex-col">
+    <div className="min-h-screen bg-background transition-surface flex flex-col ">
       <ScrollToTop />
       <Navbar />
       <main id="main-content" tabIndex={-1} className="flex-1 outline-none">

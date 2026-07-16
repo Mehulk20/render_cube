@@ -1,0 +1,117 @@
+client/
+├── public/
+│
+└── src/
+    ├── api/
+    │   ├── baseApi.js
+    │   └── apiConstants.js
+    │
+    ├── app/
+    │   ├── store.js
+    │   └── routes.jsx
+    │
+    ├── assets/
+    │
+    ├── features/
+    │   ├── auth/
+    │   │   ├── components/
+    │   │   ├── pages/
+    │   │   ├── hooks/
+    │   │   ├── services/
+    │   │   │   └── authApi.js
+    │   │   ├── constants/
+    │   │   ├── authSlice.js
+    │   │   ├── authSelectors.js
+    │   │   └── index.js
+    │   │
+    │   ├── user/
+    │   │   ├── components/
+    │   │   ├── pages/
+    │   │   ├── hooks/
+    │   │   ├── services/
+    │   │   ├── constants/
+    │   │   ├── userSlice.js
+    │   │   ├── userSelectors.js
+    │   │   └── index.js
+    │   │
+    │   ├── creator/
+    │   │   ├── components/
+    │   │   ├── pages/
+    │   │   ├── hooks/
+    │   │   ├── services/
+    │   │   ├── constants/
+    │   │   ├── creatorSlice.js
+    │   │   ├── creatorSelectors.js
+    │   │   └── index.js
+    │   │
+    │   ├── assets/
+    │   │   ├── components/
+    │   │   ├── pages/
+    │   │   ├── hooks/
+    │   │   ├── services/
+    │   │   ├── constants/
+    │   │   ├── assetSlice.js
+    │   │   ├── assetSelectors.js
+    │   │   └── index.js
+    │   │
+    │   ├── dashboard/
+    │   │   ├── components/
+    │   │   ├── pages/
+    │   │   ├── hooks/
+    │   │   ├── services/
+    │   │   └── index.js
+    │   │
+    │   ├── notifications/
+    │   │   ├── components/
+    │   │   ├── pages/
+    │   │   ├── hooks/
+    │   │   ├── services/
+    │   │   ├── notificationSlice.js
+    │   │   ├── notificationSelectors.js
+    │   │   └── index.js
+    │   │
+    │   ├── settings/
+    │   ├── cart/
+    │   ├── search/
+    │   ├── reviews/
+    │   ├── collections/
+    │   ├── analytics/
+    │   ├── payments/
+    │   ├── theme/
+    │   │   ├── themeSlice.js
+    │   │   ├── themeSelectors.js
+    │   │   ├── themeProvider.jsx
+    │   │   ├── themeConstants.js
+    │   │   └── index.js
+    │   │
+    │   └── public/
+    │       ├── components/
+    │       ├── pages/
+    │       ├── hooks/
+    │       ├── services/
+    │       └── index.js
+    │
+    ├── layouts/
+    │   ├── PublicLayout.jsx
+    │   ├── AuthLayout.jsx
+    │   ├── DashboardLayout.jsx
+    │   └── CreatorLayout.jsx
+    │
+    ├── routes/
+    │
+    ├── shared/
+    │   ├── components/
+    │   ├── ui/
+    │   ├── hooks/
+    │   ├── constants/
+    │   └── skeletons/
+    │
+    ├── styles/
+    ├── utils/
+    ├── context/
+    ├── lib/
+    ├── data/
+    ├── dev-data/
+    ├── App.jsx
+    ├── main.jsx
+    └── vite-env.d.ts

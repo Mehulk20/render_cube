@@ -32,11 +32,11 @@ exports.register = catchAsyncError(async (req, res) => {
 });
 
 exports.login = catchAsyncError(async (req, res, next) => {
-  const { email, password } = req.body;
+  const { identifier, password } = req.body;
 
-  if (!email || !password) return next(new AppError('Please provide email and password', 400));
+  if (!identifier || !password) return next(new AppError(`username/email or password.`, 400));
 
-  const result = await authService.loginUser(email, password);
+  const result = await authService.loginUser(identifier, password);
   const { passwordHash, emailVerified, ...data } = result.user;
 
   return successResponse({

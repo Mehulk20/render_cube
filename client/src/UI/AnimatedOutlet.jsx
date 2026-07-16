@@ -1,30 +1,43 @@
 import { Outlet, useLocation } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
 
-const pageTransition = {
-  initial: { opacity: 0, y: 16 },
-  animate: { opacity: 1, y: 0 },
-  exit: { opacity: 0, y: -12 },
-  transition: { duration: 0.35, ease: 'easeOut' },
+const variants = {
+  initial: {
+    opacity: 0,
+    y: 16,
+  },
+  animate: {
+    opacity: 1,
+    y: 0,
+  },
+  exit: {
+    opacity: 0,
+    y: -12,
+  },
 };
 
-const AnimatedOutlet = () => {
+const transition = {
+  duration: 0.3,
+  ease: [0.22, 1, 0.36, 1],
+};
+
+export default function AnimatedOutlet() {
   const location = useLocation();
 
   return (
     <AnimatePresence mode="wait">
       <motion.div
         key={location.pathname}
-        className="w-full"
-        initial={pageTransition.initial}
-        animate={pageTransition.animate}
-        exit={pageTransition.exit}
-        transition={pageTransition.transition}
+        className="w-full will-change-transform"
+        variants={variants}
+        initial="initial"
+        animate="animate"
+        exit="exit"
+        transition={transition}
+        layout
       >
         <Outlet />
       </motion.div>
     </AnimatePresence>
   );
-};
-
-export default AnimatedOutlet;
+}

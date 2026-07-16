@@ -8,7 +8,7 @@ const compression = require('compression');
 const cookieParser = require('cookie-parser');
 
 const setupProxy = require('./proxies/setup-proxy');
-const { globalErrorHandler } = require('@rendered/shared');
+const { globalErrorHandler } = require('@rendercube/shared');
 
 const app = express();
 
@@ -19,17 +19,12 @@ app.use(helmet());
 app.use(
   cors({
     origin: process.env.CLIENT_URL,
-    credentials: true
+    credentials: true,
   })
 );
 
 app.use(compression());
-
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
-
 app.use(cookieParser());
-
 app.use(morgan('dev'));
 
 app.get('/health', (req, res) => {
@@ -37,16 +32,21 @@ app.get('/health', (req, res) => {
     success: true,
     service: 'API Gateway',
     status: 'healthy',
-    timestamp: new Date().toISOString()
+    timestamp: new Date().toISOString(),
   });
 });
 
+// Proxy API requests BEFORE body parsing
 setupProxy(app);
+
+// Only parse bodies for routes owned by the gateway itself
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 app.use((req, res) => {
   res.status(404).json({
     success: false,
-    message: 'Route not found'
+    message: 'Route not found',
   });
 });
 

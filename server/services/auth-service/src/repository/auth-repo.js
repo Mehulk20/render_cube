@@ -1,7 +1,11 @@
 const Credentials = require('../models/auth-model');
 
-exports.getCredentialByEmail = async (email) => {
-  return await Credentials.findOne({ email }).select('+tokenVersion +active +passwordHash').lean();
+exports.findByIdentifier = async (identifier) => {
+  return await Credentials.findOne({
+    $or: [{ email: identifier.toLowerCase() }, { username: identifier.toLowerCase() }],
+  })
+    .select('+tokenVersion +active +passwordHash')
+    .lean();
 };
 
 exports.createCredential = async (data) => {
@@ -25,7 +29,7 @@ exports.findOneByEmail = async (email) => {
 exports.findOneAndUpdate = async (userId, payload) => {
   return await Credentials.findOneAndUpdate({ userId }, payload, {
     new: true,
-    runValidators: true
+    runValidators: true,
   });
 };
 
@@ -37,11 +41,11 @@ exports.findOneAndUpdatePassword = async (userId, payload) => {
         passwordHash: payload,
         passwordChangedAt: new Date(),
         passwordResetToken: undefined,
-        passwordResetTimeout: undefined
+        passwordResetTimeout: undefined,
       },
       $inc: {
-        tokenVersion: 1
-      }
+        tokenVersion: 1,
+      },
     },
     { new: true, runValidators: true }
   ).select('+tokenVersion');

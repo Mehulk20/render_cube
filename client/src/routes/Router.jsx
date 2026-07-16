@@ -1,3 +1,5 @@
+import { lazy, Suspense } from 'react';
+
 import { createBrowserRouter } from 'react-router-dom';
 
 import { MainLayout, AuthLayout, DashboardLayout } from '../layouts';
@@ -12,10 +14,14 @@ import {
   PricingPage,
   CartPage,
   NotFoundPage,
-} from '../pages/public';
-import { UserDashboard, UserProfile } from '../pages/account';
-import { CreatorProfile, CreatorDashboard } from '../pages/creator';
-import { LoginPage, SignupPage, ForgotPasswordPage, ResetPasswordPage } from '../pages/auth';
+} from '../features/public/pages';
+import { UserDashboard } from '../features/user/pages';
+import { CreatorDashboard } from '../features/creator/pages';
+import { UserProfile, CreatorProfile } from '../features/profile/pages';
+import { SignupPage, ForgotPasswordPage, ResetPasswordPage } from '../features/auth/pages';
+
+import { LoginSkeleton } from '../shared/skeletons/pages/auth';
+const LoginPage = lazy(() => import('../features/auth/pages/LoginPage'));
 
 export const router = createBrowserRouter([
   // Public pages
@@ -58,7 +64,11 @@ export const router = createBrowserRouter([
         children: [
           {
             path: 'login',
-            element: <LoginPage />,
+            element: (
+              <Suspense fallback={<LoginSkeleton />}>
+                <LoginPage />
+              </Suspense>
+            ),
           },
           {
             path: 'signup',
@@ -83,7 +93,7 @@ export const router = createBrowserRouter([
     children: [
       {
         path: 'account',
-        element: <DashboardLayout mode="account" title="Dashboard" />,
+        element: <DashboardLayout />,
         children: [
           {
             index: true,
@@ -103,7 +113,7 @@ export const router = createBrowserRouter([
     children: [
       {
         path: 'creator',
-        element: <DashboardLayout mode="creator" title="creator-studio" />,
+        element: <DashboardLayout />,
         children: [
           {
             index: true,

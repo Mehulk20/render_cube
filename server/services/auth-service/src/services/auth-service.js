@@ -71,8 +71,8 @@ exports.registerUser = async (data) => {
   return { data: user.data, token };
 };
 
-exports.loginUser = async (email, password) => {
-  const user = await authRepo.getCredentialByEmail(email);
+exports.loginUser = async (identifier, password) => {
+  const user = await authRepo.findByIdentifier(identifier);
   console.log(user);
   if (!user || !user.active) {
     throw new AppError(
@@ -80,7 +80,7 @@ exports.loginUser = async (email, password) => {
       HTTP_STATUS.UNAUTHORIZED
     );
   }
-  console.log(user.passwordHash, password, user.tokenVersion, user.active);
+
   if (!(await passwordManager.comparePassword(password, user.passwordHash))) {
     throw new AppError('Invalid email or password', HTTP_STATUS.UNAUTHORIZED);
   }
@@ -101,14 +101,14 @@ exports.forgotPassword = async (email) => {
     throw new AppError('No user found', HTTP_STATUS.BAD_REQUEST);
   }
 
-  const { restToken, hashedToken, expiresAt } = tokenManager.generatePasswordResetToken();
+  const { resetToken, hashedToken, expiresAt } = tokenManager.generatePasswordResetToken();
 
   await authRepo.findOneAndUpdate(user.userId, {
     passwordResetToken: hashedToken,
     passwordResetTimeout: expiresAt,
   });
 
-  const resetUrl = `${process.env.CLIENT_URL}/rest-password/${restToken}`;
+  const resetUrl = `${process.env.CLIENT_URL}/rest-password/${resetToken}`;
 
   await emailer.sendPasswordResetEmail(user, resetUrl);
 

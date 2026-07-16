@@ -1,0 +1,141 @@
+/* ==========================================================
+   Transitions
+   Estadious Design System
+   ========================================================== */
+
+/* ==========================================================
+   Theme Transition
+   ========================================================== */
+
+html,
+body {
+  transition:
+    background-color var(--duration-normal) var(--ease-standard),
+    color var(--duration-normal) var(--ease-standard);
+}
+
+/* ==========================================================
+   Surface Transition
+   ========================================================== */
+
+.transition-surface {
+  transition:
+    background-color var(--duration-normal) var(--ease-standard),
+    border-color var(--duration-normal) var(--ease-standard),
+    box-shadow var(--duration-normal) var(--ease-standard);
+}
+
+/* ==========================================================
+   Text Transition
+   ========================================================== */
+
+.transition-text {
+  transition:
+    color var(--duration-fast) var(--ease-standard);
+}
+
+/* ==========================================================
+   Transform Transition
+   ========================================================== */
+
+.transition-transform {
+  transition:
+    transform var(--duration-normal) var(--ease-standard);
+}
+
+/* ==========================================================
+   Opacity Transition
+   ========================================================== */
+
+.transition-opacity {
+  transition:
+    opacity var(--duration-normal) var(--ease-standard);
+}
+
+/* ==========================================================
+   Interactive Elements
+   ========================================================== */
+
+.transition-interactive {
+  transition:
+    background-color var(--duration-normal) var(--ease-standard),
+    color var(--duration-fast) var(--ease-standard),
+    border-color var(--duration-normal) var(--ease-standard),
+    box-shadow var(--duration-normal) var(--ease-standard),
+    transform var(--duration-normal) var(--ease-standard);
+}
+
+/* ==========================================================
+   Hover Lift
+   ========================================================== */
+
+.hover-lift {
+  transition:
+    transform var(--duration-normal) var(--ease-standard),
+    box-shadow var(--duration-normal) var(--ease-standard);
+}
+
+.hover-lift:hover {
+  transform: translateY(-4px);
+
+  box-shadow: var(--shadow-card-hover);
+}
+
+/* ==========================================================
+   Hover Scale
+   ========================================================== */
+
+.hover-scale {
+  transition:
+    transform var(--duration-normal) var(--ease-standard);
+}
+
+.hover-scale:hover {
+  transform: scale(1.03);
+}
+
+/* ==========================================================
+   View Transition API
+   ========================================================== */
+
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: var(--duration-slow);
+}
+
+::view-transition-old(root) {
+  animation: fade-in reverse var(--duration-fast) var(--ease-standard);
+}
+
+::view-transition-new(root) {
+  animation: fade-in var(--duration-normal) var(--ease-standard);
+}
+
+/* ==========================================================
+   Page Transition
+   ========================================================== */
+
+.page-transition {
+  animation:
+    fade-in
+    var(--duration-normal)
+    var(--ease-standard);
+}
+
+/* ==========================================================
+   Accessibility
+   ========================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+
+    transition: none !important;
+  }
+}

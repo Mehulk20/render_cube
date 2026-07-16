@@ -1,9 +1,12 @@
 /* ==========================================================
    Utilities
+   Estadious Design System
    ========================================================== */
 
 @layer utilities {
-  /* ---------- Scrollbar ---------- */
+  /* ==========================================================
+     Scrollbar
+     ========================================================== */
 
   .scrollbar-hide {
     -ms-overflow-style: none;
@@ -14,33 +17,33 @@
     display: none;
   }
 
-  /* ---------- Text ---------- */
+  /* ==========================================================
+     Text
+     ========================================================== */
 
   .text-gradient {
-    background: linear-gradient(
-      135deg,
-      var(--color-brand-500),
-      var(--color-fuchsia)
-    );
+    background: linear-gradient(135deg, var(--color-brand-500), var(--color-brand-400));
 
-    -webkit-background-clip: text;
     background-clip: text;
+    -webkit-background-clip: text;
 
-    -webkit-text-fill-color: transparent;
     color: transparent;
+    -webkit-text-fill-color: transparent;
   }
 
-  /* ---------- Background ---------- */
+  /* ==========================================================
+     Grid Background
+     ========================================================== */
 
   .bg-grid {
     background-image:
       linear-gradient(
-        rgba(124, 92, 252, 0.04) 1px,
+        color-mix(in srgb, var(--color-brand-500) 6%, transparent) 1px,
         transparent 1px
       ),
       linear-gradient(
         90deg,
-        rgba(124, 92, 252, 0.04) 1px,
+        color-mix(in srgb, var(--color-brand-500) 6%, transparent) 1px,
         transparent 1px
       );
 
@@ -50,17 +53,21 @@
   .dark .bg-grid {
     background-image:
       linear-gradient(
-        rgba(124, 92, 252, 0.08) 1px,
+        color-mix(in srgb, var(--color-brand-500) 10%, transparent) 1px,
         transparent 1px
       ),
       linear-gradient(
         90deg,
-        rgba(124, 92, 252, 0.08) 1px,
+        color-mix(in srgb, var(--color-brand-500) 10%, transparent) 1px,
         transparent 1px
       );
 
     background-size: 40px 40px;
   }
+
+  /* ==========================================================
+     Shimmer
+     ========================================================== */
 
   .bg-shimmer {
     background: linear-gradient(
@@ -73,55 +80,159 @@
     background-size: 200% 100%;
   }
 
-  /* ---------- Aurora ---------- */
+  /* ==========================================================
+     Aurora
+     ========================================================== */
 
   .aurora-cover {
     background:
       radial-gradient(
         circle at 20% 30%,
-        rgba(124, 92, 252, .55),
+        color-mix(in srgb, var(--color-brand-500) 55%, transparent),
         transparent 45%
       ),
       radial-gradient(
         circle at 75% 65%,
-        rgba(211, 79, 224, .45),
+        color-mix(in srgb, var(--color-brand-400) 45%, transparent),
         transparent 50%
       ),
       radial-gradient(
         circle at 50% 100%,
-        rgba(79, 209, 224, .25),
+        color-mix(in srgb, var(--color-info) 20%, transparent),
         transparent 45%
       ),
       var(--color-background);
   }
 
-  /* ---------- Shadows ---------- */
+  /* ==========================================================
+     Glass
+     ========================================================== */
+
+  .glass {
+    backdrop-filter: blur(var(--blur-md));
+
+    background: var(--glass-background);
+
+    border: 1px solid var(--glass-border);
+
+    box-shadow: var(--glass-shadow);
+  }
+
+  /* ==========================================================
+    cards
+     ========================================================== */
+
+  .card {
+    background: var(--color-card);
+
+    border: 1px solid var(--color-card-border);
+
+    box-shadow: var(--shadow-card);
+
+    will-change: transform;
+
+    backface-visibility: hidden;
+
+    transition:
+      transform var(--motion-normal) var(--ease-smooth),
+      background-color var(--motion-normal) var(--ease-standard),
+      border-color var(--motion-normal) var(--ease-standard),
+      box-shadow var(--motion-normal) var(--ease-standard);
+  }
+
+  .card:hover {
+    background: var(--color-card-hover);
+
+    transform: translateY(-3px);
+
+    box-shadow: var(--shadow-card-hover);
+  }
+
+  .motion-card {
+    will-change: transform;
+
+    backface-visibility: hidden;
+
+    transition:
+      transform var(--motion-fast) var(--ease-snappy),
+      background-color var(--motion-normal) var(--ease-standard),
+      border-color var(--motion-normal) var(--ease-standard),
+      box-shadow var(--motion-normal) var(--ease-standard);
+  }
+  /* ==========================================================
+     Buttons
+     ========================================================== */
+  .motion-button {
+    transition:
+      transform 140ms var(--ease-snappy),
+      background-color var(--motion-fast) var(--ease-standard),
+      border-color var(--motion-fast) var(--ease-standard),
+      color var(--motion-fast) var(--ease-standard);
+  }
+
+  /* ==========================================================
+     Links
+     ========================================================== */
+
+  .motion-link {
+    transition:
+      color var(--motion-fast) var(--ease-standard),
+      opacity var(--motion-fast) var(--ease-standard);
+  }
+  /* ==========================================================
+     Hover Helpers
+     Canonical .hover-lift / .hover-scale definitions live in
+     transitions.css (kept unlayered so they reliably win the
+     cascade over other @layer utilities styles).
+     ========================================================== */
+
+  /* ==========================================================
+     Shadows
+     ========================================================== */
 
   .shadow-card {
     box-shadow: var(--shadow-card);
   }
 
-  .shadow-card-hover:hover {
-    box-shadow: var(--shadow-card-hover);
+  .shadow-floating {
+    box-shadow: var(--shadow-floating);
+  }
+
+  .shadow-modal {
+    box-shadow: var(--shadow-modal);
   }
 
   .shadow-glow {
     box-shadow: var(--shadow-glow);
   }
 
-  /* ---------- Focus ---------- */
+  /* transitions */
+  .transition-theme {
+    transition:
+      background-color var(--motion-normal) var(--ease-standard),
+      border-color var(--motion-normal) var(--ease-standard),
+      color var(--motion-fast) var(--ease-standard);
+  }
+
+  /* ==========================================================
+     Focus Ring
+     ========================================================== */
 
   .focus-ring {
     outline: none;
+
+    box-shadow: 0 0 0 0 transparent;
+
+    transition: box-shadow var(--motion-fast) var(--ease-standard);
   }
 
   .focus-ring:focus-visible {
-    outline: 2px solid var(--color-primary);
-
-    outline-offset: 2px;
+    box-shadow: var(--shadow-focus);
   }
 
-  /* ---------- Selection ---------- */
+  /* ==========================================================
+     Selection
+     ========================================================== */
 
   .user-select-none {
     user-select: none;
@@ -131,27 +242,264 @@
     user-select: all;
   }
 
-  /* ---------- Overflow ---------- */
+  /* ==========================================================
+     Overflow
+     ========================================================== */
 
   .overflow-overlay {
     overflow: overlay;
   }
 
-  /* ---------- Glass ---------- */
+  .bg-featured {
+    position: relative;
+    overflow: hidden;
 
-  .glass {
-    backdrop-filter: blur(18px);
+    background: var(--featured-bg);
 
-    background: color-mix(
-      in srgb,
-      var(--color-surface) 85%,
-      transparent
-    );
+    border: 1px solid color-mix(in srgb, var(--color-border) 80%, transparent);
 
-    border: 1px solid color-mix(
-      in srgb,
-      var(--color-border) 60%,
-      transparent
-    );
+    border-radius: var(--radius-2xl);
+
+    box-shadow:
+      var(--shadow-card),
+      inset 0 1px var(--surface-highlight);
+
+    isolation: isolate;
+  }
+
+  .bg-featured::before {
+    content: '';
+
+    position: absolute;
+
+    width: 520px;
+    height: 520px;
+
+    left: -180px;
+    bottom: -180px;
+
+    border-radius: 9999px;
+
+    background: var(--featured-decor-left);
+
+    filter: blur(100px);
+
+    pointer-events: none;
+
+    z-index: 0;
+  }
+
+  .bg-featured::after {
+    content: '';
+
+    position: absolute;
+
+    width: 420px;
+    height: 420px;
+
+    right: -140px;
+    top: -160px;
+
+    border-radius: 9999px;
+
+    background: var(--featured-decor-right);
+
+    filter: blur(110px);
+
+    pointer-events: none;
+
+    z-index: 0;
+  }
+
+  .bg-decor::before {
+    content: '';
+    position: absolute;
+
+    width: 520px;
+    height: 320px;
+
+    left: -140px;
+    bottom: -180px;
+
+    border-radius: 9999px;
+
+    background: var(--featured-decor-left);
+
+    filter: blur(90px);
+  }
+  .bg-decor::after {
+    content: '';
+    position: absolute;
+
+    width: 360px;
+    height: 360px;
+
+    right: -100px;
+    top: -120px;
+
+    border-radius: 9999px;
+
+    background: var(--featured-decor-right);
+
+    filter: blur(100px);
+  }
+  .bg-featured-noise::after {
+    content: '';
+
+    position: absolute;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    opacity: var(--noise-opacity);
+
+    background-image: radial-gradient(circle, var(--noise-color) 0.6px, transparent 0.6px);
+
+    background-size: 16px 16px;
+
+    z-index: 1;
+  }
+
+  /* bg-category-section */
+
+  .bg-category {
+    position: relative;
+
+    overflow: hidden;
+
+    background: var(--category-gradient);
+
+    border: 1px solid color-mix(in srgb, var(--color-border) 80%, transparent);
+
+    border-radius: var(--radius-2xl);
+
+    box-shadow:
+      var(--shadow-card),
+      inset 0 1px var(--surface-highlight);
+
+    isolation: isolate;
+  }
+
+  .bg-category::before {
+    content: '';
+
+    position: absolute;
+
+    width: 500px;
+    height: 500px;
+
+    left: -180px;
+    bottom: -180px;
+
+    border-radius: 9999px;
+
+    background: var(--category-blob-left);
+
+    filter: blur(90px);
+
+    pointer-events: none;
+  }
+  .bg-category::after {
+    content: '';
+
+    position: absolute;
+
+    width: 380px;
+    height: 380px;
+
+    right: -120px;
+    top: -140px;
+
+    border-radius: 9999px;
+
+    background: var(--category-blob-right);
+
+    filter: blur(100px);
+
+    pointer-events: none;
+  }
+
+  /* ==========================================================
+     Dropdown Panel
+     Shared floating panel used by ProfileMenu, Cart preview,
+     NotificationBell preview — one definition so every navbar
+     popover matches the modal surface token + shadow language.
+     ========================================================== */
+
+  .dropdown-panel {
+    background: var(--color-modal);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-modal);
+  }
+
+  /* ==========================================================
+     Notification / Cart Badge Dot
+     ========================================================== */
+
+  .badge-dot {
+    position: absolute;
+    top: -2px;
+    right: -2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 16px;
+    height: 16px;
+    padding: 0 4px;
+    border-radius: var(--radius-full);
+    background: var(--color-danger);
+    color: white;
+    font-size: 10px;
+    font-weight: var(--font-bold);
+    line-height: 1;
+    border: 2px solid var(--color-modal);
+  }
+
+  /* ==========================================================
+     Icon Trigger Button
+     Shared 40px round trigger used by bell / cart / avatar in
+     the navbar so hit-targets + hover states stay consistent.
+     ========================================================== */
+
+  .icon-trigger {
+    position: relative;
+    display: flex;
+    height: 40px;
+    width: 40px;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-md);
+    color: var(--color-foreground-muted);
+    transition:
+      background-color var(--motion-fast) var(--ease-standard),
+      color var(--motion-fast) var(--ease-standard),
+      transform var(--motion-fast) var(--ease-snappy);
+  }
+
+  .icon-trigger:hover {
+    background: var(--color-surface-hover);
+    color: var(--color-primary);
+  }
+
+  .icon-trigger:active {
+    transform: scale(0.95);
+  }
+
+  .bg-category-noise::after {
+    content: '';
+
+    position: absolute;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    opacity: var(--noise-opacity);
+
+    background-image: radial-gradient(circle, var(--noise-color) 0.6px, transparent 0.6px);
+
+    background-size: 16px 16px;
   }
 }
