@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Sparkles, Wallet, TrendingUp, ShieldCheck, ArrowRight, Check } from 'lucide-react';
 import { Card, Button, Input, Textarea } from '../../../shared/ui';
-import { categories } from '../../../data/mock';
+import { categories } from '../../../context/data/mock';
 import { useAuth } from '../../../context/AuthContext';
 
 const perks = [

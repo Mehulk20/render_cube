@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 
 import { useWishlist } from '../../../context/WishlistContext';
-import { userStats } from '../../../data/mock';
+import { userStats } from '../../../context/data/mock';
 
 import { QuickStatGrid } from '../components';
 

@@ -1,5 +1,5 @@
 import { createContext, useContext, useState, useMemo, useCallback } from 'react';
-import { currentUser as seedUser } from '../data/mock';
+import { currentUser as seedUser } from './data/mock';
 
 const AuthContext = createContext(null);
 

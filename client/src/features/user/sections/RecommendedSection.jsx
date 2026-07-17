@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { SectionHeader } from '../../../shared/components';
 import { AssetGrid } from '../../assets/components';
 
-import { assets } from '../../../data/mock';
+import { assets } from '../../../context/data/mock';
 
 export default function RecommendedSection() {
   return (

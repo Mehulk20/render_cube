@@ -1,6 +1,6 @@
 import { DownloadsChart, AssetTable } from '../components';
 
-import { downloadsSeries, myAssets } from '../../../data/mock';
+import { downloadsSeries, myAssets } from '../../../context/data/mock';
 
 export default function CreatorAnalyticsSection() {
   return (

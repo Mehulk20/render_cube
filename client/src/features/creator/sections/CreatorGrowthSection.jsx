@@ -1,6 +1,6 @@
 import { CreatorQuickActions, StoreProgressCard, TipsToGrow } from '../components';
 
-import { tipsToGrow } from '../../../data/mock';
+import { tipsToGrow } from '../../../context/data/mock';
 
 export default function CreatorGrowthSection() {
   return (

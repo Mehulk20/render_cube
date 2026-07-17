@@ -1,12 +1,12 @@
 import {
-  HeroSection,
-  SearchBar,
   StatsBar,
   CTASection,
   CategoriesSection,
   FeaturedAssets,
   HowItWorks,
 } from '../../public/components';
+
+import { HeroSection, SearchSection } from '../sections';
 
 import { CreatorSection } from '../../creator/components';
 
@@ -18,7 +18,7 @@ const HomePage = () => {
   return (
     <div className="page-transition">
       <HeroSection />
-      <SearchBar />
+      <SearchSection />
       <StatsBar />
       <CategoriesSection />
       <FeaturedAssets />

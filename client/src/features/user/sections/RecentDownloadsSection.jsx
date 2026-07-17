@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 
 import { RecentDownloadsList } from '../components';
-import { recentDownloads } from '../../../data/mock';
+import { recentDownloads } from '../../../context/data/mock';
 
 export default function RecentDownloadsSection() {
   return (

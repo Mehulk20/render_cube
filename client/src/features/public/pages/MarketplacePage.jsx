@@ -1,7 +1,8 @@
 import { ChevronDown, Grid, List, SlidersHorizontal } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { AssetCard, SearchBar } from '../../public/components';
+import { AssetCard } from '../../public/components';
+import { SearchSection } from '../sections';
 
 // ── Mock asset data ─────────────────────────────────────────────
 const ALL_ASSETS = [
@@ -205,7 +206,7 @@ const MarketplacePage = () => {
       </div>
 
       {/* Compact search bar */}
-      <SearchBar compact />
+      <SearchSection compact />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
         {/* Filter toolbar */}

@@ -4,7 +4,7 @@ import { createBrowserRouter } from 'react-router-dom';
 
 import { MainLayout, AuthLayout, DashboardLayout } from '../layouts';
 
-import { ProtectedRoute, PublicRoute } from '.';
+import { ProtectedRoute, PublicRoute, RoleRoute } from '.';
 
 import {
   HomePage,
@@ -17,7 +17,7 @@ import {
 } from '../features/public/pages';
 import { UserDashboard } from '../features/user/pages';
 import { CreatorDashboard } from '../features/creator/pages';
-import { UserProfile, CreatorProfile } from '../features/profile/pages';
+import { Profile } from '../features/profile/pages';
 import { SignupPage, ForgotPasswordPage, ResetPasswordPage } from '../features/auth/pages';
 
 import { LoginSkeleton } from '../shared/skeletons/pages/auth';
@@ -88,6 +88,7 @@ export const router = createBrowserRouter([
   },
 
   // Protected Routes
+
   {
     element: <ProtectedRoute />,
     children: [
@@ -95,33 +96,22 @@ export const router = createBrowserRouter([
         path: 'account',
         element: <DashboardLayout />,
         children: [
-          {
-            index: true,
-            element: <UserDashboard />,
-          },
-          {
-            path: 'profile',
-            element: <UserProfile />,
-          },
+          { index: true, element: <UserDashboard /> },
+          { path: 'profile', element: <Profile /> },
         ],
       },
-    ],
-  },
 
-  {
-    element: <ProtectedRoute />,
-    children: [
       {
-        path: 'creator',
-        element: <DashboardLayout />,
+        element: <RoleRoute allowedRoles={['creator']} />,
         children: [
           {
-            index: true,
-            element: <CreatorDashboard />,
-          },
-          {
-            path: 'profile',
-            element: <CreatorProfile />,
+            path: 'creator',
+            element: <DashboardLayout />,
+            children: [
+              { index: true, element: <CreatorDashboard /> },
+              // { path: 'assets', element: <Assets /> },
+              // { path: 'analytics', element: <Analytics /> },
+            ],
           },
         ],
       },

@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import Button from './Button';
-import CreatorSignupForm from './CreatorSignupForm';
+import { CreatorSignupForm } from '../sections';
 import { Container } from '../../../shared/ui';
 
 /**

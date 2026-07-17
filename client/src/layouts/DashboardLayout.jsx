@@ -2,7 +2,8 @@ import { useState } from 'react';
 import { Outlet, useLocation } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
 
-import { DashboardSidebar, MobileBottomNav, MobileDrawer } from '../features/layout';
+import { MobileBottomNav, MobileDrawer } from '../features/dashboard/components';
+import { DashboardSidebar } from '../features/dashboard/components/sidebar';
 import { DashboardNavbar } from '../features/dashboard/components';
 import { PageTransition } from '../shared/components';
 import { accountLinks, creatorLinks } from '../lib/navLinks';

@@ -1,2 +1,1 @@
-export { default as UserProfile } from './UserProfile';
-export { default as CreatorProfile } from './CreatorProfile';
+export { default as Profile } from './Profile';

@@ -1,5 +1,5 @@
 import { BrandPanel, AuthFooter } from '../features/auth/components';
-import { Navbar } from '../features/public/components';
+import { Navbar } from '../features/public/components/navbar';
 import { ScrollToTop } from '../UI';
 import AnimatedOutlet from '../UI/AnimatedOutlet';
 

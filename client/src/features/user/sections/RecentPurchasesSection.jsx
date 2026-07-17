@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { SectionHeader } from '../../../shared/components';
 import { RecentPurchasesGrid } from '../components';
 
-import { recentPurchases } from '../../../data/mock';
+import { recentPurchases } from '../../../context/data/mock';
 
 export default function RecentPurchasesSection() {
   return (

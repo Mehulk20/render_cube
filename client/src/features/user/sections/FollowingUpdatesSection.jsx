@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 
 import { Card } from '../../../shared/ui';
-import { followingUpdates } from '../../../data/mock';
+import { followingUpdates } from '../../../context/data/mock';
 
 export default function FollowingUpdatesSection() {
   return (

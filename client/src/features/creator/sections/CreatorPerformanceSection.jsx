@@ -1,6 +1,6 @@
 import { TopPerformingList, RecentReviews } from '../components';
 
-import { topPerforming, recentReviews } from '../../../data/mock';
+import { topPerforming, recentReviews } from '../../../context/data/mock';
 
 export default function CreatorPerformanceSection() {
   return (
