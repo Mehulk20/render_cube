@@ -1,23 +1,19 @@
 import { useState } from 'react';
 import { AnimatePresence } from 'framer-motion';
+import { useCurrentUser } from '../hooks';
 
-import { useAuth } from '../../../context/AuthContext';
-
-import { ProfileHero, ProfileEditSection, ProfileOverviewSection, Sidebar } from '../sections';
-
-import { ProfileHeader, ProfileTabs } from '../components';
-
-import { creatorProfileTabs } from '../constants/creatorProfileTabs';
+import { ProfileHero, ProfileEditSection } from '../sections';
+import { ProfileView } from '../components';
+import { Loader } from 'lucide-react';
 
 export default function Profile() {
-  const { user, updateProfile } = useAuth();
+  const { data: user, isLoading } = useCurrentUser({});
 
   const [editing, setEditing] = useState(false);
-  const [tab, setTab] = useState('overview');
+  const [activeTab, setActiveTab] = useState('overview');
 
-  function handleSave(patch) {
-    updateProfile(patch);
-    setEditing(false);
+  if (isLoading) {
+    return <Loader />;
   }
 
   return (
@@ -27,23 +23,19 @@ export default function Profile() {
       <AnimatePresence mode="wait">
         {editing ? (
           <ProfileEditSection
+            key="edit"
             user={user}
             showCreatorInfo
-            onSave={handleSave}
             onCancel={() => setEditing(false)}
           />
         ) : (
-          <div className="space-y-6">
-            <ProfileHeader user={user} onEdit={() => setEditing(true)} />
-
-            <ProfileTabs tabs={creatorProfileTabs} activeTab={tab} onChange={setTab} />
-
-            <div className="grid gap-6 lg:grid-cols-[1fr_320px]">
-              <ProfileOverviewSection user={user} tab={tab} />
-
-              <Sidebar user={user} />
-            </div>
-          </div>
+          <ProfileView
+            key="view"
+            user={user}
+            activeTab={activeTab}
+            onTabChange={setActiveTab}
+            onEdit={() => setEditing(true)}
+          />
         )}
       </AnimatePresence>
     </div>

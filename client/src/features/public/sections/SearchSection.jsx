@@ -15,7 +15,7 @@ export default function SearchSection({ compact = false }) {
     navigate(`/marketplace?q=${encodeURIComponent(query)}&cat=${encodeURIComponent(category)}`);
   };
 
-  const sectionPadding = compact ? 'py-4' : 'py-8';
+  const sectionPadding = compact ? 'py-4' : 'py-6';
 
   return (
     <section className={`${sectionPadding} bg-background px-4 transition-surface sm:px-6 lg:px-8`}>
@@ -23,21 +23,34 @@ export default function SearchSection({ compact = false }) {
         <form onSubmit={handleSearch}>
           <div
             className="
-              group
-              flex
-              items-center
-              gap-4
-              rounded-2xl
-              border-2
-              border-border
-              bg-surface
-              px-5
-              py-4
-              shadow-card
-              transition-interactive
-              hover:border-primary
-              hover:shadow-card-hover
-            "
+    group
+    flex
+    items-center
+    gap-4
+
+    rounded-2xl
+    border border-border/50
+
+    bg-background/80
+    backdrop-blur-2xl
+
+    px-6
+    py-4
+
+    transition-all
+    duration-500
+    ease-[cubic-bezier(.22,1,.36,1)]
+
+    shadow-card
+
+    hover:-translate-y-0.5
+    hover:border-primary/20
+    hover:shadow-card-hover
+
+    focus-within:-translate-y-1
+    focus-within:border-primary/25
+    focus-within:shadow-card-hover
+  "
           >
             <SearchInput value={query} onChange={setQuery} />
 

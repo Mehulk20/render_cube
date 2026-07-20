@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 import { Mail, User, UserPlus } from 'lucide-react';
+import { setCredentials, useRegisterMutation } from '../services';
 import {
   InputField,
   PasswordInput,
@@ -12,33 +14,56 @@ import {
   AuthCard,
 } from '../components';
 
-import { isNotEmpty, isValidEmail } from '../../../utils/validators';
+import { validateRegisterForm } from '../../../utils/validators';
 
 export default function SignupPage() {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
-  const [form, setForm] = useState({ name: '', email: '', password: '', confirm: '' });
+  const [form, setForm] = useState({
+    username: '',
+    name: '',
+    email: '',
+    password: '',
+    confirmPassword: '',
+  });
   const [agree, setAgree] = useState(false);
   const [errors, setErrors] = useState({});
-  const [loading, setLoading] = useState(false);
+  const [register, { isLoading }] = useRegisterMutation();
 
   const update = (key) => (e) => setForm((f) => ({ ...f, [key]: e.target.value }));
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
+    if (isLoading) return;
     e.preventDefault();
-    const nextErrors = {};
-    if (!isNotEmpty(form.name)) nextErrors.name = 'Enter your full name';
-    if (!isValidEmail(form.email)) nextErrors.email = 'Enter a valid email address';
-    if (form.password.length < 8) nextErrors.password = 'Use at least 8 characters';
-    if (form.confirm !== form.password) nextErrors.confirm = 'Passwords do not match';
-    if (!agree) nextErrors.agree = 'Please accept the Terms of Service';
+    const nextErrors = validateRegisterForm(form, agree);
+
     setErrors(nextErrors);
+
     if (Object.keys(nextErrors).length) return;
 
-    setLoading(true);
-    setTimeout(() => {
-      setLoading(false);
-      navigate('/login');
-    }, 1200);
+    try {
+      const response = await register(form).unwrap();
+
+      if (!response?.data?.accessToken) {
+        throw new Error('Invalid signup response');
+      }
+
+      const { accessToken, user } = response.data;
+
+      dispatch(setCredentials({ accessToken, user }));
+
+      localStorage.setItem('accessToken', accessToken);
+
+      navigate('/account', { replace: true });
+    } catch (error) {
+      console.error(error);
+
+      setErrors((prev) => ({
+        ...prev,
+        ...error?.data?.errors,
+        api: error?.data?.message,
+      }));
+    }
   };
 
   return (
@@ -59,6 +84,18 @@ export default function SignupPage() {
     >
       <form onSubmit={handleSubmit} noValidate className="flex flex-col gap-5">
         <InputField
+          id="username"
+          label="username"
+          icon={Mail}
+          type="Username"
+          placeholder="set you unique username"
+          value={form.username}
+          onChange={update('username')}
+          error={errors.username}
+          autoComplete="username"
+        />
+
+        <InputField
           id="name"
           label="Full Name"
           icon={User}
@@ -70,7 +107,7 @@ export default function SignupPage() {
         />
 
         <InputField
-          id="email"
+          id="identifier"
           label="Email Address"
           icon={Mail}
           type="email"
@@ -80,7 +117,6 @@ export default function SignupPage() {
           error={errors.email}
           autoComplete="email"
         />
-
         <PasswordInput
           id="password"
           label="Password"
@@ -96,9 +132,9 @@ export default function SignupPage() {
           id="confirm"
           label="Confirm Password"
           placeholder="Re-enter your password"
-          value={form.confirm}
-          onChange={update('confirm')}
-          error={errors.confirm}
+          value={form.confirmPassword}
+          onChange={update('confirmPassword')}
+          error={errors.confirmPassword}
           autoComplete="new-password"
         />
 
@@ -123,7 +159,7 @@ export default function SignupPage() {
           {errors.agree && <p className="mt-1.5 text-xs font-medium text-danger">{errors.agree}</p>}
         </div>
 
-        <PrimaryButton icon={UserPlus} loading={loading}>
+        <PrimaryButton icon={UserPlus} loading={isLoading}>
           Create Account
         </PrimaryButton>
 

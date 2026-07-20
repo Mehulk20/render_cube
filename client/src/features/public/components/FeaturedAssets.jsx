@@ -2,7 +2,7 @@ import { ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useRef, useState } from 'react';
 
-import AssetCard from './AssetCard';
+import { MemoizedAssetCard } from '../components/assetCard';
 import { Container, Section } from '../../../shared/ui';
 
 export const FEATURED_ASSETS = [
@@ -223,7 +223,7 @@ export default function FeaturedAssets() {
                     scrollSnapAlign: 'start',
                   }}
                 >
-                  <AssetCard {...asset} />
+                  <MemoizedAssetCard {...asset} />
                 </div>
               ))}
             </div>

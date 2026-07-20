@@ -1,7 +1,7 @@
 const { catchAsyncError, AppError } = require('@rendercube/shared');
 const internalService = require('../services/internal-service');
 
-exports.getAllCredentials = catchAsyncError(async (req, res, next) => {
+exports.getAllCredentials = catchAsyncError(async (req, res) => {
   const result = await internalService.getAllCredentials();
 
   res.status(200).json({
@@ -11,7 +11,7 @@ exports.getAllCredentials = catchAsyncError(async (req, res, next) => {
 });
 
 //development use only
-exports.getAllExisting = catchAsyncError(async (req, res, next) => {
+exports.getAllExisting = catchAsyncError(async (req, res) => {
   const result = await internalService.getExistingAuths(req.body);
 
   res.status(200).json({
@@ -31,7 +31,7 @@ exports.createDevCredentials = catchAsyncError(async (req, res, next) => {
   });
 });
 
-exports.deleteAllCredentials = async (req, res, next) => {
+exports.deleteAllCredentials = async (req, res) => {
   await internalService.deleteAllCredentials();
 
   res.status(200).json({

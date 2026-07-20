@@ -8,7 +8,14 @@ const userSchema = new mongoose.Schema(
       required: true,
       unique: true,
       lowercase: true,
-      trim: true
+      trim: true,
+    },
+    name: {
+      type: String,
+      required: true,
+      trim: true,
+      minlength: 2,
+      maxlength: 100,
     },
 
     username: {
@@ -21,29 +28,29 @@ const userSchema = new mongoose.Schema(
       maxlength: [30, 'Username cannot exceed 30 characters'],
       match: [
         /^[a-z0-9_]+$/,
-        'Username can only contain lowercase letters, numbers, and underscores'
-      ]
+        'Username can only contain lowercase letters, numbers, and underscores',
+      ],
     },
 
     avatar: {
       type: String,
-      default: null
+      default: null,
     },
 
     bio: {
       type: String,
       maxlength: 200,
-      default: ''
+      default: '',
     },
 
     status: {
       type: String,
       enum: ['active', 'suspended'],
-      default: 'active'
-    }
+      default: 'active',
+    },
   },
   {
-    timestamps: true
+    timestamps: true,
   }
 );
 

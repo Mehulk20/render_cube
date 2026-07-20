@@ -60,7 +60,7 @@ export default function CategoriesSection() {
       className="
         bg-category
         bg-category-noise
-        py-20
+        py-16
         transition-surface
       "
     >

@@ -15,11 +15,14 @@ exports.getUsers = async () => {
 };
 
 exports.registerUser = async (data) => {
-  const { email, password, confirmPassword, role, username, ...userData } = data;
+  const { password, confirmPassword, email, username, name } = data;
+
   const existingUser = await authRepo.getCredentialByEmail(email);
 
   if (existingUser) {
-    throw new AppError('Email already exists', HTTP_STATUS.BAD_REQUEST);
+    throw new AppError('validation error', HTTP_STATUS.BAD_REQUEST, {
+      email: 'email already exists',
+    });
   }
 
   passwordManager.checkCorrectPassword(password, confirmPassword);
@@ -29,21 +32,20 @@ exports.registerUser = async (data) => {
   const userID = `usr_${crypto.randomUUID()}`;
 
   let user;
-
+  let authUser;
   try {
-    const authUser = await authRepo.createCredential({
+    authUser = await authRepo.createCredential({
       userId: userID,
       email,
       username,
       passwordHash: hashedPassword,
-      role,
     });
 
     user = await userClient.createUserProfile({
       userId: userID,
-      email: email,
+      email,
       username,
-      ...userData,
+      name,
     });
 
     if (!authUser || !user) {
@@ -62,18 +64,18 @@ exports.registerUser = async (data) => {
     throw new AppError('Error while adding user', HTTP_STATUS.INTERNAL_SERVER_ERROR);
   }
 
-  const token = tokenManager.createAndSendToken(user);
+  const token = tokenManager.createAndSendToken(authUser);
 
   if (!token) {
     throw new AppError('Failed to generate token', HTTP_STATUS.INTERNAL_SERVER_ERROR);
   }
 
-  return { data: user.data, token };
+  return { data: user.result, token };
 };
 
 exports.loginUser = async (identifier, password) => {
   const user = await authRepo.findByIdentifier(identifier);
-  console.log(user);
+
   if (!user || !user.active) {
     throw new AppError(
       'Incorrect email or password or Account suspended',

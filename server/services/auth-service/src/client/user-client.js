@@ -5,6 +5,7 @@ const USER_SERVICE_URI = process.env.USER_SERVICE_URI;
 const INTERNAL_URI = '/api/v1/internal/users';
 
 exports.createUserProfile = async (payload) => {
+  console.log(`from auth Service: ${payload}`);
   const response = await client.post(`${USER_SERVICE_URI}${INTERNAL_URI}/profile`, payload);
 
   return response.data;

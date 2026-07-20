@@ -2,11 +2,11 @@ import { useEffect, useRef, useState } from 'react';
 import { ChevronDown } from 'lucide-react';
 import clsx from 'clsx';
 
-import { useGetCurrentUserQuery } from '../../features/user/services';
+import { useCurrentUser } from '../../features/profile/hooks';
 import UserMenu from './UserMenu';
 
 export default function ProfileMenu() {
-  const { data: user, isLoading } = useGetCurrentUserQuery();
+  const { data: user } = useCurrentUser();
 
   const [open, setOpen] = useState(false);
 
@@ -35,10 +35,6 @@ export default function ProfileMenu() {
       document.removeEventListener('keydown', handleEscape);
     };
   }, []);
-
-  if (isLoading) {
-    return <div className="h-10 w-10 animate-pulse rounded-full bg-surface" />;
-  }
 
   return (
     <div ref={menuRef} className="relative">
@@ -76,7 +72,7 @@ export default function ProfileMenu() {
       {open && (
         <div
           className="
-            absolute right-0 top-full z-[var(--z-dropdown)]
+            absolute right-0 top-full z-(--z-dropdown)
             mt-3 origin-top-right animate-scale-in
           "
         >

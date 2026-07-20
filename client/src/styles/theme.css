@@ -318,6 +318,16 @@ color-mix(
   0 16px 36px rgba(15,23,42,.09),
   0 40px 80px rgba(124,92,255,.08);
 
+    --shadow-search:
+    0 1px 2px rgba(15,23,42,.02),
+    0 8px 24px rgba(15,23,42,.05),
+    0 24px 60px rgba(15,23,42,.06);
+
+  --shadow-search-hover:
+    0 2px 6px rgba(15,23,42,.03),
+    0 14px 36px rgba(15,23,42,.06),
+    0 40px 80px rgba(124,92,255,.05);
+
 --shadow-floating:
   0 24px 64px rgba(15,23,42,.14);
 
@@ -358,34 +368,30 @@ color-mix(
    ========================================================== */
 
   /* Fonts */
+ /* Fonts */
 
-  --font-display: 'Syne', sans-serif;
+  --font-display: "Plus Jakarta Sans", sans-serif;
+  --font-heading: "Plus Jakarta Sans", sans-serif;
+  --font-sans: "Geist", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
 
-  --font-sans: 'Plus Jakarta Sans', sans-serif;
+  /* Font Sizes */
 
-  --font-mono: 'JetBrains Mono', monospace;
-
-  /* ==========================================================
-   FONT SIZES
-   ========================================================== */
-
-  --text-xs: 0.75rem;
-
-  --text-sm: 0.875rem;
-
-  --text-md: 1rem;
-
+  --text-xs: .75rem;
+  --text-sm: .875rem;
+  --text-base: 1rem;
   --text-lg: 1.125rem;
-
   --text-xl: 1.25rem;
-
   --text-2xl: 1.5rem;
-
   --text-3xl: 2rem;
-
   --text-4xl: 2.5rem;
+  --text-5xl: 3.5rem;
+  --text-6xl: 4.5rem;
 
-  --text-5xl: 3.25rem;
+  /* Radius */
+
+  --radius-card: 1.5rem;
+  --radius-button: .9rem;
 
   /* ==========================================================
    LINE HEIGHT

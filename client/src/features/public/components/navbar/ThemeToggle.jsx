@@ -24,12 +24,16 @@ export default function ThemeToggle({ className }) {
     >
       <span
         className={clsx(
-          'flex h-8 w-8 items-center justify-center rounded-full bg-primary text-white shadow-glow',
+          'flex h-8 w-8 items-center justify-center rounded-full bg-brand-500 text-white shadow-glow',
           'transition-transform duration-300',
           isDark ? 'translate-x-6' : 'translate-x-0'
         )}
       >
-        {isDark ? <Moon size={15} strokeWidth={2.2} /> : <Sun size={15} strokeWidth={2.2} />}
+        {isDark ? (
+          <Moon size={15} strokeWidth={2.2} />
+        ) : (
+          <Sun size={15} strokeWidth={2.2} className="text-yellow-50" />
+        )}
       </span>
     </button>
   );

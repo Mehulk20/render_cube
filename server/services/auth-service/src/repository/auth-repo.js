@@ -8,6 +8,10 @@ exports.findByIdentifier = async (identifier) => {
     .lean();
 };
 
+exports.getCredentialByEmail = async (email) => {
+  return await Credentials.findOne({ email }).select('+active +tokenVersion, +passwordHash').lean();
+};
+
 exports.createCredential = async (data) => {
   return await Credentials.create(data);
 };

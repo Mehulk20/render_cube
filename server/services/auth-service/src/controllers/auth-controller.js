@@ -14,7 +14,15 @@ exports.getAllCredentials = catchAsyncError(async (req, res, next) => {
 });
 
 exports.register = catchAsyncError(async (req, res) => {
-  const result = await authService.registerUser(req.body);
+  const { username, name, email, password, confirmPassword } = req.body;
+
+  const result = await authService.registerUser({
+    username,
+    name,
+    email,
+    password,
+    confirmPassword,
+  });
 
   res.cookie('jwt', result.accessToken, {
     httpOnly: true,
@@ -22,12 +30,10 @@ exports.register = catchAsyncError(async (req, res) => {
     expires: new Date(Date.now() + Number(process.env.JWT_COOKIE_EXPIRES_IN) * 60 * 60 * 1000), // 7 days
   });
 
-  const { ...response } = result.data;
-
   return successResponse({
     res,
-    message: 'welcome to rendercube',
-    data: { accessToken: result.token, user: response },
+    message: 'welcome to Estadious',
+    data: { accessToken: result.token, user: result.data },
   });
 });
 
@@ -40,8 +46,9 @@ exports.login = catchAsyncError(async (req, res, next) => {
   const { passwordHash, emailVerified, ...data } = result.user;
 
   return successResponse({
+    statusCode: HTTP_STATUS.OK,
     res,
-    message: '',
+    message: 'login success',
     data: { accessToken: result.token, user: data },
   });
 });

@@ -13,12 +13,13 @@ exports.getUsers = catchAsyncError(async (req, res, next) => {
 });
 
 exports.createUser = catchAsyncError(async (req, res, next) => {
-  const newUser = await userService.createUser(req.body);
+  const result = await userService.createUser(req.body);
 
-  if (!newUser) return next(new AppError('requested data not found', 400));
+  if (!result) return next(new AppError('requested data not found', 400));
+
   res.status(201).json({
     status: 'success',
-    data: newUser,
+    result,
   });
 });
 

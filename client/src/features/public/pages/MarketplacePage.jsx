@@ -1,7 +1,7 @@
 import { ChevronDown, Grid, List, SlidersHorizontal } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { AssetCard } from '../../public/components';
+import { MemoizedAssetCard } from '../components/assetCard';
 import { SearchSection } from '../sections';
 
 // ── Mock asset data ─────────────────────────────────────────────
@@ -304,7 +304,7 @@ const MarketplacePage = () => {
           >
             {sorted.map((asset) =>
               viewMode === 'grid' ? (
-                <AssetCard key={asset.id} {...asset} />
+                <MemoizedAssetCard key={asset.id} {...asset} />
               ) : (
                 /* List view layout */
                 <div

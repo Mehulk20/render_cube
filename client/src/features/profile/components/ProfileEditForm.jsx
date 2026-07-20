@@ -2,7 +2,17 @@ import { useState } from 'react';
 import { Minus, Plus, Camera } from 'lucide-react';
 import { Card, Input, Textarea, Button, Avatar } from '../../../shared/ui';
 import { AuroraCover } from '../../../shared/components';
-export default function ProfileEditForm({ user, showCreatorInfo = false, onSave, onCancel }) {
+
+const user = {
+  name: 'Alex Carter',
+  username: 'alexcarter',
+  bio: 'Full-stack developer 🚀 | Building digital products | Coffee lover ☕',
+  location: 'Kolkata, India',
+  website: 'https://alexcarter.dev',
+  storeName: 'Carter Assets',
+};
+
+export default function ProfileEditForm({ showCreatorInfo = false, onSave, onCancel }) {
   const [form, setForm] = useState({
     name: user.name,
     username: user.username,
@@ -95,7 +105,7 @@ export default function ProfileEditForm({ user, showCreatorInfo = false, onSave,
 
       <Card className="space-y-3 p-5 sm:p-6">
         <h3 className="font-display text-sm font-semibold text-ink">Social Links</h3>
-        {social.map((s, i) => (
+        {social?.map((s, i) => (
           <div key={s.platform} className="flex items-center gap-2">
             <span className="w-20 shrink-0 text-sm text-ink-soft">{s.platform}</span>
             <Input

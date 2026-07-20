@@ -7,16 +7,7 @@ import MenuItem from './MenuItem';
 import { WorkspaceSwitch } from '../../features/dashboard/components';
 import { ThemeToggle } from '../../features/public/components';
 
-const user = {
-  id: 'usr_001',
-  name: 'John Doe',
-  username: '@johndoe',
-  email: 'john.doe@example.com',
-  avatar: 'https://i.pravatar.cc/150?img=12',
-  role: 'creator',
-};
-
-export default function UserMenu({ onClose }) {
+export default function UserMenu({ user, onClose }) {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [logout, { isLoading }] = useLogoutMutation();
@@ -77,7 +68,7 @@ export default function UserMenu({ onClose }) {
         <div
           className="
             flex items-center justify-between rounded-lg px-3 py-2.5 text-sm text-foreground-soft
-            transition-colors duration-[var(--duration-fast)] ease-[var(--ease-standard)]
+            transition-colors duration-(--duration-fast) ease-(--ease-standard)
             hover:bg-surface-hover
           "
         >

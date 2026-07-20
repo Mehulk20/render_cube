@@ -5,7 +5,7 @@ export default function ProfileBanner({ src, editable = false, onEdit, className
   return (
     <div
       className={clsx(
-        'group relative h-52 overflow-hidden rounded-3xl bg-gradient-to-r from-violet/20 via-fuchsia/10 to-cyan/20',
+        'group relative h-52 overflow-hidden rounded-3xl bg-linear-to-r from-violet/20 via-fuchsia/10 to-cyan/20',
         className
       )}
     >

@@ -6,16 +6,19 @@ import { Cart } from '../../../../shared/components';
 import { NotificationBell } from '../../../notifications/components';
 
 import { ProfileMenu } from '../../../../shared/ui';
+import { useSelector } from 'react-redux';
+import { selectIsAuthenticated } from '../../../auth/services';
 
 const DesktopActions = ({ variant }) => {
-  const isPublic = variant === 'default';
-  const isDashboard = variant === 'user' || variant === 'creator';
+  const isAuthenticated = useSelector(selectIsAuthenticated);
 
   return (
     <div className="hidden items-center gap-3 md:flex">
       <ThemeToggle />
 
-      {isPublic && (
+      {isAuthenticated && variant !== 'auth' ? (
+        <ProfileMenu />
+      ) : (
         <>
           <Cart icon={20} />
 
@@ -32,14 +35,6 @@ const DesktopActions = ({ variant }) => {
           >
             Sign up
           </Link>
-        </>
-      )}
-
-      {isDashboard && (
-        <>
-          <Cart icon={20} />
-          <NotificationBell />
-          <ProfileMenu />
         </>
       )}
     </div>

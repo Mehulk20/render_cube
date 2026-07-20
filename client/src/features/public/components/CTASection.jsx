@@ -15,7 +15,7 @@ const CTASection = () => {
   const [showForm, setShowForm] = useState(false);
 
   return (
-    <section className="relative overflow-hidden bg-background py-24 transition-surface lg:py-28">
+    <section className="relative overflow-hidden bg-background py-20 transition-surface lg:py-24">
       {/* Background */}
       <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center">
         <div className="h-72 w-72 rounded-full bg-linear-to-br from-brand-400 to-brand-600 opacity-20 blur-3xl" />

@@ -7,34 +7,80 @@ const InputField = forwardRef(function InputField(
   return (
     <div className={wrapperClassName}>
       {label && (
-        <label htmlFor={id} className="mb-2 block text-sm font-semibold text-foreground">
+        <label
+          htmlFor={id}
+          className="mb-2 block text-sm font-semibold tracking-tight text-foreground"
+        >
           {label}
         </label>
       )}
-      <div className="relative">
+
+      <div
+        className={`
+          group relative flex h-14 items-center rounded-2xl
+          border bg-input/70 backdrop-blur-xl
+
+          transition-all duration-300 ease-out
+
+          ${
+            error
+              ? 'border-danger focus-within:border-danger focus-within:ring-4 focus-within:ring-danger/10'
+              : 'border-input-border hover:border-border-strong focus-within:border-primary/50 focus-within:ring-4 focus-within:ring-primary/10'
+          }
+        `}
+      >
         {Icon && (
           <Icon
-            className="pointer-events-none absolute left-3.5 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-foreground-faint"
+            className="
+              pointer-events-none
+              ml-4
+              h-[18px]
+              w-[18px]
+              shrink-0
+              text-foreground-faint
+              transition-colors
+              duration-300
+              group-focus-within:text-primary
+            "
             strokeWidth={1.8}
           />
         )}
+
         <input
           id={id}
           ref={ref}
           className={`
-            w-full rounded-xl border bg-input/60 py-3 text-[15px] text-foreground placeholder:text-foreground-faint outline-none
-            transition-all duration-[var(--duration-fast)] ease-[var(--ease-standard)]
-            focus:border-primary focus:bg-input focus:ring-4 focus:ring-primary/10
-            ${Icon ? 'pl-11' : 'pl-4'} ${trailing ? 'pr-11' : 'pr-4'}
-            ${error ? 'border-danger focus:border-danger focus:ring-danger/10' : 'border-input-border'}
+            h-full
+            flex-1
+            bg-transparent
+
+            border-none
+            outline-none
+            ring-0
+            shadow-none
+
+            px-4
+
+            text-[16px]
+            font-medium
+            tracking-[-0.01em]
+
+            text-foreground
+            placeholder:text-foreground-faint
+
+            focus:outline-none
+            focus:ring-0
+
             ${className}
           `}
           {...props}
         />
-        {trailing}
+
+        {trailing && <div className="mr-4">{trailing}</div>}
       </div>
+
       {error && (
-        <p className="mt-1.5 text-xs font-medium text-danger" role="alert">
+        <p className="mt-2 text-xs font-medium text-danger" role="alert">
           {error}
         </p>
       )}

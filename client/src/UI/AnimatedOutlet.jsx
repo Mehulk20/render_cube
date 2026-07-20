@@ -28,7 +28,7 @@ export default function AnimatedOutlet() {
     <AnimatePresence mode="wait">
       <motion.div
         key={location.pathname}
-        className="w-full will-change-transform"
+        className="w-full will-change-transform "
         variants={variants}
         initial="initial"
         animate="animate"

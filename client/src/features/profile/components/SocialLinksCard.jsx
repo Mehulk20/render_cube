@@ -22,7 +22,7 @@ export default function SocialLinksCard({ social, onEdit }) {
         {onEdit && (
           <button
             onClick={onEdit}
-            className="text-sm font-medium text-primary transition-colors duration-[var(--duration-fast)] hover:text-primary-hover"
+            className="text-sm font-medium text-primary transition-colors duration-(--duration-fast) hover:text-primary-hover"
           >
             Edit
           </button>
@@ -38,7 +38,7 @@ export default function SocialLinksCard({ social, onEdit }) {
                   href="#"
                   className="
                   flex items-center gap-3 rounded-xl px-2 py-2 text-sm
-                  transition-colors duration-[var(--duration-fast)] ease-[var(--ease-standard)]
+                  transition-colors duration-(--duration-fast) ease-(--ease-standard)
                   hover:bg-surface-raised
                 "
                 >

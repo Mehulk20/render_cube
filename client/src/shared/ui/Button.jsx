@@ -7,7 +7,8 @@ const variants = {
   secondary: 'bg-surface-raised text-foreground border border-border hover:bg-surface-hover',
   ghost: 'bg-transparent text-foreground-soft hover:text-foreground hover:bg-surface-raised',
   danger: 'bg-danger/10 text-danger border border-danger/30 hover:bg-danger/20',
-  gradient: 'bg-gradient-to-r from-primary to-brand-400 text-white hover:brightness-110 shadow-glow',
+  gradient:
+    'bg-gradient-to-r from-primary to-brand-400 text-white hover:brightness-110 shadow-glow',
 };
 
 const sizes = {
@@ -25,7 +26,7 @@ const Button = forwardRef(function Button(
       ref={ref}
       className={clsx(
         'inline-flex items-center justify-center rounded-xl font-medium whitespace-nowrap',
-        'transition-all duration-[var(--duration-normal)] ease-[var(--ease-standard)]',
+        'transition-all duration-(--duration-normal) ease-(--ease-standard)',
         'active:scale-[0.97] disabled:opacity-50 disabled:pointer-events-none focus-ring',
         variants[variant],
         sizes[size],

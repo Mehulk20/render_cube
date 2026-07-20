@@ -77,7 +77,7 @@ export default function LoginPage() {
 
       localStorage.setItem('accessToken', accessToken);
 
-      navigate('/account/profile', {
+      navigate('/account', {
         replace: true,
       });
     } catch (error) {

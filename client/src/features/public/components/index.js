@@ -1,9 +1,8 @@
 export { default as Logo } from './Logo';
 export { default as Button } from './Button';
-export { default as Navbar } from '../../profile/services/Navbar';
 
 export { default as FeaturedAssets } from './FeaturedAssets';
-export { default as AssetCard } from './AssetCard';
+// export { default as AssetCard } from './AssetCard';
 
 export { default as StatsBar } from './StatsBar';
 export { default as HowItWorks } from './HowItWorks';

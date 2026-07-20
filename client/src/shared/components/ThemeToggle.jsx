@@ -10,7 +10,7 @@ export default function ThemeToggle({ className = '' }) {
       onClick={toggleTheme}
       className={`
         relative flex h-9 w-9 items-center justify-center rounded-lg text-foreground-soft
-        transition-colors duration-[var(--duration-fast)] ease-[var(--ease-standard)]
+        transition-colors duration-(--duration-fast) ease-(--ease-standard)
         hover:bg-surface-raised hover:text-foreground focus-ring
         ${className}
       `}

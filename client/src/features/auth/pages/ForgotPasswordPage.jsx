@@ -76,7 +76,7 @@ export default function ForgotPasswordPage() {
             transition={{ duration: 0.25 }}
             onSubmit={handleSubmit}
             noValidate
-            className="flex flex-col gap-5"
+            className="flex flex-row gap-5"
           >
             <InputField
               id="email"

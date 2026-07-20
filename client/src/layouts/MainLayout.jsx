@@ -15,9 +15,9 @@ const MainLayout = () => {
     <div className="min-h-screen bg-background transition-surface flex flex-col ">
       <ScrollToTop />
       <Navbar />
-      <main id="main-content" tabIndex={-1} className="flex-1 outline-none">
+      <main id="main-content" tabIndex={-1} className="flex-1 outline-none ">
         <AnimatePresence mode="wait">
-          <PageTransition key={location.pathname} className="mx-auto">
+          <PageTransition key={location.pathname}>
             <Outlet />
           </PageTransition>
         </AnimatePresence>

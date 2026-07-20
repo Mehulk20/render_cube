@@ -1,11 +1,11 @@
-module.exports = ({ res, statusCode = 500, message = 'Something went wrong', errors = [] }) => {
+module.exports = ({ res, statusCode = 500, message = 'Something went wrong', errors = {} }) => {
   const response = {
     success: false,
     message,
-    timestamp: new Date().toISOString()
+    timestamp: new Date().toISOString(),
   };
 
-  if (errors.length > 0) {
+  if (Object.keys(errors).length) {
     response.errors = errors;
   }
 

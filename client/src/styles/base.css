@@ -1,270 +1,192 @@
 /* ==========================================================
-   Base Styles
+   HTML
    ========================================================== */
 
-@layer base {
-  /* ==========================================================
-     Reset
-     ========================================================== */
+html {
+  color-scheme: light;
 
-  *,
-  *::before,
-  *::after {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-  }
+  scroll-behavior: smooth;
 
-  * {
-    -webkit-tap-highlight-color: transparent;
-  }
+  -webkit-text-size-adjust: 100%;
 
-  /* ==========================================================
-     Global Theme-Switch Transition
-     Ensures every element fades between light/dark values,
-     not just html/body. Low specificity so any element with
-     its own more specific transition (e.g. .hover-lift) simply
-     uses its own list instead - see transitions.css/utilities.css
-     where those lists were extended to include color properties
-     too, so they don't accidentally drop this on theme switch.
-     ========================================================== */
+  text-rendering: optimizeLegibility;
 
-  *,
-  *::before,
-  *::after {
-    transition:
-      background-color var(--motion-normal) var(--ease-standard),
-      border-color var(--motion-normal) var(--ease-standard),
-      color var(--motion-fast) var(--ease-standard),
-      box-shadow var(--motion-normal) var(--ease-standard),
-      fill var(--motion-normal) var(--ease-standard),
-      stroke var(--motion-normal) var(--ease-standard);
-  }
+  font-feature-settings:
+    "cv02",
+    "cv03",
+    "cv04",
+    "cv11",
+    "ss01";
 
-  /* ==========================================================
-     HTML
-     ========================================================== */
+  font-kerning: normal;
+
+  font-variant-ligatures: contextual;
+}
+
+html.dark {
+  color-scheme: dark;
+}
+
+/* ==========================================================
+   Body
+   ========================================================== */
+
+body {
+  min-height: 100vh;
+
+  overflow-x: hidden;
+
+  font-family: var(--font-sans);
+
+  font-size: var(--text-md);
+
+  font-weight: var(--font-normal);
+
+  line-height: 1.65;
+
+  letter-spacing: -0.01em;
+
+  background: var(--color-background);
+
+  color: var(--color-foreground);
+
+  text-rendering: optimizeLegibility;
+
+  font-synthesis: none;
+
+  -webkit-font-smoothing: antialiased;
+
+  -moz-osx-font-smoothing: grayscale;
+
+  accent-color: var(--color-primary);
+}
+
+/* ==========================================================
+   Typography
+   ========================================================== */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-heading);
+
+  color: var(--color-foreground);
+
+  font-weight: var(--font-bold);
+
+  line-height: 1.08;
+
+  letter-spacing: -0.035em;
+
+  text-wrap: balance;
+}
+
+p {
+  line-height: 1.75;
+
+  letter-spacing: -0.005em;
+}
+
+p,
+li,
+span,
+small {
+  color: inherit;
+}
+
+/* ==========================================================
+   Forms
+   ========================================================== */
+
+input,
+textarea,
+select,
+button {
+  font: inherit;
+}
+
+input,
+textarea,
+select {
+  font-size: 16px;
+
+  font-weight: 500;
+
+  line-height: 1.6;
+
+  color: inherit;
+
+  background: transparent;
+
+  border: none;
+
+  outline: none;
+
+  box-shadow: none;
+
+  appearance: none;
+
+  caret-color: var(--color-primary);
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: var(--color-foreground-faint);
+
+  font-weight: 400;
+}
+
+textarea {
+  resize: vertical;
+}
+
+/* ==========================================================
+   Focus
+   ========================================================== */
+
+input:focus,
+textarea:focus,
+select:focus,
+button:focus {
+  outline: none;
+
+  border: none;
+
+  box-shadow: none;
+}
+
+:focus-visible {
+  outline: none;
+
+  border-radius: inherit;
+
+  box-shadow:
+    0 0 0 3px color-mix(in srgb,
+      var(--color-primary) 16%,
+      transparent);
+}
+
+/* ==========================================================
+   Reduced Motion
+   ========================================================== */
+
+@media (prefers-reduced-motion: reduce) {
 
   html {
-    color-scheme: light;
-    scroll-behavior: smooth;
-    -webkit-text-size-adjust: 100%;
+    scroll-behavior: auto;
   }
 
-  html.dark {
-    color-scheme: dark;
-  }
+  *,
+  *::before,
+  *::after {
 
-  /* ==========================================================
-     Body
-     ========================================================== */
+    animation: none !important;
 
-  body {
-    min-height: 100vh;
+    transition: none !important;
 
-    font-family: var(--font-sans);
-
-    background: var(--color-background);
-
-    color: var(--color-foreground);
-
-    line-height: var(--leading-normal);
-
-    text-rendering: optimizeLegibility;
-
-    font-synthesis: none;
-
-    -webkit-font-smoothing: antialiased;
-
-    -moz-osx-font-smoothing: grayscale;
-
-    accent-color: var(--color-primary);
-  }
-
-  /* ==========================================================
-     Typography
-     ========================================================== */
-
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    font-family: var(--font-display);
-
-    color: var(--color-foreground);
-
-    font-weight: var(--font-bold);
-
-    line-height: var(--leading-tight);
-
-    text-wrap: balance;
-  }
-
-  p,
-  li,
-  span,
-  small {
-    color: inherit;
-  }
-
-  /* ==========================================================
-     Links
-     ========================================================== */
-
-  a {
-    color: inherit;
-
-    text-decoration: none;
-
-    transition:
-      color var(--duration-fast) var(--ease-standard),
-      opacity var(--duration-fast) var(--ease-standard),
-      transform var(--duration-fast) var(--ease-snappy);
-  }
-
-  a:hover {
-    opacity: var(--opacity-muted);
-  }
-
-  a:active {
-    opacity: 0.55;
-  }
-
-  /* ==========================================================
-     Buttons
-     ========================================================== */
-
-  button {
-    font: inherit;
-
-    color: inherit;
-
-    background: transparent;
-
-    border: none;
-
-    cursor: pointer;
-
-    transition:
-      background-color var(--duration-fast) var(--ease-standard),
-      color var(--duration-fast) var(--ease-standard),
-      transform var(--duration-fast) var(--ease-snappy),
-      box-shadow var(--duration-fast) var(--ease-standard);
-  }
-
-  button:disabled {
-    cursor: not-allowed;
-  }
-
-  button:not(:disabled):active {
-    transform: scale(0.97);
-  }
-
-  /* ==========================================================
-     Form Controls
-     ========================================================== */
-
-  input,
-  textarea,
-  select,
-  button {
-    font: inherit;
-  }
-
-  input,
-  textarea,
-  select {
-    color: inherit;
-
-    background: transparent;
-  }
-
-  textarea {
-    resize: vertical;
-  }
-
-  /* ==========================================================
-     Media
-     ========================================================== */
-
-  img,
-  picture,
-  video,
-  canvas,
-  svg {
-    display: block;
-
-    max-width: 100%;
-  }
-
-  /* ==========================================================
-     Lists
-     ========================================================== */
-
-  ul,
-  ol {
-    list-style: none;
-  }
-
-  /* ==========================================================
-     Tables
-     ========================================================== */
-
-  table {
-    width: 100%;
-
-    border-collapse: collapse;
-  }
-
-  /* ==========================================================
-     Selection
-     ========================================================== */
-
-  ::selection {
-    background: var(--color-selection);
-
-    color: var(--color-foreground);
-  }
-
-  /* ==========================================================
-     Focus
-     ========================================================== */
-
-  :focus-visible {
-    outline: none;
-
-    box-shadow: var(--shadow-focus);
-
-    border-radius: var(--radius-sm);
-
-    transition: box-shadow var(--duration-fast) var(--ease-standard);
-  }
-
-  /* ==========================================================
-     Theme Transition
-     ========================================================== */
-
-  /* ==========================================================
-     Reduced Motion
-     ========================================================== */
-
-  @media (prefers-reduced-motion: reduce) {
-    html {
-      scroll-behavior: auto;
-    }
-
-    *,
-    *::before,
-    *::after {
-      animation-duration: 0.01ms !important;
-
-      animation-iteration-count: 1 !important;
-
-      transition-duration: 0.01ms !important;
-
-      scroll-behavior: auto !important;
-    }
+    scroll-behavior: auto !important;
   }
 }
