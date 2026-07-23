@@ -5,3 +5,6 @@ export { default as PageTransition } from './PageTransition';
 export { default as SectionHeader } from './SectionHeader';
 export { default as ThemeToggle } from './ThemeToggle';
 export { default as Cart } from './Cart';
+export { default as Card } from './Card';
+export { default as ActionButton } from './ActionButton';
+export { default as EditTrigger } from './EditTrigger';

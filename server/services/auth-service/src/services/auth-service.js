@@ -17,65 +17,63 @@ exports.getUsers = async () => {
 exports.registerUser = async (data) => {
   const { password, confirmPassword, email, username, name } = data;
 
-  const existingUser = await authRepo.getCredentialByEmail(email);
-
-  if (existingUser) {
-    throw new AppError('validation error', HTTP_STATUS.BAD_REQUEST, {
-      email: 'email already exists',
-    });
-  }
-
+  // Validate input first
   passwordManager.checkCorrectPassword(password, confirmPassword);
 
-  const hashedPassword = await passwordManager.hashPassword(password);
+  const passwordHash = await passwordManager.hashPassword(password);
 
-  const userID = `usr_${crypto.randomUUID()}`;
+  const userId = `usr_${crypto.randomUUID()}`;
 
-  let user;
   let authUser;
+  let profile;
+
   try {
+    // Rely on MongoDB unique indexes instead of pre-checking
     authUser = await authRepo.createCredential({
-      userId: userID,
+      userId,
       email,
       username,
-      passwordHash: hashedPassword,
+      passwordHash,
     });
 
-    user = await userClient.createUserProfile({
-      userId: userID,
+    profile = await userClient.createUserProfile({
+      userId,
       email,
       username,
       name,
     });
 
-    if (!authUser || !user) {
-      throw new AppError(
-        `${(user, authUser)} Failed to create user`,
-        HTTP_STATUS.INTERNAL_SERVER_ERROR
-      );
-    }
+    const token = tokenManager.createAndSendToken(authUser);
+
+    return {
+      data: profile.result,
+      token,
+    };
   } catch (err) {
+    // Duplicate email / username
+    if (err?.code === 11000) {
+      const field = Object.keys(err.keyPattern || {})[0];
+
+      throw new AppError('Validation Error', HTTP_STATUS.BAD_REQUEST, {
+        [field]: `${field} already exists`,
+      });
+    }
+
+    // Rollback (best effort)
+    await Promise.allSettled([
+      authRepo.deleteCredentialByUserId(userId),
+      userClient.deleteUserProfile(userId),
+    ]);
+
     console.error('REGISTER ERROR:', err);
-    await authRepo.deleteCredentialByEmail(email);
-    await userClient.deleteUserProfile(email);
 
-    user = null;
-
-    throw new AppError('Error while adding user', HTTP_STATUS.INTERNAL_SERVER_ERROR);
+    throw new AppError('Failed to register user', HTTP_STATUS.INTERNAL_SERVER_ERROR);
   }
-
-  const token = tokenManager.createAndSendToken(authUser);
-
-  if (!token) {
-    throw new AppError('Failed to generate token', HTTP_STATUS.INTERNAL_SERVER_ERROR);
-  }
-
-  return { data: user.result, token };
 };
 
 exports.loginUser = async (identifier, password) => {
   const user = await authRepo.findByIdentifier(identifier);
-
+  4;
   if (!user || !user.active) {
     throw new AppError(
       'Incorrect email or password or Account suspended',

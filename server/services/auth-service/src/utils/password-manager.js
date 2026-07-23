@@ -1,7 +1,7 @@
 const bcrypt = require('bcrypt');
 const AppError = require('../middleware/app-error');
 
-exports.hashPassword = async password => {
+exports.hashPassword = async (password) => {
   const saltRounds = 12;
   const hashedPassword = await bcrypt.hash(password, saltRounds);
   return hashedPassword;

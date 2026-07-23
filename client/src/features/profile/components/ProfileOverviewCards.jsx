@@ -1,59 +1,13 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Globe, Link, AtSign, Store, MapPin, Pencil, CheckCircle2, X, Check } from 'lucide-react';
+import { Card, EditTrigger, ActionButton } from '../../../shared/components';
 
 const cx = (...parts) => parts.filter(Boolean).join(' ');
 
 /* ------------------------------------------------------------------ */
 /*  Shared primitives                                                   */
 /* ------------------------------------------------------------------ */
-function Card({ children, delay = 0, className }) {
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 16 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1], delay }}
-      className={cx('rounded-3xl bg-white p-6 shadow-sm ring-1 ring-slate-900/5 sm:p-7', className)}
-    >
-      {children}
-    </motion.div>
-  );
-}
-
-function EditTrigger({ onClick, size = 15, className }) {
-  return (
-    <motion.button
-      onClick={onClick}
-      whileHover={{ scale: 1.08 }}
-      whileTap={{ scale: 0.9 }}
-      className={cx(
-        'flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-slate-400 transition-colors hover:bg-violet-50 hover:text-violet-600',
-        className
-      )}
-      aria-label="Edit"
-    >
-      <Pencil size={size} />
-    </motion.button>
-  );
-}
-
-function ActionButton({ variant = 'solid', onClick, children }) {
-  return (
-    <motion.button
-      onClick={onClick}
-      whileHover={{ scale: 1.04 }}
-      whileTap={{ scale: 0.95 }}
-      className={cx(
-        'flex items-center gap-1.5 rounded-full px-3.5 py-1.5 text-sm font-medium transition-colors',
-        variant === 'solid'
-          ? 'bg-violet-600 text-white hover:bg-violet-700'
-          : 'border border-slate-200 text-slate-600 hover:bg-slate-50'
-      )}
-    >
-      {children}
-    </motion.button>
-  );
-}
 
 const expandTransition = { duration: 0.3, ease: [0.16, 1, 0.3, 1] };
 

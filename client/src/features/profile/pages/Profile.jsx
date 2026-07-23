@@ -1,15 +1,14 @@
 import { useState } from 'react';
 import { AnimatePresence } from 'framer-motion';
-import { useCurrentUser } from '../hooks';
+import { useCurrentUser } from '../../user/hooks';
 
-import { ProfileHero, ProfileEditSection } from '../sections';
+import { ProfileHero } from '../sections';
 import { ProfileView } from '../components';
 import { Loader } from 'lucide-react';
 
 export default function Profile() {
-  const { data: user, isLoading } = useCurrentUser({});
+  const { isLoading } = useCurrentUser({});
 
-  const [editing, setEditing] = useState(false);
   const [activeTab, setActiveTab] = useState('overview');
 
   if (isLoading) {
@@ -18,25 +17,10 @@ export default function Profile() {
 
   return (
     <div className="mx-auto max-w-5xl space-y-6">
-      <ProfileHero editing={editing} onEdit={() => setEditing(true)} />
+      <ProfileHero />
 
       <AnimatePresence mode="wait">
-        {editing ? (
-          <ProfileEditSection
-            key="edit"
-            user={user}
-            showCreatorInfo
-            onCancel={() => setEditing(false)}
-          />
-        ) : (
-          <ProfileView
-            key="view"
-            user={user}
-            activeTab={activeTab}
-            onTabChange={setActiveTab}
-            onEdit={() => setEditing(true)}
-          />
-        )}
+        <ProfileView key="view" activeTab={activeTab} onTabChange={setActiveTab} />
       </AnimatePresence>
     </div>
   );

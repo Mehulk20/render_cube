@@ -6,7 +6,16 @@ export const userApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
     getCurrentUser: builder.query({
       query: () => '/users/me',
-      transformResponse: (response) => response.data,
+
+      // transformResponse: (response) => response.data,
+      transformResponse: (response) => {
+        console.log('=== GET /users/me ===');
+        console.log('Full response:', response);
+        console.log('Response data:', response.data);
+        console.log('bannerUrl:', response.data.bannerUrl);
+        return response.data;
+      },
+
       providesTags: ['CurrentUser'],
     }),
 
@@ -22,7 +31,7 @@ export const userApi = baseApi.injectEndpoints({
 
     uploadAvatar: builder.mutation({
       query: (formData) => ({
-        url: '/users/avatar',
+        url: '/users/me/avatar',
         method: 'PATCH',
         body: formData,
       }),
@@ -31,7 +40,7 @@ export const userApi = baseApi.injectEndpoints({
 
     uploadBanner: builder.mutation({
       query: (formData) => ({
-        url: '/users/banner',
+        url: '/users/me/banner',
         method: 'PATCH',
         body: formData,
       }),

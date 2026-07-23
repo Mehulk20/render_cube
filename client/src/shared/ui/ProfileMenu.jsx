@@ -2,16 +2,17 @@ import { useEffect, useRef, useState } from 'react';
 import { ChevronDown } from 'lucide-react';
 import clsx from 'clsx';
 
-import { useCurrentUser } from '../../features/profile/hooks';
+import { useCurrentUser } from '../../features/user/hooks';
+import { getAvatarUrl } from '../../utils/media';
 import UserMenu from './UserMenu';
 
 export default function ProfileMenu() {
   const { data: user } = useCurrentUser();
-
   const [open, setOpen] = useState(false);
 
   const menuRef = useRef(null);
   const buttonRef = useRef(null);
+  const avatar = getAvatarUrl(user?.avatarUrl);
 
   useEffect(() => {
     const handleClickOutside = (e) => {
@@ -54,7 +55,7 @@ export default function ProfileMenu() {
         "
       >
         <img
-          src={user?.avatar || '/images/default-avatar.png'}
+          src={avatar || '/images/default-avatar.png'}
           alt={user?.name || 'User'}
           className="h-10 w-10 rounded-full object-cover ring-2 ring-background"
         />
@@ -76,7 +77,7 @@ export default function ProfileMenu() {
             mt-3 origin-top-right animate-scale-in
           "
         >
-          <UserMenu user={user} onClose={() => setOpen(false)} />
+          <UserMenu user={user} avatar={avatar} onClose={() => setOpen(false)} />
         </div>
       )}
     </div>

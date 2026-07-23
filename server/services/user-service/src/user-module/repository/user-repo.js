@@ -8,8 +8,10 @@ exports.authUserProfile = async (id) => {
   return Profiles.findOne({ userId: id });
 };
 
-exports.findOneByEmail = async (email) => {
-  return Profiles.findOne({ email });
+exports.findOneByIdentifier = async (identifier) => {
+  return Profiles.findOne({
+    $or: [{ email: identifier.toLowerCase() }, { userId: identifier.toLowerCase() }],
+  });
 };
 
 exports.createNewUser = async (data) => {
@@ -17,7 +19,6 @@ exports.createNewUser = async (data) => {
 };
 
 exports.updateAuthUser = async (id, updates) => {
-  console.log(id, updates);
   return Profiles.findOneAndUpdate(
     { userId: id },
 
@@ -26,7 +27,7 @@ exports.updateAuthUser = async (id, updates) => {
     {
       new: true,
 
-      runValidators: true
+      runValidators: true,
     }
   );
 };
@@ -34,7 +35,7 @@ exports.updateAuthUser = async (id, updates) => {
 exports.findByUserIdAndUpdate = async (userId, updates) => {
   return Profiles.findOneAndUpdate({ userId }, updates, {
     new: true,
-    runValidators: true
+    runValidators: true,
   });
 };
 
@@ -49,7 +50,7 @@ exports.suspendUser = async (id) => {
     {
       new: true,
 
-      runValidators: true
+      runValidators: true,
     }
   );
 };

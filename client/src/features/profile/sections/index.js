@@ -2,8 +2,6 @@ export { default as ProfileHero } from './ProfileHero';
 
 export { default as ProfileAbout } from './ProfileAbout';
 export { default as ProfileSocials } from './ProfileSocials';
-export { default as ProfileEditSection } from './ProfileEditSection';
-
 export { default as CreatorCTA } from './CreatorCTA';
 export { default as ProfileInfo } from './ProfileInfo';
 export { default as ProfileStatus } from './ProfileStatus';

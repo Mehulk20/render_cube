@@ -2,6 +2,7 @@ require('./config/user.config');
 
 const express = require('express');
 const morgan = require('morgan');
+const path = require('path');
 
 const { globalErrorHandler } = require('@rendercube/shared');
 
@@ -12,6 +13,8 @@ const app = express();
 
 app.use(express.json());
 app.use(morgan('dev'));
+
+app.use('/api/v1/users/uploads', express.static(path.join(__dirname, '../uploads')));
 
 app.get('/health', (req, res) => {
   res.send('User service running');

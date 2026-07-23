@@ -1,4 +1,4 @@
-const { AppError, catchAsyncError } = require('@rendercube/shared');
+const { AppError, catchAsyncError, successResponse, HTTP_STATUS } = require('@rendercube/shared');
 const userService = require('../services/user-service');
 
 exports.getUsers = catchAsyncError(async (req, res, next) => {
@@ -97,5 +97,35 @@ exports.deleteAllData = async (req, res, next) => {
 
   res.status(200).json({
     message: 'All users has been removed from the database, thank you!',
+  });
+};
+
+exports.updateAvatar = async (req, res) => {
+  const { userId } = req.user;
+
+  const result = await userService.updateAvatar(userId, req.file);
+
+  console.log(result);
+
+  return successResponse({
+    res,
+    statusCode: HTTP_STATUS.OK,
+    message: 'Avatar updated successfully',
+    data: result,
+  });
+};
+
+exports.updateBanner = async (req, res) => {
+  const { userId } = req.user;
+
+  const result = await userService.updateBanner(userId, req.file);
+
+  console.log(result);
+
+  return successResponse({
+    res,
+    statusCode: HTTP_STATUS.OK,
+    message: 'banner updated successfully',
+    data: result,
   });
 };

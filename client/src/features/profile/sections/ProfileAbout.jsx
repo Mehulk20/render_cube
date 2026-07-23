@@ -1,5 +1,4 @@
 import { Card } from '../../../shared/ui';
-import ProfileEditSection from './ProfileEditSection';
 
 export default function ProfileAbout({ bio }) {
   return (

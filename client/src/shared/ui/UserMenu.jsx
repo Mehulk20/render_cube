@@ -7,7 +7,7 @@ import MenuItem from './MenuItem';
 import { WorkspaceSwitch } from '../../features/dashboard/components';
 import { ThemeToggle } from '../../features/public/components';
 
-export default function UserMenu({ user, onClose }) {
+export default function UserMenu({ user, avatar, onClose }) {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [logout, { isLoading }] = useLogoutMutation();
@@ -35,18 +35,18 @@ export default function UserMenu({ user, onClose }) {
       {/* Header */}
       <div className="flex items-center gap-4 border-b border-border-soft p-5">
         <img
-          src={user.avatar}
+          src={avatar ? avatar : 'No image'}
           alt=""
           className="h-14 w-14 shrink-0 rounded-full object-cover ring-2 ring-background"
         />
 
         <div className="min-w-0 flex-1">
-          <h3 className="truncate font-display font-semibold text-foreground">{user.name}</h3>
-          <p className="truncate text-sm text-foreground-muted">{user.username}</p>
-          <p className="truncate text-xs text-foreground-faint">{user.email}</p>
+          <h3 className="truncate font-display font-semibold text-foreground">{user?.name}</h3>
+          <p className="truncate text-sm text-foreground-muted">{user?.username}</p>
+          <p className="truncate text-xs text-foreground-faint">{user?.email}</p>
         </div>
 
-        {user.role === 'creator' && (
+        {user?.role === 'creator' && (
           <span className="shrink-0 rounded-full bg-primary/15 px-2 py-1 text-xs font-medium text-primary">
             Creator
           </span>
@@ -54,12 +54,12 @@ export default function UserMenu({ user, onClose }) {
       </div>
 
       {/* Menu */}
-      <div className="p-2">
+      <div className="p-2" onClick={() => onClose()}>
         <MenuItem as={Link} to="/account/profile" icon={User} text="My Profile" />
       </div>
 
       {/* Creator workspace switch */}
-      {user.role === 'creator' && <WorkspaceSwitch role={user.role} onClose={onClose} />}
+      {user?.role === 'creator' && <WorkspaceSwitch role={user?.role} onClose={onClose} />}
 
       {/* Footer */}
       <div className="space-y-0.5 border-t border-border-soft p-2">

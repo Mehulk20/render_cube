@@ -4,20 +4,14 @@ import ProfileOverViewCard from './ProfileOverviewCards';
 
 import { ProfileOverviewSection, Sidebar } from '../sections';
 
-import { creatorProfileTabs } from '../constants/creatorProfileTabs';
-
-export default function ProfileView({ user, activeTab, onTabChange, onEdit }) {
+export default function ProfileView({ activeTab, onEdit }) {
   return (
     <div className="space-y-6">
-      <ProfileHeader user={user} onEdit={onEdit} />
+      <ProfileHeader onEdit={onEdit} />
 
-      <ProfileTabs tabs={creatorProfileTabs} activeTab={activeTab} onChange={onTabChange} />
+      <ProfileOverViewCard tab={activeTab} />
 
-      <div className="grid gap-6 lg:grid-cols-[1fr_320px]">
-        <ProfileOverViewCard user={user} tab={activeTab} />
-
-        <Sidebar user={user} />
-      </div>
+      <div className="grid gap-6 lg:grid-cols-[1fr_320px]"></div>
     </div>
   );
 }

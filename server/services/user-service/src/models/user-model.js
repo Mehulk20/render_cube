@@ -37,6 +37,11 @@ const userSchema = new mongoose.Schema(
       default: null,
     },
 
+    banner: {
+      type: String,
+      default: null,
+    },
+
     bio: {
       type: String,
       maxlength: 200,
