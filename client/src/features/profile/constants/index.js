@@ -1,1 +1,2 @@
-export { creatorProfileTabs } from './creatorProfileTabs';
+export * from './profileTabs';
+export * from './profileContents';

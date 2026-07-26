@@ -44,10 +44,53 @@ const userSchema = new mongoose.Schema(
 
     bio: {
       type: String,
-      maxlength: 200,
+      maxlength: 280,
       default: '',
     },
 
+    storeName: {
+      type: String,
+      trim: true,
+      maxlength: 80,
+    },
+
+    storeUrl: {
+      type: String,
+      trim: true,
+      lowercase: true,
+      unique: true,
+      maxlength: 50,
+    },
+
+    storeDescription: {
+      type: String,
+      trim: true,
+      maxlength: 500,
+    },
+
+    storeCategory: {
+      type: String,
+      trim: true,
+      maxlength: 50,
+    },
+
+    socials: {
+      type: [
+        {
+          platform: {
+            type: String,
+            enum: ['website', 'instagram', 'linkedin', 'twitter'],
+            required: true,
+          },
+          url: {
+            type: String,
+            trim: true,
+            required: true,
+          },
+        },
+      ],
+      default: [],
+    },
     status: {
       type: String,
       enum: ['active', 'suspended'],

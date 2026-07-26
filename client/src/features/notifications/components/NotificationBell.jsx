@@ -55,17 +55,14 @@ export default function NotificationBell() {
         aria-label={unread > 0 ? `Notifications, ${unread} unread` : 'Notifications'}
         className={clsx(
           'group relative flex h-11 w-11 items-center justify-center rounded-full',
-          'text-ink-muted transition-interactive hover:bg-surface-raised hover:text-ink',
+          'text-ink-muted transition-interactive hover:bg-brand-50 hover:text-ink',
           'focus-ring',
           open && 'bg-surface-raised text-ink'
         )}
       >
         <Bell
           size={19}
-          className={clsx(
-            'transition-transform duration-300 ease-out group-hover:rotate-12',
-            unread > 0 && 'animate-bell'
-          )}
+          className={clsx('group-hover:animate-bell', unread > 0 && 'group-hover:animate-bell')}
         />
 
         <span

@@ -1,27 +1,46 @@
 import { baseApi } from '../../../api/base-api';
 
 export const userApi = baseApi.injectEndpoints({
-  overrideExisting: false,
-
   endpoints: (builder) => ({
     getCurrentUser: builder.query({
       query: () => '/users/me',
-
-      // transformResponse: (response) => response.data,
-      transformResponse: (response) => {
-        console.log('=== GET /users/me ===');
-        console.log('Full response:', response);
-        console.log('Response data:', response.data);
-        console.log('bannerUrl:', response.data.bannerUrl);
-        return response.data;
-      },
-
+      transformResponse: (response) => response.data,
       providesTags: ['CurrentUser'],
     }),
 
-    updateCurrentUser: builder.mutation({
+    updateProfile: builder.mutation({
       query: (body) => ({
         url: '/users/me',
+        method: 'PATCH',
+        body,
+      }),
+      transformResponse: (response) => response.data,
+      invalidatesTags: ['CurrentUser'],
+    }),
+
+    updateAbout: builder.mutation({
+      query: (body) => ({
+        url: '/users/me/about',
+        method: 'PATCH',
+        body,
+      }),
+      transformResponse: (response) => response.data,
+      invalidatesTags: ['CurrentUser'],
+    }),
+
+    updateSocial: builder.mutation({
+      query: (body) => ({
+        url: '/users/me/socials',
+        method: 'PATCH',
+        body,
+      }),
+      transformResponse: (response) => response.data,
+      invalidatesTags: ['CurrentUser'],
+    }),
+
+    updateStore: builder.mutation({
+      query: (body) => ({
+        url: '/users/me/store',
         method: 'PATCH',
         body,
       }),
@@ -51,7 +70,10 @@ export const userApi = baseApi.injectEndpoints({
 
 export const {
   useGetCurrentUserQuery,
-  useUpdateCurrentUserMutation,
+  useUpdateProfileMutation,
+  useUpdateAboutMutation,
+  useUpdateSocialMutation,
+  useUpdateStoreMutation,
   useUploadAvatarMutation,
   useUploadBannerMutation,
 } = userApi;

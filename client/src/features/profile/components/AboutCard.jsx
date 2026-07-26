@@ -1,6 +1,15 @@
 import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, Check } from 'lucide-react';
+
+import {
+  selectIsEditingProfile,
+  setActiveProfileTab,
+  setEditingProfile,
+  useUpdateAboutMutation,
+} from '../../user/services';
 
 import { Card, EditTrigger, ActionButton } from '../../../shared/components';
 import { cx } from '../../../utils/cn';
@@ -10,35 +19,41 @@ const expandTransition = {
   ease: [0.16, 1, 0.3, 1],
 };
 
-const AboutCard = () => {
-  const [bio, setBio] = useState('');
-  const [draft, setDraft] = useState('');
-  const [editing, setEditing] = useState(false);
+const AboutCard = ({ about }) => {
+  const dispatch = useDispatch();
+  const [draft, setDraft] = useState();
+  const [updateAbout, { isLoading, error }] = useUpdateAboutMutation();
+  const isEditingProfile = useSelector(selectIsEditingProfile);
 
   const startEdit = () => {
-    setDraft(bio);
-    setEditing(true);
+    dispatch(setActiveProfileTab('about'));
+    dispatch(setEditingProfile(true));
   };
 
-  const save = () => {
-    setBio(draft.trim());
-    setEditing(false);
+  const handleSave = async () => {
+    try {
+      await updateAbout({ bio: draft }).unwrap();
+
+      dispatch(setEditingProfile(false));
+    } catch (err) {
+      console.error(err);
+    }
   };
 
   const cancel = () => {
-    setEditing(false);
+    dispatch(setEditingProfile(false));
   };
 
   return (
-    <Card>
+    <Card isLoading={isLoading}>
       <div className="mb-4 flex items-center justify-between">
-        <h3 className="text-lg font-semibold text-slate-900">About</h3>
+        <h3 className="text-lg font-semibold text-ink-900">About</h3>
 
-        {!editing && <EditTrigger onClick={startEdit} />}
+        {!isEditingProfile && <EditTrigger onClick={startEdit} />}
       </div>
 
       <AnimatePresence mode="wait" initial={false}>
-        {editing ? (
+        {isEditingProfile ? (
           <motion.div
             key="edit"
             initial={{ opacity: 0, height: 0 }}
@@ -51,33 +66,40 @@ const AboutCard = () => {
               height: 0,
             }}
             transition={expandTransition}
-            className="overflow-hidden"
+            className="overflow-hidden w-full min-w-0 sm:min-w-sm"
           >
-            <textarea
-              autoFocus
-              rows={4}
-              maxLength={280}
-              value={draft}
-              onChange={(e) => setDraft(e.target.value)}
-              placeholder="Tell people about yourself..."
-              className="w-full resize-none rounded-2xl border border-slate-200 p-3 text-[15px] text-slate-700 outline-none transition-colors focus:border-violet-400 focus:ring-2 focus:ring-violet-100"
-            />
+            <form
+              onSubmit={(e) => {
+                e.preventDefault();
+                handleSave();
+              }}
+            >
+              <textarea
+                autoFocus
+                rows={4}
+                maxLength={280}
+                value={draft}
+                onChange={(e) => setDraft(e.target.value)}
+                placeholder="Tell people about yourself..."
+                className="w-full resize-none rounded-2xl border border-ink-300 p-3 text-[15px] text-ink-700 outline-none transition-colors focus:border-brand-400 focus:ring-2 focus:ring-brand-100"
+              />
 
-            <div className="mt-2 flex items-center justify-between">
-              <span className="text-xs text-slate-400">{draft.length}/280</span>
+              <div className="mt-2 flex items-center justify-between">
+                <span className="text-xs text-slate-400">{draft?.length || 0}/280</span>
 
-              <div className="flex gap-2">
-                <ActionButton variant="ghost" onClick={cancel}>
-                  <X size={14} />
-                  Cancel
-                </ActionButton>
+                <div className="flex gap-2">
+                  <ActionButton variant="ghost" onClick={cancel}>
+                    <X size={14} />
+                    Cancel
+                  </ActionButton>
 
-                <ActionButton onClick={save}>
-                  <Check size={14} />
-                  Save
-                </ActionButton>
+                  <ActionButton type="submit">
+                    <Check size={14} />
+                    Save
+                  </ActionButton>
+                </div>
               </div>
-            </div>
+            </form>
           </motion.div>
         ) : (
           <motion.p
@@ -85,9 +107,9 @@ const AboutCard = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className={cx('text-[15px]', bio ? 'text-slate-600' : 'italic text-slate-400')}
+            className={cx('text-[15px]', about ? 'text-ink-400' : 'italic text-ink-400')}
           >
-            {bio || 'No bio added yet.'}
+            {about || 'No bio added yet.'}
           </motion.p>
         )}
       </AnimatePresence>

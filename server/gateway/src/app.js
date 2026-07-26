@@ -1,5 +1,7 @@
 require('./config/env.config');
 
+console.log('CLIENT_URL:', process.env.CLIENT_URL);
+
 const express = require('express');
 const cors = require('cors');
 const helmet = require('helmet');

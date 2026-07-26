@@ -1,10 +1,12 @@
 import { createSlice } from '@reduxjs/toolkit';
 
+import { PROFILE_TABS, PROFILE_VIEW } from '../constants';
+
 const initialState = {
-  activeProfileTab: 'overview',
+  activeProfileTab: PROFILE_TABS[0].id,
   isEditingProfile: false,
   isProfileSidebarOpen: false,
-  profileView: 'grid',
+  profileView: PROFILE_VIEW.GRID,
   selectedCategory: 'all',
 };
 

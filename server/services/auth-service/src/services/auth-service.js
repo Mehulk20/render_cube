@@ -61,8 +61,8 @@ exports.registerUser = async (data) => {
 
     // Rollback (best effort)
     await Promise.allSettled([
-      authRepo.deleteCredentialByUserId(userId),
-      userClient.deleteUserProfile(userId),
+      authRepo.deleteCredentialByEmail(email),
+      userClient.deleteUserProfile(email),
     ]);
 
     console.error('REGISTER ERROR:', err);
@@ -73,14 +73,14 @@ exports.registerUser = async (data) => {
 
 exports.loginUser = async (identifier, password) => {
   const user = await authRepo.findByIdentifier(identifier);
-  4;
+
   if (!user || !user.active) {
     throw new AppError(
       'Incorrect email or password or Account suspended',
       HTTP_STATUS.UNAUTHORIZED
     );
   }
-
+  console.log(user);
   if (!(await passwordManager.comparePassword(password, user.passwordHash))) {
     throw new AppError('Invalid email or password', HTTP_STATUS.UNAUTHORIZED);
   }

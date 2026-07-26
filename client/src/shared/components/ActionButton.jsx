@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import { cx } from '../../utils/cn';
 
-const ActionButton = ({ children, onClick, variant = 'solid' }) => {
+const ActionButton = ({ children, onClick, variant = 'solid', disabled }) => {
   return (
     <motion.button
       onClick={onClick}

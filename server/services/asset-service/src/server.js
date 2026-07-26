@@ -10,10 +10,29 @@ const ONLINE_DB = process.env.ONLINE_DB_STRING.replace(
   process.env.ONLINE_DB_PASSWORD
 );
 
-mongoose.connect(ONLINE_DB).then(() => {
-  console.log('asset data-base connection sucessfull');
-});
+async function startServer() {
+  try {
+    await mongoose.connect(DB);
 
-app.listen(port, () => {
-  console.log(`server listining at ${port}`);
-});
+    console.log('✅ Asset database connected successfully');
+
+    app.listen(port, () => {
+      console.log(`🚀 Asset service listening on port ${port}`);
+    });
+  } catch (err) {
+    console.error('===== MongoDB Error =====');
+    console.error(err);
+    console.error('Name:', err.name);
+    console.error('Message:', err.message);
+
+    if (err.cause) {
+      console.error('Cause:', err.cause);
+    }
+
+    console.error('=========================');
+
+    process.exit(1);
+  }
+}
+
+startServer();

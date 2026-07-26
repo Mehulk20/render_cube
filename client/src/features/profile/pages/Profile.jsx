@@ -1,26 +1,19 @@
-import { useState } from 'react';
-import { AnimatePresence } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
 import { useCurrentUser } from '../../user/hooks';
 
-import { ProfileHero } from '../sections';
-import { ProfileView } from '../components';
+import { ProfileHeader, ProfileContent } from '../sections';
 import { Loader } from 'lucide-react';
+import { ProfileHeaderSkeleton, ProfileSkeleton } from '../skeletons';
 
 export default function Profile() {
   const { isLoading } = useCurrentUser({});
 
-  const [activeTab, setActiveTab] = useState('overview');
-
-  if (isLoading) {
-    return <Loader />;
-  }
-
   return (
-    <div className="mx-auto max-w-5xl space-y-6">
-      <ProfileHero />
+    <div className="mx-auto my-6 max-w-6xl space-y-18">
+      {isLoading ? <ProfileHeaderSkeleton /> : <ProfileHeader />}
 
       <AnimatePresence mode="wait">
-        <ProfileView key="view" activeTab={activeTab} onTabChange={setActiveTab} />
+        {isLoading ? <ProfileSkeleton /> : <ProfileContent />}
       </AnimatePresence>
     </div>
   );

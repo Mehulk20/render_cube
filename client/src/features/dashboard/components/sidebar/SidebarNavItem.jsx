@@ -13,14 +13,14 @@ export default function SidebarNavItem({ link }) {
             className={clsx(
               'group relative flex items-center justify-between overflow-hidden rounded-xl px-3 py-2.5 text-sm font-medium',
               isActive
-                ? 'text-violet'
-                : 'text-ink-soft transition-colors hover:bg-surface-raised hover:text-ink'
+                ? 'text-brand-500'
+                : 'text-ink-soft transition-colors hover:bg-surface-floating hover:text-ink'
             )}
           >
             {isActive && (
               <motion.div
                 layoutId="sidebar-active-pill"
-                className="absolute inset-0 rounded-xl bg-gradient-to-r from-violet/15 to-fuchsia/15"
+                className="absolute inset-0 rounded-xl bg-linear-to-r from-brand-500/15 to-fuchsia/15"
                 transition={{
                   type: 'spring',
                   stiffness: 350,
@@ -45,7 +45,7 @@ export default function SidebarNavItem({ link }) {
             {link.count !== undefined && (
               <motion.span
                 whileHover={{ scale: 1.08 }}
-                className="relative z-10 rounded-full bg-surface-raised px-1.5 py-0.5 text-[11px] text-ink-faint"
+                className="relative z-10 rounded-2xl bg-surface-raised px-1.5 py-0.5 text-[11px] text-ink-faint"
               >
                 {link.count}
               </motion.span>

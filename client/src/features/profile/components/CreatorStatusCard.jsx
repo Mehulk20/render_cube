@@ -7,7 +7,7 @@ const CREATOR_STATUS_ITEMS = ['Email Verified', 'Identity Verified', 'Active Cre
 
 const CreatorStatusCard = () => {
   return (
-    <Card delay={0.15}>
+    <Card delay={0.15} className="max-h-fit">
       <h3 className="mb-3 text-lg font-semibold text-slate-900">Creator Status</h3>
 
       <div className="mb-3 flex items-center gap-2 text-[15px] text-slate-700">

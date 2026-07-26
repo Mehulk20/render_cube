@@ -1,29 +1,34 @@
-import { useState } from 'react';
 import { motion } from 'framer-motion';
-
+import { useDispatch, useSelector } from 'react-redux';
 import { cx } from '../../../utils/cn';
+import { selectIsEditingProfile, setActiveProfileTab } from '../../user/services';
 
-const TABS = ['Overview', 'About', 'Social Links', 'Creator Info'];
+const Tabs = ({ tabs, active }) => {
+  const dispatch = useDispatch();
+  const isEditingProfile = useSelector(selectIsEditingProfile);
 
-const Tabs = () => {
-  const [active, setActive] = useState('Overview');
+  const handleAtiveProfileTab = (id) => {
+    if (!isEditingProfile) {
+      dispatch(setActiveProfileTab(id));
+    }
+  };
 
   return (
     <div className="mb-6 flex gap-6 border-b border-slate-200">
-      {TABS.map((tab) => {
-        const isActive = active === tab;
+      {tabs.map((tab) => {
+        const isActive = active === tab.id;
 
         return (
           <button
-            key={tab}
+            key={tab.id}
             type="button"
-            onClick={() => setActive(tab)}
+            onClick={() => handleAtiveProfileTab(tab.id)}
             className={cx(
               'relative pb-3 text-sm font-medium transition-colors',
               isActive ? 'text-violet-600' : 'text-slate-400 hover:text-slate-600'
             )}
           >
-            {tab}
+            {tab.label}
 
             {isActive && (
               <motion.div

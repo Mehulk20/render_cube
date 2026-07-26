@@ -3,7 +3,7 @@ import { ChevronDown } from 'lucide-react';
 import clsx from 'clsx';
 
 import { useCurrentUser } from '../../features/user/hooks';
-import { getAvatarUrl } from '../../utils/media';
+import { getMediaUrl } from '../../utils/media';
 import UserMenu from './UserMenu';
 
 export default function ProfileMenu() {
@@ -12,7 +12,7 @@ export default function ProfileMenu() {
 
   const menuRef = useRef(null);
   const buttonRef = useRef(null);
-  const avatar = getAvatarUrl(user?.avatarUrl);
+  const avatar = getMediaUrl(user?.avatarUrl);
 
   useEffect(() => {
     const handleClickOutside = (e) => {

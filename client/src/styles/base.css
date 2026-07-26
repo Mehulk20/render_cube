@@ -11,12 +11,7 @@ html {
 
   text-rendering: optimizeLegibility;
 
-  font-feature-settings:
-    "cv02",
-    "cv03",
-    "cv04",
-    "cv11",
-    "ss01";
+  font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11', 'ss01';
 
   font-kerning: normal;
 
@@ -65,6 +60,10 @@ body {
    Typography
    ========================================================== */
 
+/* ===========================
+   Headings
+=========================== */
+
 h1,
 h2,
 h3,
@@ -72,23 +71,27 @@ h4,
 h5,
 h6 {
   font-family: var(--font-heading);
-
-  color: var(--color-foreground);
-
   font-weight: var(--font-bold);
-
   line-height: 1.08;
-
   letter-spacing: -0.035em;
-
   text-wrap: balance;
+
+  /* Inherit color from parent or Tailwind utilities */
+  color: inherit;
 }
+
+/* ===========================
+   Body Text
+=========================== */
 
 p {
   line-height: 1.75;
-
   letter-spacing: -0.005em;
 }
+
+/* ===========================
+   Inline Elements
+=========================== */
 
 p,
 li,
@@ -163,10 +166,7 @@ button:focus {
 
   border-radius: inherit;
 
-  box-shadow:
-    0 0 0 3px color-mix(in srgb,
-      var(--color-primary) 16%,
-      transparent);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-primary) 16%, transparent);
 }
 
 /* ==========================================================
@@ -174,7 +174,6 @@ button:focus {
    ========================================================== */
 
 @media (prefers-reduced-motion: reduce) {
-
   html {
     scroll-behavior: auto;
   }
@@ -182,7 +181,6 @@ button:focus {
   *,
   *::before,
   *::after {
-
     animation: none !important;
 
     transition: none !important;

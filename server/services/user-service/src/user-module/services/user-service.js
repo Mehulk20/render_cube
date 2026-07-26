@@ -18,8 +18,9 @@ exports.getUserById = async (userId) => {
   const user = await userRepo.authUserProfile(userId);
 
   const avatarUrl = storageService.avatarUrl(user.avatar);
+  const bannerUrl = storageService.bannerUrl(user.banner);
 
-  return { ...user.toObject(), avatarUrl };
+  return { ...user.toObject(), avatarUrl, bannerUrl };
 };
 
 exports.updateUserProfile = async (userId, data) => {
@@ -73,6 +74,8 @@ exports.deleteAllData = async () => {
   return true;
 };
 
+//profile banner and avatar
+
 exports.updateAvatar = async (userId, file) => {
   const user = await userRepo.findOneByIdentifier(userId);
 
@@ -115,4 +118,15 @@ exports.updateBanner = async (userId, file) => {
   }
 
   return { ...user.toObject(), bannerUrl };
+};
+
+//profile data updates
+exports.updateAboutMe = async (userId, data) => {
+  const user = await userRepo.updateAuthUser(userId, { bio: data });
+  return user;
+};
+
+exports.updateSocials = async (userId, data) => {
+  const user = await userRepo.updateAuthUser(userId, data);
+  return user;
 };

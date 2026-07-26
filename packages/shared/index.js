@@ -4,5 +4,7 @@ module.exports = {
   ...require('./src/middlewares'),
   ...require('./src/responses'),
   ...require('./src/helpers'),
-  ...require('./src/clients')
+  ...require('./src/clients'),
+  ...require('./src/utils'),
+  ...require('./src/validators'),
 };

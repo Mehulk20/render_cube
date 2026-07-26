@@ -1,6 +1,6 @@
 const app = require('./app');
 
-const PORT = process.env.PORT || 5050;
+const PORT = process.env.DB_PORT || 5050;
 
 const server = app.listen(PORT, () => console.log(`API gateway running on port ${PORT}`));
 

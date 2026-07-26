@@ -100,6 +100,7 @@ exports.deleteAllData = async (req, res, next) => {
   });
 };
 
+//file upload API
 exports.updateAvatar = async (req, res) => {
   const { userId } = req.user;
 
@@ -120,12 +121,41 @@ exports.updateBanner = async (req, res) => {
 
   const result = await userService.updateBanner(userId, req.file);
 
-  console.log(result);
-
   return successResponse({
     res,
     statusCode: HTTP_STATUS.OK,
     message: 'banner updated successfully',
+    data: result,
+  });
+};
+
+//profile updates
+exports.updateAbout = async (req, res) => {
+  const { userId } = req.user;
+
+  const { bio } = req.body;
+
+  const result = await userService.updateAboutMe(userId, bio);
+
+  return successResponse({
+    res,
+    statusCode: HTTP_STATUS.OK,
+    message: 'about me updated successfully',
+    data: result,
+  });
+};
+
+exports.updateMySocials = async (req, res) => {
+  const { userId } = req.user;
+
+  const { socials } = req.body;
+
+  const result = await userService.updateSocials(userId, { socials });
+
+  return successResponse({
+    res,
+    statusCode: HTTP_STATUS.OK,
+    message: 'social updated successfully',
     data: result,
   });
 };

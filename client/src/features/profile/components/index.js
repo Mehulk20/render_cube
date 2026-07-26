@@ -1,6 +1,4 @@
 export { default as ProfileActions } from './ProfileActions';
-export { default as ProfileView } from './ProfileView';
-export { default as ProfileHeader } from './ProfileHeader';
 export { default as ProfileAvatar } from './ProfileAvatar';
 export { default as ProfileBanner } from './ProfileBanner';
 export { default as ProfileTabs } from './ProfileTabs';

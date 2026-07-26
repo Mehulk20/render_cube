@@ -82,7 +82,7 @@ export default function LoginPage() {
       });
     } catch (error) {
       console.error(error);
-
+      console.log(error.data);
       setErrors({
         api: error?.data?.message || 'Invalid email/username or password.',
       });

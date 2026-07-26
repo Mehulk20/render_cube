@@ -4,28 +4,29 @@
   All theme customisation moves here under @theme — no JS config file needed.
 */
 /* ── Google Fonts ───────────────────────────────────────────── */
-@import "@fontsource/geist/400.css";
-@import "@fontsource/geist/500.css";
-@import "@fontsource/geist/600.css";
-@import "@fontsource/geist/700.css";
+@import '@fontsource/geist/400.css';
+@import '@fontsource/geist/500.css';
+@import '@fontsource/geist/600.css';
+@import '@fontsource/geist/700.css';
 
-@import "@fontsource/plus-jakarta-sans/600.css";
-@import "@fontsource/plus-jakarta-sans/700.css";
-@import "@fontsource/plus-jakarta-sans/800.css";
+@import '@fontsource/plus-jakarta-sans/600.css';
+@import '@fontsource/plus-jakarta-sans/700.css';
+@import '@fontsource/plus-jakarta-sans/800.css';
 
-@import "@fontsource/jetbrains-mono/400.css";
-
+@import '@fontsource/jetbrains-mono/400.css';
 
 @import 'tailwindcss';
 
 /* ── Tailwind v4 theme tokens ───────────────────────────────── */
 
-@import "./theme.css";
-@import "./dark.css";
-@import "./base.css";
-@import "./animation.css";
-@import "./utilities.css";
-@import "./transitions.css";
-@import "./skeleton.css";
-
-
+@import './dark.css';
+@layer base {
+  @import './base.css';
+}
+@import './theme.css';
+@import './animation.css';
+@layer utilities {
+  @import './utilities.css';
+}
+@import './transitions.css';
+@import './skeleton.css';

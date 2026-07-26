@@ -1,10 +1,7 @@
-const dns = require('dns');
-dns.setServers(['8.8.8.8', '8.8.4.4']);
-
 const mongoose = require('mongoose');
 const app = require('./app');
 
-const port = process.env.PORT || 5003;
+const port = process.env.PORT || 2525;
 const DB = process.env.DATA_BASE_URI;
 //online db for development
 const ONLINE_DB = process.env.ONLINE_DB_STRING.replace(
@@ -12,10 +9,21 @@ const ONLINE_DB = process.env.ONLINE_DB_STRING.replace(
   process.env.ONLINE_DB_PASSWORD
 );
 
-mongoose.connect(ONLINE_DB).then(() => {
-  console.log('users data-base service is connected sucessfully');
-});
+const startServer = async () => {
+  try {
+    // Connect to MongoDB
+    await mongoose.connect(DB);
+    console.log('✅ User database connected successfully');
 
-app.listen(port, () => {
-  console.log(`server is listning at ${port}`);
-});
+    // Start Express server only after DB connection
+    app.listen(port, () => {
+      console.log(`🚀 User service is listening on port ${port}`);
+    });
+  } catch (error) {
+    console.error('❌ Failed to connect to MongoDB');
+    console.error(error.message);
+    process.exit(1);
+  }
+};
+
+startServer();

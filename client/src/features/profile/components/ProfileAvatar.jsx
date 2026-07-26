@@ -2,7 +2,7 @@ import { useRef, useState } from 'react';
 import { useUploadAvatarMutation } from '../../user/services';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Camera } from 'lucide-react';
-import { getAvatarUrl } from '../../../utils/media';
+import { getMediaUrl } from '../../../utils/media';
 import clsx from 'clsx';
 
 export default function ProfileAvatar({ user, editable, onEdit }) {
@@ -10,7 +10,7 @@ export default function ProfileAvatar({ user, editable, onEdit }) {
   const [showSuccessRing, setShowSuccessRing] = useState(false);
   const fileInputRef = useRef(null);
 
-  const avatar = getAvatarUrl(user?.avatarUrl);
+  const avatar = getMediaUrl(user?.avatarUrl);
 
   const online = true;
   const sizes = {
