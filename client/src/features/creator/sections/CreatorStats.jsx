@@ -54,7 +54,7 @@ export default function CreatorStats() {
         delay: 0.08,
         ease: [0.22, 1, 0.36, 1],
       }}
-      className="grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-5"
+      className="grid grid-cols-2 gap-md sm:gap-lg lg:grid-cols-5"
     >
       {stats.map((stat) => (
         <Stat key={stat.label} {...stat} />

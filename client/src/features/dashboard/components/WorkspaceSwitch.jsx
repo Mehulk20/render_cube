@@ -25,7 +25,7 @@ export default function WorkspaceSwitch({ role, onClose }) {
         <Link
           to="/account"
           onClick={onClose}
-          className="group mx-4 my-3 flex items-center justify-between overflow-hidden rounded-2xl border border-border bg-surface p-4 shadow-sm transition-colors hover:border-primary/30"
+          className="group mx-md my-md flex items-center justify-between overflow-hidden rounded-2xl border border-border bg-surface p-md shadow-sm transition-colors hover:border-brand-500/30"
         >
           <div>
             <p className="text-xs font-medium uppercase tracking-wider text-foreground-faint">
@@ -42,7 +42,7 @@ export default function WorkspaceSwitch({ role, onClose }) {
           <motion.div
             whileHover={{ x: 4 }}
             transition={cardTransition}
-            className="rounded-xl bg-primary p-3 text-primary-foreground"
+            className="rounded-sm bg-brand-500 p-md text-white"
           >
             <ChevronRight size={20} />
           </motion.div>

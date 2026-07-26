@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 
 export default function ProfileTabs({ tabs, activeTab, onChange }) {
   return (
-    <div className="flex gap-1 overflow-x-auto border-b border-border-soft">
+    <div className="flex gap-sm overflow-x-auto border-b border-border-soft">
       {tabs.map((tab) => (
         <motion.button
           key={tab.id}

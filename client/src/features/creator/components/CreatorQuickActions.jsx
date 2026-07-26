@@ -14,7 +14,7 @@ export default function CreatorQuickActions() {
   return (
     <Card className="p-4 sm:p-5">
       <h3 className="mb-3 font-display text-sm font-semibold text-foreground">Quick Actions</h3>
-      <div className="grid grid-cols-2 gap-2.5">
+      <div className="grid grid-cols-2 gap-sm">
         {actions.map((a) => (
           <button
             key={a.label}
@@ -25,7 +25,7 @@ export default function CreatorQuickActions() {
               hover:border-primary/40 hover:text-foreground
             "
           >
-            <a.icon size={18} className="text-primary" />
+            <a.icon size={18} className="text-brand-500" />
             {a.label}
           </button>
         ))}

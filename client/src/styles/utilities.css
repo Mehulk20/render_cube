@@ -506,4 +506,239 @@
 
     background-size: 16px 16px;
   }
+
+  /* ==========================================================
+     STANDARDIZED COMPONENT PATTERNS
+     ========================================================== */
+
+  /* Button Base Patterns */
+  .btn-base {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-sm);
+    font-weight: var(--font-medium);
+    white-space: nowrap;
+    transition:
+      background-color var(--motion-fast) var(--ease-standard),
+      border-color var(--motion-fast) var(--ease-standard),
+      color var(--motion-fast) var(--ease-standard),
+      transform var(--motion-fast) var(--ease-snappy),
+      box-shadow var(--motion-fast) var(--ease-standard);
+  }
+
+  .btn-base:disabled {
+    opacity: var(--opacity-disabled);
+    pointer-events: none;
+  }
+
+  .btn-base:active:not(:disabled) {
+    transform: scale(0.97);
+  }
+
+  .btn-size-sm {
+    height: 32px;
+    padding: 0 12px;
+    font-size: var(--text-xs);
+    gap: 6px;
+  }
+
+  .btn-size-md {
+    height: 40px;
+    padding: 0 16px;
+    font-size: var(--text-sm);
+    gap: 8px;
+  }
+
+  .btn-size-lg {
+    height: 48px;
+    padding: 0 24px;
+    font-size: var(--text-base);
+    gap: 8px;
+  }
+
+  /* Input Base Pattern */
+  .input-base {
+    width: 100%;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--color-border);
+    background: var(--color-surface);
+    padding: 10px 12px;
+    font-size: var(--text-sm);
+    color: var(--color-foreground);
+    transition:
+      background-color var(--motion-fast) var(--ease-standard),
+      border-color var(--motion-fast) var(--ease-standard),
+      box-shadow var(--motion-fast) var(--ease-standard);
+  }
+
+  .input-base::placeholder {
+    color: var(--color-foreground-faint);
+  }
+
+  .input-base:hover {
+    border-color: var(--color-border-soft);
+    background: var(--color-surface-hover);
+  }
+
+  .input-base:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px var(--color-focus);
+  }
+
+  /* Badge Base Pattern */
+  .badge-base {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    border-radius: var(--radius-full);
+    border: 1px solid;
+    padding: 4px 10px;
+    font-size: var(--text-xs);
+    font-weight: var(--font-medium);
+  }
+
+  /* Label/Typography */
+  .label-base {
+    display: block;
+    font-size: var(--text-sm);
+    font-weight: var(--font-medium);
+    color: var(--color-foreground);
+    margin-bottom: 6px;
+  }
+
+  .label-hint {
+    font-size: var(--text-xs);
+    font-weight: var(--font-normal);
+    color: var(--color-foreground-faint);
+    margin-top: 4px;
+  }
+
+  /* Divider */
+  .divider {
+    height: 1px;
+    background: var(--color-border);
+  }
+
+  .divider-soft {
+    background: var(--color-border-soft);
+  }
+
+  /* Spacing Utilities */
+  .gap-xs {
+    gap: 4px;
+  }
+
+  .gap-sm {
+    gap: 8px;
+  }
+
+  .gap-md {
+    gap: 12px;
+  }
+
+  .gap-lg {
+    gap: 16px;
+  }
+
+  .gap-xl {
+    gap: 20px;
+  }
+
+  .gap-2xl {
+    gap: 24px;
+  }
+
+  /* Padding Utilities */
+  .p-xs {
+    padding: 4px;
+  }
+
+  .p-sm {
+    padding: 8px;
+  }
+
+  .p-md {
+    padding: 12px;
+  }
+
+  .p-lg {
+    padding: 16px;
+  }
+
+  .p-xl {
+    padding: 20px;
+  }
+
+  .p-2xl {
+    padding: 24px;
+  }
+
+  /* Rounded Variants */
+  .rounded-xs {
+    border-radius: var(--radius-xs);
+  }
+
+  .rounded-sm {
+    border-radius: var(--radius-sm);
+  }
+
+  .rounded-md {
+    border-radius: var(--radius-md);
+  }
+
+  .rounded-lg {
+    border-radius: var(--radius-lg);
+  }
+
+  .rounded-xl {
+    border-radius: var(--radius-xl);
+  }
+
+  .rounded-2xl {
+    border-radius: var(--radius-2xl);
+  }
+
+  .rounded-full {
+    border-radius: var(--radius-full);
+  }
+
+  /* Animation Classes */
+  .animate-fade-in-sm {
+    animation: fade-in var(--motion-normal) var(--ease-smooth);
+  }
+
+  .animate-slide-up-sm {
+    animation: slide-up var(--motion-normal) var(--ease-smooth);
+  }
+
+  .animate-scale-in-sm {
+    animation: scale-in var(--motion-normal) var(--ease-smooth);
+  }
+
+  /* Accessibility Focus Ring */
+  .focus-ring-primary {
+    outline: none;
+    transition: box-shadow var(--motion-fast) var(--ease-standard);
+  }
+
+  .focus-ring-primary:focus-visible {
+    box-shadow: 0 0 0 3px var(--color-focus);
+  }
+
+  /* Skeleton Animation */
+  @keyframes shimmer {
+    0% {
+      background-position: -1000px 0;
+    }
+
+    100% {
+      background-position: 1000px 0;
+    }
+  }
+
+  .animate-shimmer {
+    animation: shimmer 2s infinite;
+  }
 }

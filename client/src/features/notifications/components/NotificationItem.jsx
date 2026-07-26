@@ -7,7 +7,7 @@ export default function NotificationItem({ notification, onDelete }) {
   const { icon: Icon, iconColor, iconBg } = getNotificationIcon(notification.type);
 
   return (
-    <li className="group relative flex items-start gap-3 p-4 transition-interactive hover:bg-surface-raised">
+    <li className="group relative flex items-start gap-md p-md transition-interactive hover:bg-surface-raised">
       {/* Icon */}
       <div className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-xl ${iconBg}`}>
         <Icon size={18} className={iconColor} />

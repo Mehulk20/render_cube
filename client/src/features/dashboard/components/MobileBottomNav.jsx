@@ -3,28 +3,29 @@ import clsx from 'clsx';
 import { Home, Layers, Plus, BarChart3, Menu, User } from 'lucide-react';
 
 export default function MobileBottomNav({ mode = 'account', onMenuClick }) {
-  const items = mode === 'creator'
-    ? [
-        { to: '/creator/dashboard', icon: Home, label: 'Overview', end: true },
-        { to: '/explore', icon: Layers, label: 'Assets' },
-        { icon: Plus, label: '', action: true },
-        { to: '/explore', icon: BarChart3, label: 'Analytics' },
-      ]
-    : [
-        { to: '/account/dashboard', icon: Home, label: 'Overview', end: true },
-        { to: '/explore', icon: Layers, label: 'Explore' },
-        { icon: Plus, label: '', action: true },
-        { to: '/account/profile', icon: User, label: 'Profile' },
-      ];
+  const items =
+    mode === 'creator'
+      ? [
+          { to: '/creator/dashboard', icon: Home, label: 'Overview', end: true },
+          { to: '/explore', icon: Layers, label: 'Assets' },
+          { icon: Plus, label: '', action: true },
+          { to: '/explore', icon: BarChart3, label: 'Analytics' },
+        ]
+      : [
+          { to: '/account/dashboard', icon: Home, label: 'Overview', end: true },
+          { to: '/explore', icon: Layers, label: 'Explore' },
+          { icon: Plus, label: '', action: true },
+          { to: '/account/profile', icon: User, label: 'Profile' },
+        ];
 
   return (
-    <nav className="fixed inset-x-0 bottom-0 z-30 flex items-center justify-around border-t border-border-soft bg-void/95 px-2 py-2 backdrop-blur-md lg:hidden">
+    <nav className="fixed inset-x-0 bottom-0 z-overlay flex items-center justify-around border-t border-border-soft bg-surface/95 px-2 py-2 backdrop-blur-md lg:hidden">
       {items.map((item) =>
         item.action ? (
           <button
             key="action"
             onClick={onMenuClick}
-            className="flex h-11 w-11 items-center justify-center rounded-full bg-linear-to-br from-violet to-fuchsia text-white shadow-glow active:scale-95 transition-transform"
+            className="flex h-11 w-11 items-center justify-center rounded-full bg-gradient-to-br from-brand-500 to-fuchsia text-white shadow-glow active:scale-95 transition-transform"
             aria-label="Create"
           >
             <Plus size={20} />
@@ -35,16 +36,23 @@ export default function MobileBottomNav({ mode = 'account', onMenuClick }) {
             to={item.to}
             end={item.end}
             className={({ isActive }) =>
-              clsx('flex flex-col items-center gap-0.5 rounded-lg px-3 py-1 text-[10px] font-medium', isActive ? 'text-violet' : 'text-ink-faint')
+              clsx(
+                'flex flex-col items-center gap-xs rounded-sm px-3 py-1 text-xs font-medium',
+                isActive ? 'text-brand-500' : 'text-ink-faint'
+              )
             }
           >
-            <item.icon size={19} />
+            <item.icon size={20} />
             {item.label}
           </NavLink>
         )
       )}
-      <button onClick={onMenuClick} className="flex flex-col items-center gap-0.5 rounded-lg px-3 py-1 text-[10px] font-medium text-ink-faint" aria-label="More menu">
-        <Menu size={19} />
+      <button
+        onClick={onMenuClick}
+        className="flex flex-col items-center gap-xs rounded-sm px-3 py-1 text-xs font-medium text-ink-faint"
+        aria-label="More menu"
+      >
+        <Menu size={20} />
         Menu
       </button>
     </nav>

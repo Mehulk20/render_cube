@@ -69,7 +69,7 @@ export default function CategoriesSection() {
 
         <div className="mb-10 flex items-end justify-between">
           <div>
-            <span className="text-sm font-semibold uppercase tracking-widest text-primary">
+            <span className="text-sm font-semibold uppercase tracking-widest text-brand-500">
               Categories
             </span>
 

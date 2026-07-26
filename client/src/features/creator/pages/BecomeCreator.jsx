@@ -37,17 +37,17 @@ export default function BecomeCreator() {
   }
 
   return (
-    <div className="mx-auto max-w-2xl px-4 py-12 sm:px-6">
+    <div className="mx-auto max-w-2xl px-md py-2xl sm:px-lg">
       {step === 1 ? (
         <motion.div
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.3 }}
         >
-          <span className="inline-flex items-center gap-1.5 rounded-full border border-violet/30 bg-violet/10 px-3 py-1 text-xs font-medium text-violet">
+          <span className="inline-flex items-center gap-sm rounded-full border border-brand-500/30 bg-brand-500/10 px-md py-sm text-xs font-medium text-brand-500">
             <Sparkles size={13} /> Creator Studio
           </span>
-          <h1 className="mt-4 font-display text-3xl font-semibold text-ink">Become a Creator</h1>
+          <h1 className="mt-sm font-display text-3xl font-semibold text-ink">Become a Creator</h1>
           <p className="mt-2 text-ink-soft">
             Open your own store, upload assets, and start building an audience of motion designers.
           </p>

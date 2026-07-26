@@ -117,7 +117,7 @@ function AssetCard({ id, title, creator, price, gradient, badge, rating = 4.8, r
 
             rounded-full
 
-            bg-primary/10
+            bg-brand-500/10
 
             blur-3xl
           "

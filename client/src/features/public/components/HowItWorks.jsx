@@ -27,19 +27,19 @@ export default function HowItWorks() {
       <Container size="md">
         {/* Header */}
 
-        <div className="mx-auto mb-16 max-w-2xl text-center">
+        <div className="mx-auto mb-2xl max-w-2xl text-center">
           <h2 className="font-display text-4xl font-bold text-foreground lg:text-5xl">
             How It Works
           </h2>
 
-          <p className="mt-4 text-lg text-foreground-muted">
+          <p className="mt-sm text-lg text-foreground-muted">
             Get started in minutes with our simple creator marketplace workflow.
           </p>
         </div>
 
         {/* Steps */}
 
-        <div className="relative grid gap-10 md:grid-cols-3">
+        <div className="relative grid gap-xl md:grid-cols-3">
           {/* Connection */}
 
           <div
@@ -73,22 +73,22 @@ export default function HowItWorks() {
 
               <div
                 className="
-                  mb-6
+                  mb-lg
                   flex
                   h-16
                   w-16
                   items-center
                   justify-center
-                  rounded-2xl
-                  bg-primary
+                  rounded-lg
+                  bg-brand-500
                   font-display
-                  text-xl
+                  text-lg
                   font-bold
                   text-white
                   shadow-glow
                   transition-all
-                  duration-300
-                  hover:-translate-y-1
+                  motion-normal
+                  hover:-translate-y-sm
                   hover:scale-105
                 "
               >
@@ -97,7 +97,7 @@ export default function HowItWorks() {
 
               {/* Title */}
 
-              <h3 className="mb-3 text-xl font-semibold text-foreground">{title}</h3>
+              <h3 className="mb-md text-lg font-semibold text-foreground">{title}</h3>
 
               {/* Description */}
 

@@ -24,7 +24,7 @@ export default function CreatorContent() {
           font-semibold
           uppercase
           tracking-widest
-          text-primary
+          text-brand-500
         "
       >
         For Creators
@@ -84,7 +84,7 @@ export default function CreatorContent() {
             className="
               flex
               items-center
-              gap-3
+              gap-md
             "
           >
             <div

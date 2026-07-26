@@ -24,7 +24,7 @@ const DesktopActions = ({ variant }) => {
 
           <Link
             to="/login"
-            className="rounded-full px-4 py-2 text-sm font-medium text-foreground-muted transition-colors duration-300 hover:text-primary"
+            className="rounded-full px-md py-sm text-sm font-medium text-foreground-muted transition-colors motion-fast hover:text-brand-500"
           >
             Log in
           </Link>

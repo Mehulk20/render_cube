@@ -22,7 +22,7 @@ const MobileActions = ({ variant, isMenuOpen, setIsMenuOpen }) => {
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             aria-label="Toggle menu"
             aria-expanded={isMenuOpen}
-            className="flex h-10 w-10 items-center justify-center rounded-xl text-foreground-muted transition-all duration-300 hover:bg-surface-hover hover:text-primary active:scale-95"
+            className="flex h-10 w-10 items-center justify-center rounded-sm text-foreground-muted transition-all motion-normal hover:bg-surface-hover hover:text-brand-500 active:scale-95"
           >
             {isMenuOpen ? <X size={22} /> : <Menu size={22} />}
           </button>

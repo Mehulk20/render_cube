@@ -85,7 +85,7 @@ export default function AssetThumbnail({ gradient, badge, onBookmark, onPreview,
 
             rounded-full
 
-            bg-primary/15
+            bg-brand-500/15
 
             blur-3xl
           "

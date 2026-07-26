@@ -32,7 +32,7 @@ export default function RevenueChart({ data = [], activeIndex = data.length - 1 
           flex
           h-28
           items-end
-          gap-2
+          gap-sm
         "
       >
         {data.map((value, index) => (

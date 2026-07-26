@@ -6,7 +6,7 @@ export default function AssetStack() {
     <div className="relative mx-auto h-[220px] w-full max-w-[420px] select-none">
       {/* platform disc */}
       <div className="absolute bottom-0 left-1/2 h-8 w-[92%] -translate-x-1/2 rounded-[50%] bg-surface/70 shadow-[0_20px_50px_-10px_rgba(115,69,236,0.35)]" />
-      <div className="absolute bottom-2 left-1/2 h-4 w-[70%] -translate-x-1/2 rounded-[50%] bg-primary/25 blur-xl" />
+      <div className="absolute bottom-0 left-1/2 h-8 w-[92%] -translate-x-1/2 rounded-full bg-brand-500/25 blur-lg" />
 
       {/* Ae tile */}
       <motion.div

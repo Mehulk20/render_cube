@@ -4,7 +4,7 @@ import { Card } from '../../../shared/ui';
 export default function QuickActionsCard({ actions }) {
   return (
     <Card className="p-4 sm:p-5">
-      <h3 className="mb-3 font-display text-sm font-semibold text-foreground">Quick Actions</h3>
+      <h3 className="mb-3 font-display text-sm text-foreground">Quick Actions</h3>
       <ul className="space-y-1">
         {actions.map((a) => (
           <li key={a.label}>
@@ -12,7 +12,7 @@ export default function QuickActionsCard({ actions }) {
               to={a.to}
               className="
                 group flex items-center justify-between rounded-xl px-2.5 py-2.5 text-sm text-foreground-soft
-                transition-colors duration-[var(--duration-fast)] ease-[var(--ease-standard)]
+                transition-colors duration-(--duration-fast) ease-standard
                 hover:bg-surface-raised hover:text-foreground
               "
             >
@@ -21,7 +21,7 @@ export default function QuickActionsCard({ actions }) {
               </span>
               <span
                 className="
-                  text-foreground-faint transition-transform duration-[var(--duration-fast)] ease-[var(--ease-standard)]
+                  text-foreground-faint transition-transform duration-(--duration-fast) ease-standard
                   group-hover:translate-x-0.5
                 "
               >

@@ -44,7 +44,7 @@ const DashboardNavbar = () => {
     border-b border-ink-200
     bg-surface/90
     backdrop-blur-md
-    transition-transform duration-300 ease-in-out
+    transition-transform motion-normal ease-standard
     dark:border-gray-800
     dark:bg-gray-950/90
     ${hidden ? '-translate-y-full shadow-none' : 'translate-y-0'}

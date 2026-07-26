@@ -99,18 +99,18 @@ export default function ProfileAvatar({ user, editable, onEdit }) {
         alt={user.name}
         className={clsx(
           sizes.xl,
-          'relative z-10 rounded-full object-cover ring-4 ring-white shadow-lg'
+          'relative z-dropdown rounded-full object-cover ring-4 ring-white shadow-card'
         )}
       />
 
       {online && (
-        <span className="absolute bottom-2 right-2 z-20 flex h-4 w-4">
+        <span className="absolute bottom-2 right-2 z-modal flex h-4 w-4">
           <motion.span
-            className="absolute inline-flex h-full w-full rounded-full bg-emerald-400"
+            className="absolute inline-flex h-full w-full rounded-full bg-success/40"
             animate={{ scale: [1, 1.8], opacity: [0.6, 0] }}
             transition={{ duration: 1.8, repeat: Infinity, ease: 'easeOut' }}
           />
-          <span className="relative inline-flex h-4 w-4 rounded-full bg-emerald-500 ring-2 ring-white" />
+          <span className="relative inline-flex h-4 w-4 rounded-full bg-success ring-2 ring-white" />
         </span>
       )}
 

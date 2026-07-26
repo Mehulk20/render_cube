@@ -560,6 +560,66 @@
   --category-blob-left: rgba(124, 92, 255, 0.18);
 
   --category-blob-right: rgba(255, 200, 220, 0.25);
+
+  /* ==========================================================
+     ANIMATION TRANSFORMS
+     ========================================================== */
+
+  --transform-scale-sm: 0.98;
+
+  --transform-scale-md: 1.02;
+
+  --transform-scale-lg: 1.05;
+
+  --transform-translate-xs: 2px;
+
+  --transform-translate-sm: 4px;
+
+  --transform-translate-md: 8px;
+
+  --transform-translate-lg: 12px;
+
+  /* ==========================================================
+     ANIMATION ROTATIONS
+     ========================================================== */
+
+  --transform-rotate-sm: 8deg;
+
+  /* ==========================================================
+     CONTAINER SPACING
+     ========================================================== */
+
+  --padding-container-xs: 16px;
+
+  --padding-container-sm: 20px;
+
+  --padding-container-md: 24px;
+
+  --padding-container-lg: 32px;
+
+  /* ==========================================================
+     TRANSITION PROPERTIES
+     ========================================================== */
+
+  --transition-base: all var(--motion-normal) var(--ease-standard);
+
+  --transition-fast: all var(--motion-fast) var(--ease-standard);
+
+  --transition-slow: all var(--motion-slow) var(--ease-smooth);
+
+  /* ==========================================================
+     ICON SIZES
+     ========================================================== */
+
+  --icon-xs: 16px;
+
+  --icon-sm: 20px;
+
+  --icon-md: 24px;
+
+  --icon-lg: 32px;
+
+  --icon-xl: 40px;
 }
 
 .logo-glow {

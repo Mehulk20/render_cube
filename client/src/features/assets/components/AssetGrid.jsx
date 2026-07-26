@@ -4,7 +4,7 @@ import { Skeleton } from '../../../shared/ui';
 export default function AssetGrid({ assets, loading = false }) {
   if (loading) {
     return (
-      <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
+      <div className="grid grid-cols-2 gap-md sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
         {Array.from({ length: 10 }).map((_, i) => (
           <div key={i} className="overflow-hidden rounded-2xl border border-border bg-surface">
             <Skeleton className="aspect-4/3 rounded-none" />

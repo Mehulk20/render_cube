@@ -18,7 +18,7 @@ export default function EmailSentAnimation({ email }) {
             initial={{ scale: 0.6, opacity: 0.5 }}
             animate={{ scale: 1.8, opacity: 0 }}
             transition={{ duration: 1.8, repeat: Infinity, delay: i * 0.5, ease: 'easeOut' }}
-            className="absolute h-20 w-20 rounded-full bg-primary/30"
+            className="absolute h-20 w-20 rounded-full bg-brand-500/30"
           />
         ))}
 
@@ -101,8 +101,8 @@ export default function EmailSentAnimation({ email }) {
         className="mt-2 max-w-xs text-sm leading-relaxed text-foreground-soft"
       >
         We've sent a password reset link to{' '}
-        <span className="font-semibold text-foreground">{email || 'your email'}</span>. The link expires in 15
-        minutes.
+        <span className="font-semibold text-foreground">{email || 'your email'}</span>. The link
+        expires in 15 minutes.
       </motion.p>
     </div>
   );

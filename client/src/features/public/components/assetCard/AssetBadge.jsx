@@ -9,9 +9,9 @@ const variants = {
   `,
 
   new: `
-    bg-primary
-    text-primary-foreground
-    border-primary/20
+    bg-brand-500
+    text-white
+    border-brand-500/20
   `,
 
   featured: `
@@ -21,15 +21,15 @@ const variants = {
   `,
 
   pro: `
-    bg-violet-500
+    bg-brand-500
     text-white
-    border-violet-400/30
+    border-brand-500/30
   `,
 
   sale: `
-    bg-destructive
+    bg-danger
     text-white
-    border-destructive/30
+    border-danger/30
   `,
 
   free: `
@@ -39,9 +39,9 @@ const variants = {
   `,
 
   hot: `
-    bg-orange-500
+    bg-security
     text-white
-    border-orange-400/30
+    border-security/30
   `,
 };
 

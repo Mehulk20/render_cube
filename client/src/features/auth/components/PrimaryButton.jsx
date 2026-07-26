@@ -19,7 +19,7 @@ export default function PrimaryButton({
       disabled={disabled || loading}
       className={`
         group relative flex w-full items-center justify-center gap-2 overflow-hidden rounded-xl
-        bg-gradient-to-r from-primary via-brand-600 to-brand-700 py-3.5 text-[15px] font-semibold text-white
+        bg-gradient-to-r from-brand-500 via-brand-600 to-brand-700 py-md text-base font-semibold text-white
         shadow-glow transition-shadow duration-[var(--duration-normal)] ease-[var(--ease-standard)]
         hover:shadow-lg disabled:cursor-not-allowed disabled:opacity-70
         ${className}

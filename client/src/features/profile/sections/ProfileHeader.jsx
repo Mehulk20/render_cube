@@ -93,12 +93,12 @@ export default function ProfileHeader({
 
   return (
     <motion.div
-      className="relative w-full rounded-3xl"
+      className="relative w-full rounded-2xl"
       initial={{ opacity: 0, y: 16 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{
         duration: 0.8,
-        ease: [0.4, 0, 0.2, 1],
+        ease: 'easeOut',
       }}
     >
       {/* Traveling glow border that runs along the card's perimeter, corner to corner, while the banner uploads */}
@@ -148,8 +148,8 @@ export default function ProfileHeader({
 
       {/* Steady glowing border shown briefly once the banner upload succeeds */}
       <motion.div
-        className="pointer-events-none absolute -inset-1 z-40 rounded-[26px] ring-4 ring-brand-500"
-        style={{ boxShadow: '0 0 18px 3px var(--color-brand-500, #6366f1)' }}
+        className="pointer-events-none absolute -inset-1 z-overlay rounded-lg ring-4 ring-brand-500"
+        style={{ boxShadow: '0 0 18px 3px var(--color-brand-500)' }}
         initial={false}
         animate={{
           opacity: showCoverSuccessRing ? 1 : 0,
@@ -157,12 +157,12 @@ export default function ProfileHeader({
         }}
         transition={{
           duration: 2.5,
-          ease: [0.4, 0, 0.2, 1],
+          ease: 'easeOut',
         }}
       />
 
       {/* Everything else stays clipped to the rounded card shape */}
-      <div className="overflow-hidden rounded-3xl bg-surface shadow-xl ring-1 ring-black/5">
+      <div className="overflow-hidden rounded-2xl bg-surface shadow-card ring-1 ring-border/5">
         {/* Cover */}
         <div className="relative h-40 w-full overflow-hidden sm:h-52">
           {banner ? (

@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 
 const tones = {
-  primary: 'bg-primary/15 text-primary border-primary/30',
+  primary: 'bg-brand-500/15 text-brand-500 border-brand-500/30',
   success: 'bg-success/15 text-success border-success/30',
   warning: 'bg-warning/15 text-warning border-warning/30',
   danger: 'bg-danger/15 text-danger border-danger/30',
@@ -10,15 +10,5 @@ const tones = {
 };
 
 export default function Badge({ tone = 'primary', className, children }) {
-  return (
-    <span
-      className={clsx(
-        'inline-flex items-center gap-1 rounded-full border px-2.5 py-0.5 text-xs font-medium',
-        tones[tone],
-        className
-      )}
-    >
-      {children}
-    </span>
-  );
+  return <span className={clsx('badge-base', tones[tone], className)}>{children}</span>;
 }

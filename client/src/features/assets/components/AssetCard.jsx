@@ -11,7 +11,7 @@ export default function AssetCard({ asset, index = 0 }) {
   return (
     <Link
       to={`/asset/${asset.id}`}
-      className="animate-fade-in group block overflow-hidden rounded-2xl border border-border bg-surface opacity-0 transition-all duration-300 hover:-translate-y-1 hover:border-violet/40 hover:shadow-glow"
+      className="animate-fade-in group block overflow-hidden rounded-lg border border-border bg-surface opacity-0 transition-all motion-normal hover:-translate-y-sm hover:border-brand-500/40 hover:shadow-glow"
       style={{ animationDelay: `${index * 40}ms` }}
     >
       <div className={clsx('relative aspect-[4/3] overflow-hidden bg-linear-to-br', asset.color)}>

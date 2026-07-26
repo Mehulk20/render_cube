@@ -11,7 +11,7 @@ export default function SidebarNavItem({ link }) {
         {({ isActive }) => (
           <div
             className={clsx(
-              'group relative flex items-center justify-between overflow-hidden rounded-xl px-3 py-2.5 text-sm font-medium',
+              'group relative flex items-center justify-between overflow-hidden rounded-sm px-3 py-2.5 text-sm font-medium',
               isActive
                 ? 'text-brand-500'
                 : 'text-ink-soft transition-colors hover:bg-surface-floating hover:text-ink'
@@ -20,7 +20,7 @@ export default function SidebarNavItem({ link }) {
             {isActive && (
               <motion.div
                 layoutId="sidebar-active-pill"
-                className="absolute inset-0 rounded-xl bg-linear-to-r from-brand-500/15 to-fuchsia/15"
+                className="absolute inset-0 rounded-sm bg-linear-to-r from-brand-500/15 to-fuchsia/15"
                 transition={{
                   type: 'spring',
                   stiffness: 350,
@@ -29,14 +29,14 @@ export default function SidebarNavItem({ link }) {
               />
             )}
 
-            <span className="relative z-10 flex items-center gap-2.5">
+            <span className="relative z-10 flex items-center gap-md">
               <motion.div
                 whileHover={{
                   rotate: -8,
                   scale: 1.08,
                 }}
               >
-                <link.icon size={17} />
+                <link.icon size={20} />
               </motion.div>
 
               {link.label}
@@ -45,7 +45,7 @@ export default function SidebarNavItem({ link }) {
             {link.count !== undefined && (
               <motion.span
                 whileHover={{ scale: 1.08 }}
-                className="relative z-10 rounded-2xl bg-surface-raised px-1.5 py-0.5 text-[11px] text-ink-faint"
+                className="relative z-10 rounded-full bg-surface-raised px-2 py-1 text-xs text-ink-faint"
               >
                 {link.count}
               </motion.span>

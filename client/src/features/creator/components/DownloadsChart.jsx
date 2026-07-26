@@ -13,7 +13,7 @@ import { Card } from '../../../shared/ui';
 function CustomTooltip({ active, payload, label }) {
   if (!active || !payload?.length) return null;
   return (
-    <div className="rounded-xl border border-border bg-surface-raised px-3 py-2 shadow-xl">
+    <div className="rounded-sm border border-border bg-surface-raised px-md py-md shadow-card">
       <p className="text-xs text-foreground-faint">{label}</p>
       <p className="text-sm font-semibold text-foreground">
         Downloads {payload[0].value.toLocaleString()}

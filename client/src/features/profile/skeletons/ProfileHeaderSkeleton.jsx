@@ -6,7 +6,7 @@ const Skeleton = ({ className }) => (
 
 export default function ProfileHeaderSkeleton() {
   return (
-    <div className="overflow-hidden rounded-3xl bg-surface shadow-card ring-1 ring-black/5">
+    <div className="overflow-hidden rounded-2xl bg-surface shadow-card ring-1 ring-border/5">
       {/* Cover */}
       <Skeleton className="h-40 w-full sm:h-52 rounded-none" />
 

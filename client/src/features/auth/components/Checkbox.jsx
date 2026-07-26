@@ -2,10 +2,16 @@ export default function Checkbox({ id, label, checked, onChange, className = '' 
   return (
     <label
       htmlFor={id}
-      className={`inline-flex cursor-pointer select-none items-center gap-2.5 ${className}`}
+      className={`inline-flex cursor-pointer select-none items-center gap-md ${className}`}
     >
       <span className="relative inline-flex h-5 w-5 shrink-0 items-center justify-center">
-        <input id={id} type="checkbox" checked={checked} onChange={onChange} className="peer sr-only" />
+        <input
+          id={id}
+          type="checkbox"
+          checked={checked}
+          onChange={onChange}
+          className="peer sr-only"
+        />
         <span
           className="
             h-5 w-5 rounded-md border-2 border-border bg-surface

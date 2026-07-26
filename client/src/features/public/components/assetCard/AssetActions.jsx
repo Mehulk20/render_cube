@@ -38,7 +38,7 @@ export default function AssetActions({ onBookmark, onPreview, onCart }) {
           group-hover:scale-100
           group-hover:opacity-100
 
-          hover:bg-primary/10
+          hover:bg-brand-500/10
           hover:text-primary
         "
       >

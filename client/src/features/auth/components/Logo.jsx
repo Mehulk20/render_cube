@@ -6,7 +6,7 @@ const sizes = {
 export default function Logo({ size = 'md', className = '' }) {
   const s = sizes[size];
   return (
-    <div className={`flex items-center gap-3 ${className}`}>
+    <div className={`flex items-center gap-md ${className}`}>
       <svg
         viewBox="0 0 32 32"
         fill="none"

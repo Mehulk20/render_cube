@@ -40,7 +40,7 @@ const InputField = forwardRef(function InputField(
               text-foreground-faint
               transition-colors
               duration-300
-              group-focus-within:text-primary
+              group-focus-within:text-brand-500
             "
             strokeWidth={1.8}
           />

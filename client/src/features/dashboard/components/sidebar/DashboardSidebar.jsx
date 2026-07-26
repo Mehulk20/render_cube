@@ -15,7 +15,7 @@ export default function DashboardSidebar({ mode = 'account' }) {
       variants={sidebarVariants}
       initial="hidden"
       animate="visible"
-      className="sticky top-16 hidden h-[calc(100vh-4rem)] w-64 shrink-0 flex-col border-r border-border-soft bg-void lg:flex"
+      className="sticky top-16 hidden h-[calc(100vh-4rem)] w-64 shrink-0 flex-col border-r border-border-soft bg-surface lg:flex"
     >
       {mode === 'creator' && <SidebarHeader />}
 

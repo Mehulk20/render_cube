@@ -5,7 +5,7 @@ const icons = { tip1: Upload, tip2: Image, tip3: FolderKanban };
 const tones = {
   tip1: 'bg-success/15 text-success',
   tip2: 'bg-info/15 text-info',
-  tip3: 'bg-primary/15 text-primary',
+  tip3: 'bg-brand-500/15 text-brand-500',
 };
 
 export default function TipsToGrow({ tips }) {

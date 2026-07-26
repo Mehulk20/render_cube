@@ -7,14 +7,11 @@ export default function TopPerformingList({ items }) {
         <h3 className="font-display text-sm font-semibold text-foreground">
           Top Performing Assets
         </h3>
-        <a
-          href="#"
-          className="text-xs font-medium text-primary transition-colors duration-[var(--duration-fast)] hover:text-primary-hover"
-        >
+        <a href="#" className="text-xs font-medium text-brand-500 motion-link hover:text-brand-600">
           View all
         </a>
       </div>
-      <div className="hidden grid-cols-[1fr_auto_auto] gap-4 pb-2 text-xs text-foreground-faint sm:grid">
+      <div className="hidden grid-cols-[1fr_auto_auto] gap-lg pb-md text-xs text-foreground-faint sm:grid">
         <span />
         <span className="text-right">Downloads</span>
         <span className="text-right">Favorites</span>

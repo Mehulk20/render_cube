@@ -69,7 +69,7 @@ export default function NotificationBell() {
           aria-hidden="true"
           className={clsx(
             'absolute -right-0.5 -top-0.5 flex h-5 min-w-5 items-center justify-center rounded-full',
-            'bg-violet px-1 text-[10px] font-bold tabular-nums text-white shadow-sm ring-2 ring-background',
+            'bg-danger px-1 text-xs font-bold tabular-nums text-white shadow-sm ring-2 ring-background',
             'transition-transform duration-200 ease-out',
             unread > 0 ? 'scale-100 opacity-100' : 'pointer-events-none scale-0 opacity-0'
           )}
